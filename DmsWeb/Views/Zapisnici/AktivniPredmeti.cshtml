@@ -1,0 +1,75 @@
+﻿@using DmsCore.Podesavanja
+@using DmsCore.Zapisnici
+@using DmsWeb.Infrastructure
+@{
+    Layout = null;
+    var korisnik = RuntimeDataHelpers.GetRuntimeData(Request);
+
+    var vm = (AktivniPredmetiViewModel)ViewData["vm"];
+}
+<script>
+    $(document).ready(qAktivniPredmeti.Init);
+</script>
+
+<style>
+    #aktivniPredmetiSlickGrid {
+        height: calc(100vh - 240px);
+    }
+</style>
+
+<div class="qDispNone" id="vm">@Json.Encode(vm)</div>
+<div class="qDispNone" id="url_VratiAktivnePredmete">@Url.Action("VratiAktivnePredmete")</div>
+<div class="qDispNone" id="url_VratiStampeAktivnihPredmeta">@Url.Action("VratiStampeAktivnihPredmeta")</div>
+
+<div class="hederH1">
+    <h1 style="float: left; max-width: 300px;">@Konverzija.VratiString(korisnik.Jezik, "Aktivni predmeti")</h1>
+
+    <div style="float: right;">
+        <div class="teloDugmeWrapUFormi btnW3" id="aktivniPredmetiBtnIzvoz" style="float: left; margin-left: 10px">
+            <table class="teloDugme">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Izvoz u excel")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div style="float:right;">
+        <div class="teloDugmeWrapUFormi btnW3" id="aktivniPredmetiBtnStampa" style="float: left; margin-left: 10px">
+            <table class="teloDugme">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Štampa")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="oblakTelo" id="oblakTeloWrap">
+    <div class="unosRed" style="float: left;">
+        <div class="unosRedLbl_taL" style="width: 100px">@Konverzija.VratiString(korisnik.Jezik, "Datum"):</div>
+        <div class="unosRedVr">
+            <div id="aktivniPredmetiDatum"></div>
+        </div>
+    </div>
+    <div class="unosRed" style="float: left; margin-left: 10px">
+        <div class="unosRedLbl_taL" style="width: 100px">@Konverzija.VratiString(korisnik.Jezik, "Označi sve"):</div>
+        <div class="unosRedVr"><div id="aktivniPredmetiOznaciSve"></div></div>
+    </div>
+
+    <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="aktivniPredmetiBtnPretrazi">
+        <table class="teloDugme">
+            <tr>
+                <td>@Konverzija.VratiString(korisnik.Jezik, "Pretraži")</td>
+                <td><i class="fa fa-search" aria-hidden="true"></i></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="clear withLine"></div>
+
+    <div style="position:relative; margin-top: 10px; width:100%;">
+        <div id="aktivniPredmetiSlickGrid" style="width:100%;"></div>
+        <div id="aktivniPredmetiSlickGridPager" style="width:100%;height:20px;"></div>
+    </div>
+</div>

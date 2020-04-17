@@ -1,0 +1,149 @@
+﻿@using DmsCore.Data
+@using DmsCore.Logovanje
+@using DmsCore.Podesavanja
+@{
+    var korisnik = (UlogovaniKorisnik) ViewData["korisnik"];
+
+    var klasa = "";
+    
+    if (korisnik != null && (korisnik.Administracija || korisnik.UnosNovogPredmeta) && korisnik.IdOkruga != null)
+    {
+        klasa = "manjaSlika";
+    }
+    var promeniLozinku = false;
+    if (korisnik != null)
+    {
+        promeniLozinku = korisnik.Lozinka == "123456";
+    }
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var url_PromeniInicijalnuLozinku = $('#url_PromeniInicijalnuLozinku').text();
+        var promeniLozinku = $('#promeniLozinku').text().toLowerCase();
+        
+        if (promeniLozinku == "true") {
+            var $temp = $('#wrapProzorZaPromenuSifre').clone().attr('id', 'prozorLozinkaClone');
+            $temp.find('#txtStaraSifraP').parent().parent().remove();
+            $temp.find('#divPorukaZaPromenuSifre').hide();
+            PrikaziProzor2(1, 1, qKonverzija.VratiLokalizovaniTekst('Promena lozinke'), $temp.show(), 'pitanje', [
+                {
+                    labela: qKonverzija.VratiLokalizovaniTekst('Promeni'),
+                    callback: function() {
+                        var novaSifr = $('#prozorLozinkaClone').find('#txtNovaSifraP').val().trim();
+                        var novaPonSifr = $('#prozorLozinkaClone').find('#txtNovaSifraPonovoP').val().trim();
+
+                        if (novaSifr == "" || novaPonSifr == "") {
+                            $('#divPorukaZaPromenuSifre span').text(qKonverzija.VratiLokalizovaniTekst('Morate popuniti sva polja!'));
+                            $('#prozorLozinkaClone').find('#divPorukaZaPromenuSifre').show();
+                            return false;
+                        }
+
+                        if (novaSifr.length < 6) {
+                            $('#divPorukaZaPromenuSifre span').text(qKonverzija.VratiLokalizovaniTekst('Nova lozinka mora imati najmanje 6 karaktera!'));
+                            $('#prozorLozinkaClone').find('#divPorukaZaPromenuSifre').show();
+                            return false;
+                        }
+
+                        var letterNumber = /[A-Za-z].*[0-9]|[0-9].*[A-Za-z]|[а-шА-Ш].*[0-9]|[0-9].*[а-шА-Ш]/;
+                        if (!novaSifr.match(letterNumber)) {
+                            $('#divPorukaZaPromenuSifre span').text(qKonverzija.VratiLokalizovaniTekst('Lozinka se mora sastojati iz slova i brojeva!'));
+                            $('#prozorLozinkaClone').find('#divPorukaZaPromenuSifre').show();
+                            return false;
+                        }
+                        PrikaziProzor(true, false, qKonverzija.VratiLokalizovaniTekst('OBAVEŠTENJE'), qKonverzija.VratiLokalizovaniTekst('Molim sačekajte..') + '<br><br><img src="' + _pathImg + 'loadProgress2.gif" alt="" />', 'ucitavanje');
+
+                        $.ajax({
+                            type: 'POST',
+                            url: url_PromeniInicijalnuLozinku,
+                            data: {
+                                novaSifra: novaSifr
+                            },
+                            success: function (data) {
+                                if (data.Greska) {
+                                    PrikaziProzor(true, false, qKonverzija.VratiLokalizovaniTekst('GREŠKA'), data.Poruka, 'greska');
+                                    return;
+                                }
+
+                                PrikaziProzor(true, false, qKonverzija.VratiLokalizovaniTekst('OBAVEŠTENJE'), qKonverzija.VratiLokalizovaniTekst('Uspešno ste promenili lozinku'), 'difolt');
+                            },
+                            complete: function () {
+
+                            }
+                        });
+                    }
+                }
+            ]);
+        }
+
+    });
+</script>
+
+
+<div class="qDispNone" id="url_PromeniInicijalnuLozinku">@Url.Action("PromeniLozinku")</div>
+<div class="qDispNone" id="promeniLozinku">@promeniLozinku</div>
+
+<div class="hederH1">
+    @if (korisnik != null && !string.IsNullOrEmpty(korisnik.NapomenaOkruga))
+    {
+        <h1>@korisnik.NapomenaOkruga</h1>
+    }
+    
+    @if (korisnik != null && !string.IsNullOrEmpty(korisnik.Napomena))
+    {
+        <h1>@korisnik.Napomena</h1>
+    }
+    
+    <h1>@Konverzija.VratiString(korisnik.Jezik, "Pisarnica " + DmsData.Naziv)</h1>
+</div>
+
+<div class="oblakTelo" id="oblakTeloWrap">
+    @*
+    @if (korisnik != null && korisnik.IdOkruga != null)
+    {
+        <div>
+            <img style="width: 100%; height: 100px;" src="@Url.Content("~/Content/Okruzi/" + korisnik.IdOkruga + ".jpeg")"/>
+        </div>
+    }
+    *@
+
+    <div style="margin-top: 100px;">
+        @if (korisnik != null && korisnik.IdOkruga != null && (korisnik.DozvolaRezervisanja || korisnik.UnosNovogPredmeta))
+        {
+            <div style="float: left; margin-left: 100px;">
+                <div class="unosRed">
+                    <img class="@klasa" id="unosNovogPredmeta" src="@Url.Content("~/Content/img/home/unos_predmeta.png")" title="@Konverzija.VratiString(korisnik.Jezik, "Unos novog predmeta")" data-meni="#meniPredmeti"/>
+                </div>
+            </div>
+        }
+        
+        @if (korisnik != null)
+        {
+            <div style="float: left; margin-left: 50px;">
+                <div class="unosRed">
+                    <img class="@klasa" id="pretragaPredmeta" src="@Url.Content("~/Content/img/home/pretraga.png")" title="@Konverzija.VratiString(korisnik.Jezik, "Pretraga predmeta")" data-meni="#meniPretrage"/>
+                </div>
+            </div>
+        }
+    
+        @if(korisnik != null && korisnik.PregledIzvestaja)
+        {
+            <div style="float: left; margin-left: 50px;">
+                <div class="unosRed">
+                    <img class="@klasa" id="izvestaji" src="@Url.Content("~/Content/img/home/izvestaji.png")" title="@Konverzija.VratiString(korisnik.Jezik, "Izveštaji")" data-meni="#meniIzvestaji"/>
+                </div>
+            </div>
+        }
+
+        @if (korisnik != null && (korisnik.Administracija || korisnik.UnosNovogPredmeta))
+        {
+            <div style="float: left; margin-left: 50px;">
+                <div class="unosRed">
+                    <img class="@klasa" id="sifarnici" src="@Url.Content("~/Content/img/home/admin.png")" title="@Konverzija.VratiString(korisnik.Jezik, "Šifarnici")" data-meni="#meniSifarnici"/>
+                </div>
+            </div>
+        }
+    </div>
+</div>

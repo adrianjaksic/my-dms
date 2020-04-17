@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.1.5.0" Ref="1" Name="PregledSintetikePredmetaReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="15.1" PageWidth="1100" PageHeight="850" Landscape="true">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" Expanded="false" HeightF="100" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="100">
+      <Controls>
+        <Item1 Ref="4" Name="xrPageInfo1" ControlType="XRPageInfo" SizeF="100,23" Padding="2,2,0,0,100" LocationFloat="800, 23.91667" Format="{0:dd.MM.yyyy}" PageInfo="DateTime" />
+      </Controls>
+    </Item2>
+    <Item3 Ref="5" Name="BottomMargin" ControlType="BottomMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="100" />
+    <Item4 Ref="6" ControlType="DetailReportBand" Name="DetailReport" DataMember="Stavke" Level="0" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="7" ControlType="DetailBand" Name="Detail1" HeightF="23">
+          <Controls>
+            <Item1 Ref="8" Name="xrLabel8" ControlType="XRLabel" SizeF="108.958191,23" LocationFloat="790.6251, 0" Padding="2,2,0,0,100" Text="xrLabel8">
+              <DataBindings>
+                <Item1 Ref="9" PropertyName="Text" DataMember="Stavke.BrojOtvorenihPredmetaPrekoRoka" />
+              </DataBindings>
+            </Item1>
+            <Item2 Ref="10" Name="xrLabel7" ControlType="XRLabel" SizeF="108.958252,23" LocationFloat="681.6668, 0" Padding="2,2,0,0,100" Text="xrLabel7">
+              <DataBindings>
+                <Item1 Ref="11" PropertyName="Text" DataMember="Stavke.BrojObrisanihhPredmeta" />
+              </DataBindings>
+            </Item2>
+            <Item3 Ref="12" Name="xrLabel6" ControlType="XRLabel" SizeF="96.25,23" LocationFloat="585.416748, 0" Padding="2,2,0,0,100" Text="xrLabel6">
+              <DataBindings>
+                <Item1 Ref="13" PropertyName="Text" DataMember="Stavke.BrojZatvorenihPredmeta" />
+              </DataBindings>
+            </Item3>
+            <Item4 Ref="14" Name="xrLabel5" ControlType="XRLabel" SizeF="89.58328,23" LocationFloat="495.8334, 0" Padding="2,2,0,0,100" Text="xrLabel5">
+              <DataBindings>
+                <Item1 Ref="15" PropertyName="Text" DataMember="Stavke.BrojAktivnihPredmeta" />
+              </DataBindings>
+            </Item4>
+            <Item5 Ref="16" Name="xrLabel4" ControlType="XRLabel" SizeF="104.166748,23" LocationFloat="391.666656, 0" Padding="2,2,0,0,100" Text="xrLabel4">
+              <DataBindings>
+                <Item1 Ref="17" PropertyName="Text" DataMember="Stavke.BrojRezervisanihPredmeta" />
+              </DataBindings>
+            </Item5>
+            <Item6 Ref="18" Name="xrLabel3" ControlType="XRLabel" SizeF="124.999969,23" LocationFloat="266.6667, 0" Padding="2,2,0,0,100" Text="xrLabel3">
+              <DataBindings>
+                <Item1 Ref="19" PropertyName="Text" DataMember="Stavke.UkupanBrojPredmeta" />
+              </DataBindings>
+            </Item6>
+            <Item7 Ref="20" Name="xrLabel2" ControlType="XRLabel" SizeF="220.833328,23" LocationFloat="45.8333321, 0" Padding="2,2,0,0,100">
+              <DataBindings>
+                <Item1 Ref="21" PropertyName="Text" DataMember="Stavke.Grupisanje" />
+              </DataBindings>
+            </Item7>
+            <Item8 Ref="22" Name="xrLabel1" ControlType="XRLabel" SizeF="45.83333,23" LocationFloat="0, 0" Padding="2,2,0,0,100">
+              <Summary Ref="23" FormatString="{0:#.}" Running="Report" Func="RecordNumber" />
+            </Item8>
+          </Controls>
+          <SortFields>
+            <Item1 Ref="24" FieldName="Grupisanje" />
+          </SortFields>
+        </Item1>
+        <Item2 Ref="25" ControlType="GroupHeaderBand" Name="GroupHeader1" HeightF="25">
+          <Controls>
+            <Item1 Ref="26" Name="xrTable1" ControlType="XRTable" SizeF="899.5833,25" LocationFloat="0, 0">
+              <Rows>
+                <Item1 Ref="27" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+                  <Cells>
+                    <Item1 Ref="28" Name="xrTableCell1" ControlType="XRTableCell" Borders="Bottom" Text="Red. br." Weight="0.282051274226262">
+                      <StylePriority Ref="29" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="30" Name="xrTableCell4" ControlType="XRTableCell" Borders="Bottom" Weight="1.3589743617114429">
+                      <DataBindings>
+                        <Item1 Ref="31" PropertyName="Text" DataMember="NazivPrveKolone" />
+                      </DataBindings>
+                      <StylePriority Ref="32" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="33" Name="xrTableCell2" ControlType="XRTableCell" Borders="Bottom" Text="Ukupan broj" Weight="0.76923077475859691">
+                      <StylePriority Ref="34" UseBorders="false" />
+                    </Item3>
+                    <Item4 Ref="35" Name="xrTableCell5" ControlType="XRTableCell" Borders="Bottom" Text="Rezervisani" Weight="0.64102577370854075">
+                      <StylePriority Ref="36" UseBorders="false" />
+                    </Item4>
+                    <Item5 Ref="37" Name="xrTableCell3" ControlType="XRTableCell" Borders="Bottom" Text="Aktivni" Weight="0.55128191262855264">
+                      <StylePriority Ref="38" UseBorders="false" />
+                    </Item5>
+                    <Item6 Ref="39" Name="xrTableCell6" ControlType="XRTableCell" Borders="Bottom" Text="Zatvoreni" Weight="0.59230788870137008">
+                      <StylePriority Ref="40" UseBorders="false" />
+                    </Item6>
+                    <Item7 Ref="41" Name="xrTableCell7" ControlType="XRTableCell" Borders="Bottom" Text="Obrisani" Weight="0.6705127051046893">
+                      <StylePriority Ref="42" UseBorders="false" />
+                    </Item7>
+                    <Item8 Ref="43" Name="xrTableCell8" ControlType="XRTableCell" Borders="Bottom" Text="Otvoreni preko roka" Weight="0.67051232950372186">
+                      <StylePriority Ref="44" UseBorders="false" />
+                    </Item8>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item2>
+      </Bands>
+    </Item4>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v15.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PERhdGFTb3VyY2UgVHlwZT0iRG1zQ29yZS5JenZlc3RhamkuUHJlZ2xlZFNpbnRldGlrZVByZWRtZXRhWmFnbGF2bGplLCBEbXNDb3JlLCBWZXJzaW9uPTEuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbCIgLz48Q29uc3RydWN0b3IgLz48L09iamVjdERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

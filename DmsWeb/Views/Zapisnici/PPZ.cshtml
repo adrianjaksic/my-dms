@@ -1,0 +1,105 @@
+﻿@using DmsCore.Podesavanja
+@using DmsCore.Zapisnici
+@using DmsWeb.Infrastructure
+@{
+    Layout = null;
+    var korisnik = RuntimeDataHelpers.GetRuntimeData(Request);
+
+    var vm = (ZapisnikViewModel)ViewData["vm"];
+
+    const string wLabele = "100px;";
+}
+<script>
+    $(document).ready(qPrimopredajniZapisnik.Init);
+</script>
+
+<style>
+    #ppZapisnikSlickGrid {
+        height: calc(100vh - 280px);
+    }
+</style>
+
+<div class="qDispNone" id="vm">@Json.Encode(vm)</div>
+<div class="qDispNone" id="url_VratiPredmetePretrage">@Url.Action("VratiPredmetePretrage")</div>
+<div class="qDispNone" id="url_VratiJedinice">@Url.Action("VratiJedinice", "Pretrage")</div>
+<div class="qDispNone" id="url_VratiKlase">@Url.Action("VratiKlase", "Pretrage")</div>
+<div class="qDispNone" id="url_VratiStampePrimopredajnogZapisnika">@Url.Action("VratiStampePrimopredajnogZapisnika")</div>
+
+<div class="hederH1">
+    <h1 style="float: left;max-width: 300px;">@Konverzija.VratiString(korisnik.Jezik, "Primopredajni zapisnik")</h1>
+
+    <div style="float:right;">
+        <div class="teloDugmeWrapUFormi btnW3" id="ppZapisnikBtnStampa" style="float: left; margin-left: 10px">
+            <table class="teloDugme">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Štampa")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="oblakTelo" id="oblakTeloWrap">
+    <div style="float: left;">
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Organ"):</div>
+            <div class="unosRedVr"><div id="ppZapisnikOrganiCmb"></div></div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Klasa"):</div>
+            <div class="unosRedVr"><div id="ppZapisnikKlaseCmb"></div></div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Jedinica"):</div>
+            <div class="unosRedVr"><div id="ppZapisnikJediniceCmb"></div></div>
+        </div>
+    </div>
+
+    <div style="float: left; margin-left: 30px;">
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Datum"):</div>
+            <div class="unosRedVr"><div id="ppZapisnikDatum"></div></div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Kreator"):</div>
+            <div class="unosRedVr">
+                <div id="ppZapisnikKreatoriCmb"></div>
+            </div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Samo arhivirani"):</div>
+            <div class="unosRedVr" style="float: right; margin-top: 3px;"><input type="checkbox" id="ppZapisnikSamoArhivirani"/></div>
+        </div> 
+    </div>
+
+    <div style="float: right">
+        <div class="teloDugmeWrapUFormi btnFloatR btnResetX" id="ppZapisnikBtnReset">
+            <table class="teloDugme teloDugmeDesno">
+                <tr>
+                    <td><img src="@Url.Content("~/Content/img/w/x.png")" alt="" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="ppZapisnikBtnPretrazi">
+            <table class="teloDugme teloDugmeLevo">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Pretraži")</td>
+                    <td><img src="@Url.Content("~/Content/img/w/lupica.png")" alt="" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="clear withLine"></div>
+
+    <div id="ppZapisnikNemaRez" style="text-align: center; padding: 0 20px; display: none;">@Konverzija.VratiString(korisnik.Jezik, "Nema rezultata. Ponovite pretragu sa drugačijim kriterijumima.")</div>
+
+    <div style="position:relative; margin-top: 10px; width:100%;">
+        <div id="ppZapisnikSlickGrid" style="width:100%;"></div>
+        <div id="ppZapisnikSlickGridPager" style="width:100%;height:20px;"></div>
+    </div>
+</div>

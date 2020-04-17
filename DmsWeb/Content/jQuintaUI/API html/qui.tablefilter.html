@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>jQuintaUI Documentation - TableFilter</title>
+    <meta charset="utf-8" />
+    <link href="rainbow/themes/sunburst.css" rel="stylesheet" type="text/css" />
+    <link href="css/qui.cb.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="rainbow/js/rainbow.min.js" type="text/javascript"></script>
+    <script src="rainbow/js/language/generic.js" type="text/javascript"></script>
+    <script src="rainbow/js/language/javascript.js" type="text/javascript"></script>
+</head>
+
+
+<body>
+    
+    <header>
+        <h1>jQuintaUI TableFilter</h1>
+        <h1 class="subH1">jQuery widžeti kodirani prvenstveno za potrebe projekata. Zahtevaju
+        <a href="http://jquery.com/" target="_blank">jQuery 1.7+</a> i 
+        <a href="https://github.com/rstacruz/jquery-stuff/tree/master/ensurevisible" target="_blank">jQuery.ensureVisible</a> koji je već uključen u kod vidžeta.</h1>
+    </header>
+    
+    <div class="content">
+        <section class="docSection">
+            <h2>Opcije</h2>
+            <div class="docSectionSubH">
+                <pre class="sub"><code data-language="javascript">>>> $('#id').quiTableFilter({ opcije });</code></pre>
+            </div>
+            <div class="docSectionBody">
+                <div class="row">
+                    <div class="s1">tbodyId: ''</div>
+                    <div class="s2">#Id tbody tabele na koji se odnosi filtriranje.</div>
+                </div>     
+            </div>
+        </section>
+
+<!--
+        <section class="docSection">
+            <h2>Metode <span style="font-weight: normal; font-size: 10px">(samo <u>podvučene metode</u> dozvoljavaju ulančavanje!)</span></h2>
+            <div class="docSectionSubH">
+                <pre class="sub"><code data-language="javascript">>>> $('#id').quiTableFilter('nazivMetode', argument1, argument2, ...);</code></pre>
+            </div>
+            <div class="docSectionBody">
+                <div class="row">
+                    <h3>set</h3>
+                    <pre><code data-language="javascript">$('#id').quiTableFilter('set', percent)</code></pre>
+                    <div>Setuje procenat popunjenosti widgeta. Broj izmedju 0 i 100.</div>
+                </div>
+                <div class="row">
+                    <h3>stepUp</h3>
+                    <pre><code data-language="javascript">$('#id').quiTableFilter('stepUp')</code></pre>
+                    <div>Inkrementira procenat popunjenosti widgeta za vrednost iz 'step' propertija. Ide do 100.</div>
+                </div>
+            </div>
+        </section>
+-->
+        
+        <section class="docSection">
+            <h2>Događaji</h2>
+            <div class="docSectionSubH">
+                <pre class="sub"><code data-language="javascript">>>> $('#id').on('event', function ( ... ) { ... });</code></pre>
+            </div>
+            <div class="docSectionBody">
+                <div class="row">
+                    <h3>filtered</h3>
+                    <pre><code data-language="javascript">$('#id').on('filtered', function (event) { })</code></pre>
+                    <div>Trigeruje se nakon izvrsenog filtriranja.</div>
+                </div>
+                <div class="row">
+                    <h3>cleared</h3>
+                    <pre><code data-language="javascript">$('#id').on('cleared', function (event) { })</code></pre>
+                    <div>Trigeruje se nakon izvrsenog ponistavanja filtera.</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

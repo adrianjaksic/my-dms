@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.1.5.0" Ref="1" Name="PregledPretrazenihPredmetaReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="15.1" PageWidth="1100" PageHeight="850" Margins="70, 70, 40, 40" Landscape="true">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" Expanded="false" HeightF="100" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="40">
+      <Controls>
+        <Item1 Ref="4" Name="xrLabel6" ControlType="XRLabel" SizeF="960,23" LocationFloat="0, 17" Font="Times New Roman, 9.75pt, style=Bold, charSet=238" Padding="2,2,0,0,100" Text="Pregled pretraženih predmeta">
+          <StylePriority Ref="5" UseFont="false" />
+        </Item1>
+        <Item2 Ref="6" Name="xrPageInfo1" ControlType="XRPageInfo" SizeF="960,17" Padding="2,2,0,0,100" LocationFloat="0, 0" TextAlignment="TopRight" Format="{0:dd.MM.yyyy}" PageInfo="DateTime">
+          <StylePriority Ref="7" UseTextAlignment="false" />
+        </Item2>
+      </Controls>
+    </Item2>
+    <Item3 Ref="8" Name="BottomMargin" ControlType="BottomMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="40" />
+    <Item4 Ref="9" ControlType="DetailReportBand" Name="DetailReport" DataMember="Predmeti" Level="0" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="10" ControlType="DetailBand" Name="Detail1" HeightF="17.0833263">
+          <Controls>
+            <Item1 Ref="11" Name="xrTable2" ControlType="XRTable" SizeF="960,15" LocationFloat="0, 0">
+              <Rows>
+                <Item1 Ref="12" ControlType="XRTableRow" Name="xrTableRow2" Weight="0.6">
+                  <Cells>
+                    <Item1 Ref="13" Name="xrTableCell6" ControlType="XRTableCell" Weight="0.16782411779395634">
+                      <Summary Ref="14" Running="Report" Func="RecordNumber" />
+                    </Item1>
+                    <Item2 Ref="15" Name="xrTableCell7" ControlType="XRTableCell" Weight="0.95254634048712694">
+                      <DataBindings>
+                        <Item1 Ref="16" PropertyName="Text" DataMember="Predmeti.NazivPredmeta" />
+                      </DataBindings>
+                    </Item2>
+                    <Item3 Ref="17" Name="xrTableCell8" ControlType="XRTableCell" Text="Podnosilac&#xD;&#xA;" Multiline="true" Weight="1.2870367915149747">
+                      <DataBindings>
+                        <Item1 Ref="18" PropertyName="Text" DataMember="Predmeti.Podnosilac" />
+                      </DataBindings>
+                    </Item3>
+                    <Item4 Ref="19" Name="xrTableCell9" ControlType="XRTableCell" Text="Inspektor&#xD;&#xA;" Multiline="true" Weight="0.85763932239859186">
+                      <DataBindings>
+                        <Item1 Ref="20" PropertyName="Text" DataMember="Predmeti.NazivInspektora" />
+                      </DataBindings>
+                    </Item4>
+                    <Item5 Ref="21" Name="xrTableCell10" ControlType="XRTableCell" Text="Sadržaj" Weight="2.0682863994488931">
+                      <DataBindings>
+                        <Item1 Ref="22" PropertyName="Text" DataMember="Predmeti.Sadrzaj" />
+                      </DataBindings>
+                    </Item5>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item1>
+          </Controls>
+          <SortFields>
+            <Item1 Ref="23" FieldName="NazivPredmeta" />
+          </SortFields>
+        </Item1>
+        <Item2 Ref="24" ControlType="GroupHeaderBand" Name="GroupHeader1" KeepTogether="true" RepeatEveryPage="true" HeightF="37.91666">
+          <Controls>
+            <Item1 Ref="25" Name="xrLabel1" ControlType="XRLabel" SizeF="960,22.91666" LocationFloat="0, 0" Font="Times New Roman, 9.75pt, style=Bold, charSet=238" Padding="2,2,0,0,100" Text="xrLabel1">
+              <DataBindings>
+                <Item1 Ref="26" FormatString="Status:{0}" PropertyName="Text" DataMember="Predmeti.Status" />
+              </DataBindings>
+              <StylePriority Ref="27" UseFont="false" />
+            </Item1>
+            <Item2 Ref="28" Name="xrTable1" ControlType="XRTable" SizeF="960,15.000001" LocationFloat="0, 22.91666">
+              <Rows>
+                <Item1 Ref="29" ControlType="XRTableRow" Name="xrTableRow1" Weight="0.60000003814697267">
+                  <Cells>
+                    <Item1 Ref="30" Name="xrTableCell1" ControlType="XRTableCell" Text="R.Br." Weight="0.16782416017947863" />
+                    <Item2 Ref="31" Name="xrTableCell2" ControlType="XRTableCell" Text="Šifra predmeta" Weight="0.95254629810160463" />
+                    <Item3 Ref="32" Name="xrTableCell3" ControlType="XRTableCell" Text="Podnosilac&#xD;&#xA;" Multiline="true" Weight="1.2870367915149747" />
+                    <Item4 Ref="33" Name="xrTableCell4" ControlType="XRTableCell" Text="Inspektor&#xD;&#xA;" Multiline="true" Weight="0.85763932239859186" />
+                    <Item5 Ref="34" Name="xrTableCell5" ControlType="XRTableCell" Text="Sadržaj" Weight="2.0682863994488931" />
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item2>
+          </Controls>
+          <GroupFields>
+            <Item1 Ref="35" FieldName="Status" />
+          </GroupFields>
+        </Item2>
+      </Bands>
+    </Item4>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v15.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PERhdGFTb3VyY2UgVHlwZT0iRG1zQ29yZS5JenZlc3RhamkuUHJlZ2xlZFByZXRyYXplbmloUHJlZG1ldGFaYWdsYXZsamUsIERtc0NvcmUsIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsIiAvPjxDb25zdHJ1Y3RvciAvPjwvT2JqZWN0RGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

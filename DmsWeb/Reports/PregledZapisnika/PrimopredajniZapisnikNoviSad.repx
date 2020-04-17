@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.1.5.0" Ref="1" Name="PregledPretrazenihPredmetaReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="15.1" PageWidth="850" PageHeight="1100" Margins="40, 39, 129, 44">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" Expanded="false" HeightF="100" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="129.375">
+      <Controls>
+        <Item1 Ref="4" Name="xrLabel9" ControlType="XRLabel" SizeF="650,23" LocationFloat="0, 83.37501" Padding="2,2,0,0,100" Text="xrLabel9">
+          <DataBindings>
+            <Item1 Ref="5" FormatString="Klasa:  {0}" PropertyName="Text" DataMember="NazivKlase" />
+          </DataBindings>
+        </Item1>
+        <Item2 Ref="6" Name="xrLabel8" ControlType="XRLabel" SizeF="650,22.99999" LocationFloat="0, 106.375" Padding="2,2,0,0,100" Text="xrLabel8">
+          <DataBindings>
+            <Item1 Ref="7" FormatString="RG. Jed:  {0}" PropertyName="Text" DataMember="NazivJedinice" />
+          </DataBindings>
+        </Item2>
+        <Item3 Ref="8" Name="xrLabel6" ControlType="XRLabel" SizeF="650,23" LocationFloat="0, 60.37501" Padding="2,2,0,0,100" Text="xrLabel6">
+          <DataBindings>
+            <Item1 Ref="9" FormatString="Organ:  {0}" PropertyName="Text" DataMember="NazivOrgana" />
+          </DataBindings>
+        </Item3>
+        <Item4 Ref="10" Name="xrLabel7" ControlType="XRLabel" SizeF="223.9584,23" LocationFloat="156.25, 37.37501" Padding="2,2,0,0,100" Text="xrLabel7">
+          <DataBindings>
+            <Item1 Ref="11" FormatString="Datum: {0:dd.MM.yyyy}" PropertyName="Text" DataMember="Datum" />
+          </DataBindings>
+        </Item4>
+        <Item5 Ref="12" Name="xrLabel4" ControlType="XRLabel" SizeF="771,27.375" LocationFloat="0, 10.00001" Font="Times New Roman, 18pt, charSet=238" Padding="2,2,0,0,100" TextAlignment="MiddleCenter" Text="Primopredajni zapisnik">
+          <StylePriority Ref="13" UseFont="false" UseTextAlignment="false" />
+        </Item5>
+      </Controls>
+    </Item2>
+    <Item3 Ref="14" Name="BottomMargin" ControlType="BottomMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="43.95828">
+      <Controls>
+        <Item1 Ref="16" Name="xrPageInfo1" ControlType="XRPageInfo" SizeF="66.66669,16.75" Padding="2,2,0,0,100" LocationFloat="704.3334, 0" RunningBand="#Ref-15" Format="Strana {0}" />
+      </Controls>
+    </Item3>
+    <Item4 Ref="17" ControlType="DetailReportBand" Name="DetailReport" DataMember="Predmeti" Level="0" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="18" ControlType="DetailBand" Name="Detail1" HeightF="40.00003">
+          <Controls>
+            <Item1 Ref="19" Name="xrLabel5" ControlType="XRLabel" SizeF="37.68831,20" LocationFloat="0, 0" Padding="2,2,0,0,100" Borders="None" TextAlignment="TopLeft" CanGrow="false">
+              <DataBindings>
+                <Item1 Ref="20" PropertyName="Text" DataMember="Predmeti.BrojIstorijePredmeta" />
+              </DataBindings>
+              <StylePriority Ref="21" UseBorders="false" UseTextAlignment="false" />
+            </Item1>
+            <Item2 Ref="22" Name="xrLabel11" ControlType="XRLabel" SizeF="271.6866,20" LocationFloat="37.68831, 0" Padding="2,2,0,0,100" Borders="None" CanGrow="false" Text="xrTableCell5">
+              <DataBindings>
+                <Item1 Ref="23" PropertyName="Text" DataMember="Predmeti.SifraPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="24" UseBorders="false" />
+            </Item2>
+            <Item3 Ref="25" Name="xrLabel12" ControlType="XRLabel" SizeF="135.3746,20" LocationFloat="309.3749, 0" Padding="2,2,0,0,100" Borders="None" CanGrow="false">
+              <StylePriority Ref="26" UseBorders="false" />
+            </Item3>
+            <Item4 Ref="27" Name="xrLabel13" ControlType="XRLabel" SizeF="184.375,20" LocationFloat="444.7495, 0" Padding="2,2,0,0,100" Borders="None" CanGrow="false" Multiline="true" Text="&#xD;&#xA;">
+              <StylePriority Ref="28" UseBorders="false" />
+            </Item4>
+            <Item5 Ref="29" Name="xrLabel15" ControlType="XRLabel" SizeF="37.68832,20" LocationFloat="0, 20" Padding="2,2,0,0,100" Borders="Bottom" CanGrow="false" Multiline="true" Text="&#xD;&#xA;">
+              <StylePriority Ref="30" UseBorders="false" />
+            </Item5>
+            <Item6 Ref="31" Name="xrLabel16" ControlType="XRLabel" SizeF="271.6866,20" LocationFloat="37.68832, 20" Padding="2,2,0,0,100" Borders="Bottom" CanGrow="false" Text="xrTableCell9">
+              <DataBindings>
+                <Item1 Ref="32" PropertyName="Text" DataMember="Predmeti.Podnosilac" />
+              </DataBindings>
+              <StylePriority Ref="33" UseBorders="false" />
+            </Item6>
+            <Item7 Ref="34" Name="xrLabel17" ControlType="XRLabel" SizeF="135.3746,20.0000019" LocationFloat="309.3749, 20.0000134" Padding="2,2,0,0,100" Borders="Bottom" CanGrow="false" Multiline="true" Text="&#xD;&#xA;">
+              <StylePriority Ref="35" UseBorders="false" />
+            </Item7>
+            <Item8 Ref="36" Name="xrLabel18" ControlType="XRLabel" SizeF="184.375,20.0000019" LocationFloat="444.7495, 20.0000134" Padding="2,2,0,0,100" Borders="Bottom" CanGrow="false">
+              <StylePriority Ref="37" UseBorders="false" />
+            </Item8>
+            <Item9 Ref="38" Name="xrLabel19" ControlType="XRLabel" SizeF="141.8755,40.00003" LocationFloat="629.1245, 0" Padding="2,2,0,0,100" Borders="Bottom" CanGrow="false" Multiline="true" Text="xrTableCell11">
+              <DataBindings>
+                <Item1 Ref="39" PropertyName="Text" DataMember="Predmeti.Primedba" />
+              </DataBindings>
+              <StylePriority Ref="40" UseBorders="false" />
+            </Item9>
+          </Controls>
+        </Item1>
+        <Item2 Ref="15" ControlType="GroupHeaderBand" Name="GroupHeader1" RepeatEveryPage="true" HeightF="15">
+          <Controls>
+            <Item1 Ref="41" Name="xrTable1" ControlType="XRTable" SizeF="771,15" LocationFloat="0, 0">
+              <Rows>
+                <Item1 Ref="42" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+                  <Cells>
+                    <Item1 Ref="43" Name="xrTableCell1" ControlType="XRTableCell" Borders="Bottom" Text="R. br." Weight="0.215091503668017">
+                      <StylePriority Ref="44" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="45" Name="xrTableCell2" ControlType="XRTableCell" Borders="Bottom" Text="Predmet" Weight="1.5505459065960516">
+                      <StylePriority Ref="46" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="47" Name="xrTableCell3" ControlType="XRTableCell" Borders="Bottom" Text="Obrađivač" Weight="0.77259782654469644">
+                      <StylePriority Ref="48" UseBorders="false" />
+                    </Item3>
+                    <Item4 Ref="49" Name="xrTableCell4" ControlType="XRTableCell" Borders="Bottom" Text="Vraćanja pisarnici datum i potpis&#xD;&#xA;" Multiline="true" Weight="1.0522487568290955">
+                      <StylePriority Ref="50" UseBorders="false" />
+                    </Item4>
+                    <Item5 Ref="51" Name="xrTableCell6" ControlType="XRTableCell" Borders="Bottom" Text="Primedba" Weight="0.80969942040492193">
+                      <StylePriority Ref="52" UseBorders="false" />
+                    </Item5>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item2>
+      </Bands>
+    </Item4>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v15.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PERhdGFTb3VyY2UgVHlwZT0iRG1zQ29yZS5JenZlc3RhamkuUHJlZ2xlZFByZXRyYXplbmloUHJlZG1ldGFaYWdsYXZsamUsIERtc0NvcmUsIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsIiAvPjxDb25zdHJ1Y3RvciAvPjwvT2JqZWN0RGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

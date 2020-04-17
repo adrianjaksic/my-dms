@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.1.5.0" Ref="1" Name="PregledSintetikePredmetaReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="15.1" PageWidth="1100" PageHeight="850" Landscape="true">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" Expanded="false" HeightF="100" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="100">
+      <Controls>
+        <Item1 Ref="4" Name="xrPageInfo1" ControlType="XRPageInfo" SizeF="100,23" Padding="2,2,0,0,100" LocationFloat="800, 23.91667" Format="{0:dd.MM.yyyy}" PageInfo="DateTime" />
+      </Controls>
+    </Item2>
+    <Item3 Ref="5" Name="BottomMargin" ControlType="BottomMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="100" />
+    <Item4 Ref="6" ControlType="DetailReportBand" Name="DetailReport" DataMember="Stavke" Level="0" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="7" ControlType="DetailBand" Name="Detail1" HeightF="23">
+          <Controls>
+            <Item1 Ref="8" Name="xrLabel8" ControlType="XRLabel" SizeF="122.916687,23" LocationFloat="776.6666, 0" Padding="2,2,0,0,100" TextAlignment="TopRight" Text="xrLabel8">
+              <DataBindings>
+                <Item1 Ref="9" PropertyName="Text" DataMember="Stavke.BrojOtvorenihPredmetaPrekoRoka" />
+              </DataBindings>
+              <StylePriority Ref="10" UseTextAlignment="false" />
+            </Item1>
+            <Item2 Ref="11" Name="xrLabel7" ControlType="XRLabel" SizeF="101.999878,23" LocationFloat="674.6668, 0" Padding="2,2,0,0,100" TextAlignment="TopRight" Text="xrLabel7">
+              <DataBindings>
+                <Item1 Ref="12" PropertyName="Text" DataMember="Stavke.BrojObrisanihhPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="13" UseTextAlignment="false" />
+            </Item2>
+            <Item3 Ref="14" Name="xrLabel6" ControlType="XRLabel" SizeF="102.000061,23" LocationFloat="572.6667, 0" Padding="2,2,0,0,100" TextAlignment="TopRight" Text="xrLabel6">
+              <DataBindings>
+                <Item1 Ref="15" PropertyName="Text" DataMember="Stavke.BrojZatvorenihPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="16" UseTextAlignment="false" />
+            </Item3>
+            <Item4 Ref="17" Name="xrLabel5" ControlType="XRLabel" SizeF="102,23" LocationFloat="470.6667, 0" Padding="2,2,0,0,100" TextAlignment="TopRight" Text="xrLabel5">
+              <DataBindings>
+                <Item1 Ref="18" PropertyName="Text" DataMember="Stavke.BrojAktivnihPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="19" UseTextAlignment="false" />
+            </Item4>
+            <Item5 Ref="20" Name="xrLabel4" ControlType="XRLabel" SizeF="101.999969,23" LocationFloat="368.666718, 0" Padding="2,2,0,0,100" TextAlignment="TopRight" Text="xrLabel4">
+              <DataBindings>
+                <Item1 Ref="21" FormatString="{0:N0}" PropertyName="Text" DataMember="Stavke.BrojRezervisanihPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="22" UseTextAlignment="false" />
+            </Item5>
+            <Item6 Ref="23" Name="xrLabel3" ControlType="XRLabel" SizeF="102.000031,23" LocationFloat="266.6667, 0" Padding="2,2,0,0,100" TextAlignment="TopRight" Text="xrLabel3">
+              <DataBindings>
+                <Item1 Ref="24" FormatString="{0:N0}" PropertyName="Text" DataMember="Stavke.UkupanBrojPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="25" UseTextAlignment="false" />
+            </Item6>
+            <Item7 Ref="26" Name="xrLabel2" ControlType="XRLabel" SizeF="220.8333,23" LocationFloat="45.83333, 0" Padding="2,2,0,0,100">
+              <DataBindings>
+                <Item1 Ref="27" PropertyName="Text" DataMember="Stavke.Grupisanje" />
+              </DataBindings>
+            </Item7>
+            <Item8 Ref="28" Name="xrLabel1" ControlType="XRLabel" SizeF="45.83333,23" LocationFloat="0, 0" Padding="2,2,0,0,100">
+              <Summary Ref="29" FormatString="{0:#.}" Running="Report" Func="RecordNumber" />
+            </Item8>
+          </Controls>
+          <SortFields>
+            <Item1 Ref="30" FieldName="Grupisanje" />
+          </SortFields>
+        </Item1>
+        <Item2 Ref="31" ControlType="GroupHeaderBand" Name="GroupHeader1" HeightF="20">
+          <Controls>
+            <Item1 Ref="32" Name="xrTable1" ControlType="XRTable" SizeF="899.5833,20" LocationFloat="0, 0">
+              <Rows>
+                <Item1 Ref="33" ControlType="XRTableRow" Name="xrTableRow1" Weight="1">
+                  <Cells>
+                    <Item1 Ref="34" Name="xrTableCell1" ControlType="XRTableCell" Borders="Bottom" Text="Red. br." Weight="0.282051274226262">
+                      <StylePriority Ref="35" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="36" Name="xrTableCell4" ControlType="XRTableCell" Borders="Bottom" Weight="1.3589743617114429">
+                      <DataBindings>
+                        <Item1 Ref="37" PropertyName="Text" DataMember="NazivPrveKolone" />
+                      </DataBindings>
+                      <StylePriority Ref="38" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="39" Name="xrTableCell2" ControlType="XRTableCell" Borders="Bottom" Text="Ukupan broj" TextAlignment="TopRight" Weight="0.627692273693611">
+                      <StylePriority Ref="40" UseBorders="false" UseTextAlignment="false" />
+                    </Item3>
+                    <Item4 Ref="41" Name="xrTableCell5" ControlType="XRTableCell" Borders="Bottom" Text="Rezervisani" TextAlignment="TopRight" Weight="0.62769226892409968">
+                      <StylePriority Ref="42" UseBorders="false" UseTextAlignment="false" />
+                    </Item4>
+                    <Item5 Ref="43" Name="xrTableCell3" ControlType="XRTableCell" Borders="Bottom" Text="Aktivni" TextAlignment="TopRight" Weight="0.62769229023145845">
+                      <StylePriority Ref="44" UseBorders="false" UseTextAlignment="false" />
+                    </Item5>
+                    <Item6 Ref="45" Name="xrTableCell6" ControlType="XRTableCell" Borders="Bottom" Text="Zatvoreni" TextAlignment="TopRight" Weight="0.62769226747949847">
+                      <StylePriority Ref="46" UseBorders="false" UseTextAlignment="false" />
+                    </Item6>
+                    <Item7 Ref="47" Name="xrTableCell7" ControlType="XRTableCell" Borders="Bottom" Text="Obrisani" TextAlignment="TopRight" Weight="0.62769227278027873">
+                      <StylePriority Ref="48" UseBorders="false" UseTextAlignment="false" />
+                    </Item7>
+                    <Item8 Ref="49" Name="xrTableCell8" ControlType="XRTableCell" Borders="Bottom" Text="Otvoreni preko roka" TextAlignment="TopRight" Weight="0.75641001129652519">
+                      <StylePriority Ref="50" UseBorders="false" UseTextAlignment="false" />
+                    </Item8>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item2>
+        <Item3 Ref="51" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="100">
+          <Controls>
+            <Item1 Ref="52" Name="xrLabel11" ControlType="XRLabel" SizeF="101.791687,23" LocationFloat="266.875031, 0" Padding="2,2,0,0,100" Borders="Top" TextAlignment="TopRight">
+              <DataBindings>
+                <Item1 Ref="53" PropertyName="Text" DataMember="Stavke.UkupanBrojPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="54" UseBorders="false" UseTextAlignment="false" />
+              <Summary Ref="55" FormatString="{0:N0}" Running="Group" />
+            </Item1>
+            <Item2 Ref="56" Name="xrLabel12" ControlType="XRLabel" SizeF="101.999969,23" LocationFloat="368.666718, 0" Padding="2,2,0,0,100" Borders="Top" TextAlignment="TopRight">
+              <DataBindings>
+                <Item1 Ref="57" PropertyName="Text" DataMember="Stavke.BrojRezervisanihPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="58" UseBorders="false" UseTextAlignment="false" />
+              <Summary Ref="59" FormatString="{0:N0}" Running="Group" />
+            </Item2>
+            <Item3 Ref="60" Name="xrLabel13" ControlType="XRLabel" SizeF="102.000061,23" LocationFloat="470.6667, 0" Padding="2,2,0,0,100" Borders="Top" TextAlignment="TopRight">
+              <DataBindings>
+                <Item1 Ref="61" PropertyName="Text" DataMember="Stavke.BrojAktivnihPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="62" UseBorders="false" UseTextAlignment="false" />
+              <Summary Ref="63" FormatString="{0:N0}" Running="Group" />
+            </Item3>
+            <Item4 Ref="64" Name="xrLabel14" ControlType="XRLabel" SizeF="101.999939,23" LocationFloat="572.666748, 0" Padding="2,2,0,0,100" Borders="Top" TextAlignment="TopRight">
+              <DataBindings>
+                <Item1 Ref="65" PropertyName="Text" DataMember="Stavke.BrojZatvorenihPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="66" UseBorders="false" UseTextAlignment="false" />
+              <Summary Ref="67" FormatString="{0:N0}" Running="Group" />
+            </Item4>
+            <Item5 Ref="68" Name="xrLabel15" ControlType="XRLabel" SizeF="101.999817,23" LocationFloat="674.6669, 0" Padding="2,2,0,0,100" Borders="Top" TextAlignment="TopRight">
+              <DataBindings>
+                <Item1 Ref="69" PropertyName="Text" DataMember="Stavke.BrojObrisanihhPredmeta" />
+              </DataBindings>
+              <StylePriority Ref="70" UseBorders="false" UseTextAlignment="false" />
+              <Summary Ref="71" FormatString="{0:N0}" Running="Group" />
+            </Item5>
+            <Item6 Ref="72" Name="xrLabel16" ControlType="XRLabel" SizeF="123.125061,23" LocationFloat="776.6667, 0" Padding="2,2,0,0,100" Borders="Top" TextAlignment="TopRight">
+              <DataBindings>
+                <Item1 Ref="73" PropertyName="Text" DataMember="Stavke.BrojOtvorenihPredmetaPrekoRoka" />
+              </DataBindings>
+              <StylePriority Ref="74" UseBorders="false" UseTextAlignment="false" />
+              <Summary Ref="75" FormatString="{0:N0}" Running="Group" />
+            </Item6>
+          </Controls>
+        </Item3>
+      </Bands>
+    </Item4>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v15.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PERhdGFTb3VyY2UgVHlwZT0iRG1zQ29yZS5JenZlc3RhamkuUHJlZ2xlZFNpbnRldGlrZVByZWRtZXRhWmFnbGF2bGplLCBEbXNDb3JlLCBWZXJzaW9uPTEuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbCIgLz48Q29uc3RydWN0b3IgLz48L09iamVjdERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

@@ -1,0 +1,132 @@
+﻿@using DmsCore.Logovanje
+@using DmsCore.Podesavanja
+@model DmsCore.MasterSifarnik.MasterSifarnikViewModel
+@{
+    Layout = null;
+
+    var tipDokumenta = (short)ViewData["tipDokumenta"];
+    var korisnik = (UlogovaniKorisnik)ViewData["korisnik"];
+}
+<script>
+    $(document).ready(qMasterSif.Init);
+</script>
+
+<style>
+    .masterSifTree {
+        width: 100%;
+        max-height: calc(100vh - 300px);
+        min-height: calc(100vh - 400px);
+    }
+</style>
+
+<div class="hederH1">
+    <h1 id="masterSifNaslov"></h1>
+</div>
+
+<div class="qDispNone" id="tipDokumenta">@tipDokumenta</div>
+<div class="qDispNone" id="vm">@Json.Encode(Model)</div>
+
+<div class="qDispNone" id="url_VratiPodatke">@Url.Action("VratiPodatke")</div>
+<div class="qDispNone" id="url_VratiPodatkeElementa">@Url.Action("VratiPodatkeElementa")</div>
+<div class="qDispNone" id="url_SnimiPodatkeElementa">@Url.Action("SnimiPodatkeElementa")</div>
+<div class="qDispNone" id="url_ObrisiElement">@Url.Action("ObrisiElement")</div>
+<div class="qDispNone" id="url_VratiPodatkeKriterijuma2">@Url.Action("VratiPodatkeKriterijuma2")</div>
+<div class="qDispNone" id="url_VratiPodatkeKriterijuma3">@Url.Action("VratiPodatkeKriterijuma3")</div>
+<div class="qDispNone" id="url_SnimiSlikuElementa">@Url.Action("SnimiSlikuElementa")</div>
+<div class="qDispNone" id="url_VratiPodatkeZavisnogElementa">@Url.Action("VratiPodatkeZavisnogElementa")</div>
+<div class="qDispNone" id="url_VratiZavisnePodatkeElementa">@Url.Action("VratiZavisnePodatkeElementa")</div>
+
+<div class="oblakTelo" id="oblakTeloWrap">
+    <div id="masterSifKriterijumiIPretragaWrap">
+        <div id="masterSifKriterijumiWrap" style="float: left" >
+        </div>
+    
+        <div id="masterSifBtnPretragaWrap" style=" float: right;">
+        
+            <div class="teloDugmeWrapUFormi btnFloatR btnResetX" id="masterSifBtnReset">
+                <table class="teloDugme teloDugmeDesno">
+                    <tr>
+                        <td><img src="@Url.Content("~/Content/img/w/x.png")" alt="" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="masterSifBtnPretrazi">
+                <table class="teloDugme teloDugmeLevo">
+                    <tr>
+                        <td>@Konverzija.VratiString(korisnik.Jezik, "Pretraži")</td>
+                        <td><img src="@Url.Content("~/Content/img/w/lupica.png")" alt="" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="clear withLine"></div>
+    </div>
+    
+    <div style="width: 35%; float: left;" id="masterSifStabloWrap">
+        <div class="unosRed" id="masterSifBtnWrap">
+            <div class="teloDugmeWrapUFormi btnFloatL" id="masterSifBtnDodajNoviNode" style="max-width: 30px;">
+                <table class="teloDugme">
+                    <tr>
+                        <td>
+                            <img src="@Url.Content("~/Content/img/w/add.png")" alt="" title="@Konverzija.VratiString(korisnik.Jezik, "Unos")" id="masterSifImgDodajNode" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="teloDugmeWrapUFormi btnFloatL" id="masterSifBtnIzmeniNode" style="max-width: 30px;">
+                <table class="teloDugme">
+                    <tr>
+                        <td>
+                            <img src="@Url.Content("~/Content/img/w/edit.png")" alt="" title="@Konverzija.VratiString(korisnik.Jezik, "Izmena")" id="masterSifImgIzmeniNode" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="teloDugmeWrapUFormi btnFloatL" id="masterSifBtnObrisiNode" style="max-width: 30px;">
+                <table class="teloDugme">
+                    <tr>
+                        <td>
+                            <img src="@Url.Content("~/Content/img/w/x.png")" alt="" title="@Konverzija.VratiString(korisnik.Jezik, "Brisanje")" id="masterSifImgObrisiNode" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+           
+            <div id="masterSifFilterStablaWrap" style="display: none;" >
+                <div class="unosRedLbl_taL" style="width: 60px; margin-left: 10px;">@Konverzija.VratiString(korisnik.Jezik, "Filter"):</div>
+                <div class="unosRedVr">
+                    <input type="text" id="masterSifFilterStabla" class="myInput" style="width: 100px;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="clear withLine"></div>
+
+        <div class="unosRed" style="margin-top: 10px">
+            <div class="masterSifTree oblakTelo" id="masterSifTree">
+            </div>
+        </div>
+    </div>
+    
+    <div id="masterSifTaboviIBtnWrap" style="width: 60%; float: right; display: none;">
+        <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="masterSifBtnSacuvaj" >
+            <table class="teloDugme">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Sačuvaj")</td>
+                    <td><img src="@Url.Content("~/Content/img/w/save.png")" alt="" title="" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="masterSifTaboviWrap" style="margin-top: 20px;">
+            <ul class="taboviBar" id="masterSifTabovi" style="width: 100%;">
+            
+            </ul>
+        </div>
+    </div>
+    
+    <div id="masterSifSectionWrap"></div>
+</div>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="14.2.3.0" Ref="1" Name="PredmetReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="14.2" PageWidth="850" Margins="73, 80, 47, 23" PageHeight="1100">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="805.2083">
+      <Controls>
+        <Item1 Ref="3" Name="xrLabel9" ControlType="XRLabel" SizeF="551.083435,25" LocationFloat="102.916718, 299.1667" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="4" FormatString="Inspektor: {0}" PropertyName="Text" DataMember="ImeIPrezimeInspektora" />
+          </DataBindings>
+          <StylePriority Ref="5" UseFont="false" />
+        </Item1>
+        <Item2 Ref="6" Name="xrLabel7" ControlType="XRLabel" TextAlignment="MiddleRight" SizeF="143.75,23" LocationFloat="496.25, 20.41667" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="7" PropertyName="Text" DataMember="OznakaVrstePredmetaZaStampu" />
+          </DataBindings>
+          <StylePriority Ref="8" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="9" Name="xrLabel6" ControlType="XRLabel" SizeF="314.5801,20" LocationFloat="0, 169.3333" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100" Text="NOVI SAD">
+          <DataBindings>
+            <Item1 Ref="10" PropertyName="Text" DataMember="Mesto" />
+          </DataBindings>
+          <StylePriority Ref="11" UseFont="false" />
+        </Item3>
+        <Item4 Ref="12" Name="xrLabel5" ControlType="XRLabel" SizeF="551.083435,25" LocationFloat="102.916718, 249.166687" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100" Text="xrLabel5">
+          <DataBindings>
+            <Item1 Ref="13" PropertyName="Text" DataMember="LiceKontrole" />
+          </DataBindings>
+          <StylePriority Ref="14" UseFont="false" />
+        </Item4>
+        <Item5 Ref="15" Name="xrLabel4" ControlType="XRLabel" SizeF="551.083435,25" LocationFloat="102.916687, 224.166687" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100" Text="xrLabel4">
+          <DataBindings>
+            <Item1 Ref="16" FormatString="{0}" PropertyName="Text" DataMember="Podnosilac" />
+          </DataBindings>
+          <StylePriority Ref="17" UseFont="false" />
+        </Item5>
+        <Item6 Ref="18" Name="xrLabel15" ControlType="XRLabel" SizeF="551.083435,25" LocationFloat="102.916718, 274.1667" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100" Text="xrLabel15">
+          <DataBindings>
+            <Item1 Ref="19" PropertyName="Text" DataMember="Sadrzaj" />
+          </DataBindings>
+          <StylePriority Ref="20" UseFont="false" />
+        </Item6>
+        <Item7 Ref="21" Name="xrLabel1" ControlType="XRLabel" SizeF="314.58,20.00001" LocationFloat="0, 123.3333" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100" Text="xrLabel1">
+          <DataBindings>
+            <Item1 Ref="22" FormatString="{0}" PropertyName="Text" DataMember="DetaljanBrojPredmeta" />
+          </DataBindings>
+          <StylePriority Ref="23" UseFont="false" />
+        </Item7>
+        <Item8 Ref="24" Name="xrLabel2" ControlType="XRLabel" SizeF="314.5801,20" LocationFloat="0, 146.3333" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="25" FormatString="{0:dd.MM.yyyy}" PropertyName="Text" DataMember="VremeKreiranja" />
+          </DataBindings>
+          <StylePriority Ref="26" UseFont="false" />
+        </Item8>
+        <Item9 Ref="27" Name="xrLabel8" ControlType="XRLabel" SizeF="627.9166,20" LocationFloat="2.0980835E-05, 100.3333" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100" Text="xrLabel8">
+          <DataBindings>
+            <Item1 Ref="28" PropertyName="Text" DataMember="NazivOkruga" />
+          </DataBindings>
+          <StylePriority Ref="29" UseFont="false" />
+        </Item9>
+        <Item10 Ref="30" Name="xrLabel10" ControlType="XRLabel" SizeF="627.9166,20" LocationFloat="0, 77.3333" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100" Text="xrLabel10">
+          <DataBindings>
+            <Item1 Ref="31" PropertyName="Text" DataMember="NazivOrgana" />
+          </DataBindings>
+          <StylePriority Ref="32" UseFont="false" />
+        </Item10>
+        <Item11 Ref="33" Name="xrLabel3" ControlType="XRLabel" SizeF="314.5801,20" LocationFloat="0, 54.3333" Font="Verdana, 11.25pt, charSet=238" Padding="2,2,0,0,100" Text="Republika Srbija">
+          <StylePriority Ref="34" UseFont="false" />
+        </Item11>
+      </Controls>
+    </Item1>
+    <Item2 Ref="35" Name="TopMargin" ControlType="TopMarginBand" Padding="0,0,0,0,100" TextAlignment="TopLeft" HeightF="47" />
+    <Item3 Ref="36" Name="BottomMargin" ControlType="BottomMarginBand" Padding="0,0,0,0,100" TextAlignment="TopLeft" HeightF="23" />
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v14.2" Name="bindingSource" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+YmluZGluZ1NvdXJjZTwvTmFtZT48RGF0YVNvdXJjZSBUeXBlPSJEbXNDb3JlLkl6dmVzdGFqaS5QcmVkbWV0aVphZ2xhdmxqZSwgRG1zQ29yZSwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PFBhcmFtZXRlcnMgLz48L09iamVjdERhdGFTb3VyY2U+" />
+    <Item2 Ref="37" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v14.2" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PFBhcmFtZXRlcnMgLz48L09iamVjdERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

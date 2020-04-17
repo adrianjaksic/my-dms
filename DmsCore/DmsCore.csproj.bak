@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B1DE5C19-D04A-4AC3-A8F6-78E157DC5BC1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DmsCore</RootNamespace>
+    <AssemblyName>DmsCore</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\DmsData.cs">
+      <DependentUpon>DmsData.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DmsData.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DmsData.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DmsFileManager.cs" />
+    <Compile Include="Helperi\MailHelper.cs" />
+    <Compile Include="Helperi\StringHelper.cs" />
+    <Compile Include="Izvestaji\PregledPredmetaPoRazvodjenjuReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Izvestaji\PregledPredmetaPoRazvodjenjuReport.Designer.cs">
+      <DependentUpon>PregledPredmetaPoRazvodjenjuReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvestaji\DefinisanaStampa.cs" />
+    <Compile Include="Izvestaji\IzvestajiData.cs" />
+    <Compile Include="Izvestaji\IzvestajPoRazvodnjavanjuViewModel.cs" />
+    <Compile Include="Izvestaji\IzvestajPredmetaViewModel.cs" />
+    <Compile Include="Izvestaji\PredmetiZaglavlje.cs" />
+    <Compile Include="Izvestaji\PredmetPoRazvodjenju.cs" />
+    <Compile Include="Izvestaji\PredmetReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Izvestaji\PredmetReport.Designer.cs">
+      <DependentUpon>PredmetReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvestaji\PredmetSaRokom.cs" />
+    <Compile Include="Izvestaji\PregledPredmetaPoRazvodjenjuZaglavlje.cs" />
+    <Compile Include="Izvestaji\PregledPredmetaSaRokomReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Izvestaji\PregledPredmetaSaRokomReport.Designer.cs">
+      <DependentUpon>PregledPredmetaSaRokomReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvestaji\PregledPredmetaSaRokomZaglavlje.cs" />
+    <Compile Include="Izvestaji\PregledPretrazenihPredmetaReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Izvestaji\PregledPretrazenihPredmetaReport.Designer.cs">
+      <DependentUpon>PregledPretrazenihPredmetaReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvestaji\PregledPretrazenihPredmetaZaglavlje.cs" />
+    <Compile Include="Izvestaji\PregledRezervacijaZaglavlje.cs" />
+    <Compile Include="Izvestaji\PregledRezervacijeReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Izvestaji\PregledRezervacijeReport.Designer.cs">
+      <DependentUpon>PregledRezervacijeReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvestaji\PregledSintetikePredmetaReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Izvestaji\PregledSintetikePredmetaReport.Designer.cs">
+      <DependentUpon>PregledSintetikePredmetaReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvestaji\PregledSintetikePredmetaZaglavlje.cs" />
+    <Compile Include="Izvestaji\StavkaIstorijePredmeta.cs" />
+    <Compile Include="Izvestaji\StavkaPretrage.cs" />
+    <Compile Include="MasterSifarnik\Kolona.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\MestaOpstineModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\OpstineModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\PreciceModel.cs" />
+    <Compile Include="NBS\NbsData.cs" />
+    <Compile Include="Data\PutanjaAplikacije.cs" />
+    <Compile Include="Dms\DMSData.cs" />
+    <Compile Include="Dms\DMSPredmeta.cs" />
+    <Compile Include="Dms\PodaciDokumenta.cs" />
+    <Compile Include="Logovanje\LogovanjeData.cs" />
+    <Compile Include="Logovanje\UlogovaniKorisnik.cs" />
+    <Compile Include="MasterSifarnik\ElementSifarnika.cs" />
+    <Compile Include="MasterSifarnik\IMasterSifarnikModel.cs" />
+    <Compile Include="MasterSifarnik\MasterSifarnikData.cs" />
+    <Compile Include="MasterSifarnik\MasterSifarnikViewModel.cs" />
+    <Compile Include="MasterSifarnik\PodaciZaIzbor.cs" />
+    <Compile Include="MasterSifarnik\PodatakElementaSifarnika.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\JediniceModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\KlaseModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\KorisniciModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\OkruziModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\OrganiModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\TakseModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\VrsteKretanjaPredmetaModel.cs" />
+    <Compile Include="MasterSifarnik\Realizacije\VrstePredmetaModel.cs" />
+    <Compile Include="NBS\PravnoLice.cs" />
+    <Compile Include="Podesavanja\ExceptionParser.cs" />
+    <Compile Include="Podesavanja\Konverzija.cs" />
+    <Compile Include="Predmeti\Element.cs" />
+    <Compile Include="Predmeti\IstorijaPredmeta.cs" />
+    <Compile Include="Predmeti\PovezaniPredmet.cs" />
+    <Compile Include="Predmeti\Predmet.cs" />
+    <Compile Include="Predmeti\PredmetiData.cs" />
+    <Compile Include="Predmeti\PredmetViewModel.cs" />
+    <Compile Include="Pretrage\ElementPretrage.cs" />
+    <Compile Include="Pretrage\PretragaPredmetaViewModel.cs" />
+    <Compile Include="Pretrage\PretrageData.cs" />
+    <Compile Include="Pretrage\PretrageObrisanih\PretragaObrisanihViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\NbsAccounts\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Zapisnici\ZapisniciData.cs" />
+    <Compile Include="Zapisnici\ZapisnikViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Data\DmsData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DmsData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\NbsAccounts\CompanyAccountXmlService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\DmsData.dbml.layout">
+      <DependentUpon>DmsData.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\NbsAccounts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NbsAccounts\CompanyAccountXmlService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NbsAccounts\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NbsAccounts\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\NbsAccounts\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Izvestaji\PregledPredmetaPoRazvodjenjuReport.resx">
+      <DependentUpon>PregledPredmetaPoRazvodjenjuReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvestaji\PredmetReport.resx">
+      <DependentUpon>PredmetReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvestaji\PregledPredmetaSaRokomReport.resx">
+      <DependentUpon>PregledPredmetaSaRokomReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvestaji\PregledPretrazenihPredmetaReport.resx">
+      <DependentUpon>PregledPretrazenihPredmetaReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvestaji\PregledRezervacijeReport.resx">
+      <DependentUpon>PregledRezervacijeReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvestaji\PregledSintetikePredmetaReport.resx">
+      <DependentUpon>PregledSintetikePredmetaReport.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,87 @@
+﻿@using DmsCore.Podesavanja
+@using DmsCore.Pretrage.PretrageObrisanih
+@using DmsWeb.Infrastructure
+@{
+    Layout = null;
+
+    var korisnik = RuntimeDataHelpers.GetRuntimeData(Request);
+
+    var vm = (PretragaObrisanihViewModel)ViewData["vm"];
+
+    const string wLabele = "100px;";
+}
+
+<style>
+    .crtica {
+        float: left;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #pretragaObrisanihSlickGrid {
+        height: calc(100vh - 240px);
+    }
+    
+</style>
+
+<script>
+    $(document).ready(qPretragaObrisanih.Init);
+</script>
+
+<div class="hederH1">
+    <h1 style="float: left;max-width: 300px;">@Konverzija.VratiString(korisnik.Jezik, "Pretraga obrisanih predmeta")</h1>
+</div>
+
+<div class="qDispNone" id="vm">@Json.Encode(vm)</div>
+
+<div class="qDispNone" id="url_VratiKlaseJedinice">@Url.Action("VratiKlaseJedinice")</div>
+<div class="qDispNone" id="url_VratiObrisanePredmete">@Url.Action("VratiObrisanePredmete")</div>
+<div class="qDispNone" id="url_AktivirajPredmet">@Url.Action("AktivirajPredmet", "Predmeti")</div>
+
+<div class="oblakTelo" id="oblakTeloWrap">
+    <div style="float: left; margin-bottom: 5px;">
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Šifra"):</div>
+            <div style="float: left">
+                <div id="pretragaObrisanihOkruzi" style="float: left"></div>
+                <div class="crtica">-</div>
+                <div id="pretragaObrisanihOrgani" style="float: left"></div>
+                <div class="crtica">-</div>
+                <div id="pretragaObrisanihKlase" style="float: left"></div>
+                <div class="crtica">-</div>
+                <input type="text" class="myInput" id="pretragaObrisanihPredmet" style="float: left; width: 80px;" />
+                <div class="crtica">/</div>
+                <div id="pretragaObrisanihGodine" style="float: left"></div>
+                <div class="crtica">-</div>
+                <div id="pretragaObrisanihJedinice" style="float: left"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="float: right">
+        <div class="teloDugmeWrapUFormi btnFloatR btnResetX" id="pretragaObrisanihBtnReset">
+            <table class="teloDugme teloDugmeDesno">
+                <tr>
+                    <td><img src="@Url.Content("~/Content/img/w/x.png")" alt="" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="pretragaObrisanihBtnPretrazi">
+            <table class="teloDugme teloDugmeLevo">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Pretraži")</td>
+                    <td><img src="@Url.Content("~/Content/img/w/lupica.png")" alt="" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div class="clear withLine"></div>
+    
+    <div id="pretragaObrisanihNemaRez" style="text-align: center; padding: 0 20px; display: none;">@Konverzija.VratiString(korisnik.Jezik, "Nema rezultata. Ponovite pretragu sa drugačijim kriterijumima.")</div>
+    
+    <div style="position:relative; margin-top: 5px; width:100%;">
+        <div id="pretragaObrisanihSlickGrid" style="width:100%;"></div>
+        <div id="pretragaObrisanihSlickGridPager" style="width:100%;height:20px;"></div>
+    </div>
+</div>

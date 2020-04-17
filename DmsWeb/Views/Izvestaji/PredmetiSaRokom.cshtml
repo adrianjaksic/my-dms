@@ -1,0 +1,97 @@
+﻿@using DmsCore.Podesavanja
+@using DmsCore.Pretrage.PretrageObrisanih
+@using DmsWeb.Infrastructure
+@{
+    Layout = null;
+
+    var korisnik = RuntimeDataHelpers.GetRuntimeData(Request);
+
+    var vm = (PretragaObrisanihViewModel)ViewData["vm"];
+
+    const string wLabele = "100px;";
+}
+
+<style>
+    .crtica {
+        float: left;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #predmetiSaRokomSlickGrid {
+        height: calc(100vh - 240px);
+    }
+    
+</style>
+
+<script>
+    $(document).ready(qPredmetiSaRokom.Init);
+</script>
+
+<div class="hederH1">
+    <h1 style="float: left;max-width: 300px;">@Konverzija.VratiString(korisnik.Jezik, "Predmeti sa rokom")</h1>
+    
+    <div style="float:right;">
+        <div class="teloDugmeWrapUFormi btnW3" id="predmetiSaRokomBtnStampa"  style="float: left; margin-left: 10px">
+            <table class="teloDugme">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Štampa")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="qDispNone" id="vm">@Json.Encode(vm)</div>
+
+<div class="qDispNone" id="url_VratiKlaseJedinice">@Url.Action("VratiKlaseJedinice", "Pretrage")</div>
+<div class="qDispNone" id="url_VratiPredmeteSaRokom">@Url.Action("VratiPredmeteSaRokom")</div>
+<div class="qDispNone" id="url_VratiStampePredmetaSaRokom">@Url.Action("VratiStampePredmetaSaRokom")</div>
+
+<div class="oblakTelo" id="oblakTeloWrap">
+    <div style="float: left; margin-bottom: 5px;">
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Šifra"):</div>
+            <div style="float: left">
+                <div id="predmetiSaRokomOkruzi" style="float: left"></div>
+                <div class="crtica">-</div>
+                <div id="predmetiSaRokomOrgani" style="float: left"></div>
+                <div class="crtica">-</div>
+                <div id="predmetiSaRokomKlase" style="float: left"></div>
+                <div class="crtica">-</div>
+                <input type="text" class="myInput" id="predmetiSaRokomPredmet" style="float: left; width: 80px;" />
+                <div class="crtica">/</div>
+                <div id="predmetiSaRokomGodine" style="float: left"></div>
+                <div class="crtica">-</div>
+                <div id="predmetiSaRokomJedinice" style="float: left"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="float: right">
+        <div class="teloDugmeWrapUFormi btnFloatR btnResetX" id="predmetiSaRokomBtnReset">
+            <table class="teloDugme teloDugmeDesno">
+                <tr>
+                    <td><img src="@Url.Content("~/Content/img/w/x.png")" alt="" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="predmetiSaRokomBtnPretrazi">
+            <table class="teloDugme teloDugmeLevo">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Pretraži")</td>
+                    <td><img src="@Url.Content("~/Content/img/w/lupica.png")" alt="" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div class="clear withLine"></div>
+    
+    <div id="predmetiSaRokomNemaRez" style="text-align: center; padding: 0 20px; display: none;">@Konverzija.VratiString(korisnik.Jezik, "Nema rezultata. Ponovite pretragu sa drugačijim kriterijumima.")</div>
+    
+    <div style="position:relative; margin-top: 10px; width:100%;">
+        <div id="predmetiSaRokomSlickGrid" style="width:100%;"></div>
+        <div id="predmetiSaRokomSlickGridPager" style="width:100%;height:20px;"></div>
+    </div>
+</div>

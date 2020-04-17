@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.1.5.0" Ref="1" Name="PregledRezervacijeReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="15.1" PageWidth="850" PageHeight="1100" Margins="100, 100, 39, 38">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="0" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="38.54167" />
+    <Item3 Ref="4" Name="BottomMargin" ControlType="BottomMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="38.45832" />
+    <Item4 Ref="5" ControlType="DetailReportBand" Name="DetailReport" DataMember="RezervisaniBrojevi" Level="0" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="6" ControlType="DetailBand" Name="Detail1" HeightF="23">
+          <Controls>
+            <Item1 Ref="7" Name="xrLabel3" ControlType="XRLabel" SizeF="650,23" LocationFloat="0, 0" Padding="2,2,0,0,100" Text="xrLabel3">
+              <DataBindings>
+                <Item1 Ref="8" PropertyName="Text" DataMember="RezervisaniBrojevi.Naziv" />
+              </DataBindings>
+            </Item1>
+          </Controls>
+        </Item1>
+        <Item2 Ref="9" ControlType="GroupHeaderBand" Name="GroupHeader1" HeightF="40.70835">
+          <Controls>
+            <Item1 Ref="10" Name="xrLabel4" ControlType="XRLabel" SizeF="650,23" LocationFloat="0, 17.70835" Padding="2,2,0,0,100" Text="Rezervisani predmeti:" />
+          </Controls>
+        </Item2>
+      </Bands>
+    </Item4>
+    <Item5 Ref="11" ControlType="PageHeaderBand" Name="PageHeader" HeightF="104">
+      <Controls>
+        <Item1 Ref="12" Name="xrLabel5" ControlType="XRLabel" SizeF="650,23" LocationFloat="0, 30" Font="Times New Roman, 12pt, charSet=238" Padding="2,2,0,0,100" TextAlignment="TopCenter" Text="Pregled rezervisanih predmeta">
+          <StylePriority Ref="13" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="14" Name="xrLabel1" ControlType="XRLabel" SizeF="279.1667,23" LocationFloat="0, 81" Font="Times New Roman, 9.75pt, charSet=238" Padding="2,2,0,0,100" Text="xrLabel1">
+          <DataBindings>
+            <Item1 Ref="15" FormatString="Inspektor: {0}" PropertyName="Text" DataMember="Predmet.NazivInspektora" />
+          </DataBindings>
+          <StylePriority Ref="16" UseFont="false" />
+        </Item2>
+        <Item3 Ref="17" Name="xrPageInfo1" ControlType="XRPageInfo" SizeF="167.708344,23" Font="Times New Roman, 9.75pt, charSet=238" Padding="2,2,0,0,100" LocationFloat="482.291656, 57.9999924" Format="Datum kreiranja: {0:dd.MM.yyyy}" PageInfo="DateTime">
+          <StylePriority Ref="18" UseFont="false" />
+        </Item3>
+        <Item4 Ref="19" Name="xrLabel2" ControlType="XRLabel" SizeF="268.75,23" LocationFloat="0, 57.99999" Font="Times New Roman, 9.75pt, charSet=238" Padding="2,2,0,0,100" Text="xrLabel2">
+          <DataBindings>
+            <Item1 Ref="20" FormatString="Kreator: {0}" PropertyName="Text" DataMember="Predmet.NazivKreatora" />
+          </DataBindings>
+          <StylePriority Ref="21" UseFont="false" />
+        </Item4>
+      </Controls>
+    </Item5>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v15.1" Name="bindingSource" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+YmluZGluZ1NvdXJjZTwvTmFtZT48RGF0YVNvdXJjZSBUeXBlPSJEbXNDb3JlLkl6dmVzdGFqaS5QcmVnbGVkUmV6ZXJ2YWNpamFaYWdsYXZsamUsIERtc0NvcmUsIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsIiAvPjxDb25zdHJ1Y3RvciAvPjwvT2JqZWN0RGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

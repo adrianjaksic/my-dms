@@ -1,0 +1,94 @@
+﻿*
+{
+    margin: 0; padding: 0; border: none; outline: none;
+}
+
+body
+{
+    margin: 0 auto;
+    padding: 20px;
+    width: 960px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #eee;
+    background-color: #404040;
+}
+pre
+{
+    margin: 5px 0;
+    background-color: #4a4a4a;
+}
+code
+{
+    font-family: Consolas, monospace !important;
+    font-size: 13px;
+}
+pre.sub
+{
+    margin: 0;
+    background-color: #404040;
+}
+
+header
+{
+    
+}
+h1
+{
+    font-size: 24px;
+    margin: 10px 0 20px;
+    font-weight: normal;
+}
+h1.subH1
+{
+    font-size: 14px;
+    margin: 0 0 30px;
+    font-weight: normal;
+}
+h2
+{
+    font-size: 20px;
+    margin: 0 0 10px;
+    color: #9c0;
+}
+h3
+{
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: Consolas, monospace;
+    color: #f80;
+    font-weight: normal;
+}
+a, a:visited
+{
+    color: #a6c;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+
+
+.docSection
+{
+    margin-top: 50px;
+}
+
+.row
+{
+    overflow: auto;
+    margin-bottom: 10px;
+}
+.row .s1
+{
+    float: left;
+    width: 360px;
+    font-family: Consolas, monospace;
+}
+.row .s2
+{
+    float: left;
+    width: 600px;
+}
+

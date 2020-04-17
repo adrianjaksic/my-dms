@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.1.5.0" Ref="1" Name="PredmetReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="15.1" PageWidth="850" PageHeight="1100" Margins="100, 100, 309, 23">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="0" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="309.4583">
+      <Controls>
+        <Item1 Ref="4" Name="xrLabel17" ControlType="XRLabel" SizeF="447.9165,23" LocationFloat="202.083328, 220.4167" Padding="2,2,0,0,100" Text="xrLabel17">
+          <DataBindings>
+            <Item1 Ref="5" FormatString="Такса: {0}" PropertyName="Text" DataMember="NazivTakse" />
+          </DataBindings>
+        </Item1>
+        <Item2 Ref="6" Name="xrLabel16" ControlType="XRLabel" SizeF="202.083344,23" LocationFloat="0, 220.4167" Padding="2,2,0,0,100">
+          <DataBindings>
+            <Item1 Ref="7" FormatString="Статус: {0}" PropertyName="Text" DataMember="NazivStatusa" />
+          </DataBindings>
+        </Item2>
+        <Item3 Ref="8" Name="xrLabel15" ControlType="XRLabel" SizeF="650.0001,47.04164" LocationFloat="0, 262.4167" Padding="2,2,0,0,100" Text="xrLabel15">
+          <DataBindings>
+            <Item1 Ref="9" PropertyName="Text" DataMember="Sadrzaj" />
+          </DataBindings>
+        </Item3>
+        <Item4 Ref="10" Name="xrLabel14" ControlType="XRLabel" SizeF="595.8331,23" LocationFloat="54.1666679, 135.4167" Padding="2,2,0,0,100" Text="xrLabel14">
+          <DataBindings>
+            <Item1 Ref="11" PropertyName="Text" DataMember="NazivJedinice" />
+          </DataBindings>
+        </Item4>
+        <Item5 Ref="12" Name="xrLabel13" ControlType="XRLabel" SizeF="54.16667,23" LocationFloat="0, 135.4167" Padding="2,2,0,0,100" Text="xrLabel13">
+          <DataBindings>
+            <Item1 Ref="13" PropertyName="Text" DataMember="OznakaJedinice" />
+          </DataBindings>
+        </Item5>
+        <Item6 Ref="14" Name="xrLabel12" ControlType="XRLabel" SizeF="595.8334,22.9999924" LocationFloat="54.1666679, 112.416695" Padding="2,2,0,0,100" Text="xrLabel12">
+          <DataBindings>
+            <Item1 Ref="15" PropertyName="Text" DataMember="NazivKlase" />
+          </DataBindings>
+        </Item6>
+        <Item7 Ref="16" Name="xrLabel11" ControlType="XRLabel" SizeF="54.1666679,23.0000076" LocationFloat="0, 112.416679" Padding="2,2,0,0,100" Text="xrLabel11">
+          <DataBindings>
+            <Item1 Ref="17" PropertyName="Text" DataMember="OznakaKlase" />
+          </DataBindings>
+        </Item7>
+        <Item8 Ref="18" Name="xrLabel10" ControlType="XRLabel" SizeF="595.833252,23" LocationFloat="54.1666679, 89.41668" Padding="2,2,0,0,100" Text="xrLabel10">
+          <DataBindings>
+            <Item1 Ref="19" PropertyName="Text" DataMember="NazivOrgana" />
+          </DataBindings>
+        </Item8>
+        <Item9 Ref="20" Name="xrLabel9" ControlType="XRLabel" SizeF="54.16667,23" LocationFloat="0, 89.41668" Padding="2,2,0,0,100" Text="xrLabel9">
+          <DataBindings>
+            <Item1 Ref="21" PropertyName="Text" DataMember="OznakaOrgana" />
+          </DataBindings>
+        </Item9>
+        <Item10 Ref="22" Name="xrLabel8" ControlType="XRLabel" SizeF="595.8332,23" LocationFloat="54.1666679, 66.41668" Padding="2,2,0,0,100" Text="xrLabel8">
+          <DataBindings>
+            <Item1 Ref="23" PropertyName="Text" DataMember="NazivOkruga" />
+          </DataBindings>
+        </Item10>
+        <Item11 Ref="24" Name="xrLabel7" ControlType="XRLabel" SizeF="54.1666679,23" LocationFloat="0, 66.41668" Padding="2,2,0,0,100" Text="xrLabel7">
+          <DataBindings>
+            <Item1 Ref="25" PropertyName="Text" DataMember="OznakaOkruga" />
+          </DataBindings>
+        </Item11>
+        <Item12 Ref="26" Name="xrLabel6" ControlType="XRLabel" SizeF="256.25,23" LocationFloat="393.75, 33.0000076" Padding="2,2,0,0,100" Text="xrLabel6">
+          <DataBindings>
+            <Item1 Ref="27" FormatString="Време штампања: {0}" PropertyName="Text" DataMember="Datum" />
+          </DataBindings>
+        </Item12>
+        <Item13 Ref="28" Name="xrLabel5" ControlType="XRLabel" SizeF="650,23" LocationFloat="0, 191.4167" Padding="2,2,0,0,100" Text="xrLabel5">
+          <DataBindings>
+            <Item1 Ref="29" FormatString="Инспектор: {0}" PropertyName="Text" DataMember="ImeIPrezimeInspektora" />
+          </DataBindings>
+        </Item13>
+        <Item14 Ref="30" Name="xrLabel4" ControlType="XRLabel" SizeF="650.000061,23.0000038" LocationFloat="0, 168.4167" Padding="2,2,0,0,100" Text="xrLabel4">
+          <DataBindings>
+            <Item1 Ref="31" FormatString="Подносилац: {0}" PropertyName="Text" DataMember="Podnosilac" />
+          </DataBindings>
+        </Item14>
+        <Item15 Ref="32" Name="xrLabel2" ControlType="XRLabel" SizeF="256.250061,23.0000038" LocationFloat="393.75, 10.0000067" Padding="2,2,0,0,100" Text="xrLabel2">
+          <DataBindings>
+            <Item1 Ref="33" FormatString="Време креирања: {0}" PropertyName="Text" DataMember="VremeKreiranja" />
+          </DataBindings>
+        </Item15>
+        <Item16 Ref="34" Name="xrLabel3" ControlType="XRLabel" SizeF="353.125,23" LocationFloat="0, 33.0000076" Padding="2,2,0,0,100" Text="xrLabel3">
+          <DataBindings>
+            <Item1 Ref="35" FormatString="Предмет креирао: {0}" PropertyName="Text" DataMember="ImeIPrezimeKreatora" />
+          </DataBindings>
+        </Item16>
+        <Item17 Ref="36" Name="xrLabel1" ControlType="XRLabel" SizeF="393.75,22.9999962" LocationFloat="0, 10.0000067" Padding="2,2,0,0,100" Text="xrLabel1">
+          <DataBindings>
+            <Item1 Ref="37" FormatString="Број предмета: {0}" PropertyName="Text" DataMember="DetaljanBrojPredmeta" />
+          </DataBindings>
+        </Item17>
+      </Controls>
+    </Item2>
+    <Item3 Ref="38" Name="BottomMargin" ControlType="BottomMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="23" />
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v15.1" Name="bindingSource" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+YmluZGluZ1NvdXJjZTwvTmFtZT48RGF0YVNvdXJjZSBUeXBlPSJEbXNDb3JlLkl6dmVzdGFqaS5QcmVkbWV0aVphZ2xhdmxqZSwgRG1zQ29yZSwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PC9PYmplY3REYXRhU291cmNlPg==" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

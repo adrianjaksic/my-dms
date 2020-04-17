@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.1.5.0" Ref="1" Name="PregledPretrazenihPredmetaReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="15.1" PageWidth="850" PageHeight="1100" Margins="40, 39, 37, 44">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="0" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="36.66666" />
+    <Item3 Ref="4" Name="BottomMargin" ControlType="BottomMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="43.95828">
+      <Controls>
+        <Item1 Ref="6" Name="xrPageInfo1" ControlType="XRPageInfo" SizeF="66.66669,16.75" Padding="2,2,0,0,100" LocationFloat="704.3334, 0" RunningBand="#Ref-5" Format="Strana {0}" />
+      </Controls>
+    </Item3>
+    <Item4 Ref="7" ControlType="DetailReportBand" Name="DetailReport" DataMember="Predmeti" Level="0" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="8" ControlType="DetailBand" Name="Detail1" HeightF="20">
+          <Controls>
+            <Item1 Ref="9" Name="xrTable2" ControlType="XRTable" SizeF="771.0001,20" LocationFloat="0, 0">
+              <Rows>
+                <Item1 Ref="10" ControlType="XRTableRow" Name="xrTableRow2" Weight="0.8">
+                  <Cells>
+                    <Item1 Ref="11" Name="xrTableCell5" ControlType="XRTableCell" Borders="Bottom" Weight="0.26371759798071109">
+                      <DataBindings>
+                        <Item1 Ref="12" PropertyName="Text" DataMember="Predmeti.BrojIstorijePredmetaUGodini" />
+                      </DataBindings>
+                      <StylePriority Ref="13" UseBorders="false" />
+                      <Summary Ref="14" Running="Group" Func="RecordNumber" />
+                    </Item1>
+                    <Item2 Ref="15" Name="xrTableCell12" ControlType="XRTableCell" Borders="Bottom" Weight="1.3617035336919585">
+                      <DataBindings>
+                        <Item1 Ref="16" PropertyName="Text" DataMember="Predmeti.SifraPredmeta" />
+                      </DataBindings>
+                      <StylePriority Ref="17" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="18" Name="xrTableCell7" ControlType="XRTableCell" Borders="Bottom" Weight="1.2315269352416585">
+                      <DataBindings>
+                        <Item1 Ref="19" PropertyName="Text" DataMember="Predmeti.NazivKreatora" />
+                      </DataBindings>
+                      <StylePriority Ref="20" UseBorders="false" />
+                    </Item3>
+                    <Item4 Ref="21" Name="xrTableCell14" ControlType="XRTableCell" Borders="Bottom" Weight="2.5379948909035668">
+                      <DataBindings>
+                        <Item1 Ref="22" PropertyName="Text" DataMember="Predmeti.NapomenaIstorijePredmeta" />
+                      </DataBindings>
+                      <StylePriority Ref="23" UseBorders="false" />
+                    </Item4>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item1>
+        <Item2 Ref="5" ControlType="GroupHeaderBand" Name="GroupHeader1" KeepTogether="true" PageBreak="BeforeBandExceptFirstEntry" RepeatEveryPage="true" HeightF="116.8542">
+          <Controls>
+            <Item1 Ref="24" Name="xrLabel4" ControlType="XRLabel" SizeF="771,27.375" LocationFloat="0, 0.4791718" Font="Times New Roman, 18pt, charSet=238" Padding="2,2,0,0,100" TextAlignment="MiddleCenter" Text="Spisak arhiviranih predmeta">
+              <StylePriority Ref="25" UseFont="false" UseTextAlignment="false" />
+            </Item1>
+            <Item2 Ref="26" Name="xrLabel7" ControlType="XRLabel" SizeF="223.9584,23" LocationFloat="156.25, 27.85417" Padding="2,2,0,0,100" Text="xrLabel7">
+              <DataBindings>
+                <Item1 Ref="27" FormatString="Datum: {0:dd.MM.yyyy}" PropertyName="Text" DataMember="Datum" />
+              </DataBindings>
+            </Item2>
+            <Item3 Ref="28" Name="xrLabel6" ControlType="XRLabel" SizeF="650,23" LocationFloat="0, 50.85417" Padding="2,2,0,0,100" CanShrink="true" Text="xrLabel6">
+              <DataBindings>
+                <Item1 Ref="29" FormatString="Organ:  {0}" PropertyName="Text" DataMember="Predmeti.NazivOrgana" />
+              </DataBindings>
+            </Item3>
+            <Item4 Ref="30" Name="xrLabel8" ControlType="XRLabel" SizeF="650,22.99999" LocationFloat="0, 73.85417" Padding="2,2,0,0,100" CanShrink="true" Text="xrLabel8">
+              <DataBindings>
+                <Item1 Ref="31" FormatString="RG. Jed:  {0}" PropertyName="Text" DataMember="Predmeti.NazivJedinice" />
+              </DataBindings>
+            </Item4>
+            <Item5 Ref="32" Name="xrTable1" ControlType="XRTable" SizeF="771.0002,20" LocationFloat="0, 96.85416">
+              <Rows>
+                <Item1 Ref="33" ControlType="XRTableRow" Name="xrTableRow1" Weight="1.3333333333333335">
+                  <Cells>
+                    <Item1 Ref="34" Name="xrTableCell1" ControlType="XRTableCell" Borders="Bottom" Text="R. br." Weight="0.215091503668017">
+                      <StylePriority Ref="35" UseBorders="false" />
+                    </Item1>
+                    <Item2 Ref="36" Name="xrTableCell2" ControlType="XRTableCell" Borders="Bottom" Text="Predmet" Weight="1.1106225517355064">
+                      <StylePriority Ref="37" UseBorders="false" />
+                    </Item2>
+                    <Item3 Ref="38" Name="xrTableCell3" ControlType="XRTableCell" Borders="Bottom" Text="Arhivirao&#xD;&#xA;" Multiline="true" Weight="1.0044491661310628">
+                      <StylePriority Ref="39" UseBorders="false" />
+                    </Item3>
+                    <Item4 Ref="40" Name="xrTableCell4" ControlType="XRTableCell" Borders="Bottom" Text="Napomena" Weight="2.07002110599897">
+                      <StylePriority Ref="41" UseBorders="false" />
+                    </Item4>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item5>
+          </Controls>
+          <GroupFields>
+            <Item1 Ref="42" FieldName="NazivOrgana" />
+            <Item2 Ref="43" FieldName="NazivJedinice" />
+          </GroupFields>
+        </Item2>
+      </Bands>
+    </Item4>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v15.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PERhdGFTb3VyY2UgVHlwZT0iRG1zQ29yZS5JenZlc3RhamkuUHJlZ2xlZFByZXRyYXplbmloUHJlZG1ldGFaYWdsYXZsamUsIERtc0NvcmUsIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsIiAvPjxDb25zdHJ1Y3RvciAvPjwvT2JqZWN0RGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

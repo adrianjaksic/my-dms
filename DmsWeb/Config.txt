@@ -1,0 +1,3 @@
+﻿SERVER|Data Source=109.92.136.130;Initial Catalog=OkrugJBO;User ID=akord;Password=akord1302;Trusted_Connection=False;Connection Timeout=180
+EMAIL|host,587,example@example.com,password
+JIRA|url,username,password

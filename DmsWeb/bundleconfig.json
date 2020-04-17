@@ -1,0 +1,68 @@
+[
+  {
+    "outputFileName": "Content/jQuintaUI/jQuintaUI/qui.all.n.min.js",
+    "inputFiles": [
+      "Content/jQuintaUI/jQuintaUI/qui.all.n.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/quinta.keys.min.js",
+    "inputFiles": [
+      "Scripts/quinta.keys.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/quinta.ui.min.js",
+    "inputFiles": [
+      "Scripts/quinta.ui.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/pisarnica.dms.min.js",
+    "inputFiles": [
+      "Scripts/pisarnica.dms.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/pisarnica.izvestaji.min.js",
+    "inputFiles": [
+      "Scripts/pisarnica.izvestaji.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/pisarnica.konverzija.min.js",
+    "inputFiles": [
+      "Scripts/pisarnica.konverzija.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/pisarnica.predmeti.min.js",
+    "inputFiles": [
+      "Scripts/pisarnica.predmeti.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/pisarnica.pretraga.min.js",
+    "inputFiles": [
+      "Scripts/pisarnica.pretraga.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/pisarnica.sifarnici.min.js",
+    "inputFiles": [
+      "Scripts/pisarnica.sifarnici.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/pisarnica.zapisnici.min.js",
+    "inputFiles": [
+      "Scripts/pisarnica.zapisnici.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/style.min.css",
+    "inputFiles": [
+      "Content/style.css"
+    ]
+  }
+]

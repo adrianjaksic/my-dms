@@ -1,0 +1,963 @@
+﻿/*Rounded Corners*/
+/*top-left rounded Corners*/
+.jqx-rc-tl
+{
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+/*top-right rounded Corners*/
+.jqx-rc-tr
+{
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+/*bottom-left rounded Corners*/
+.jqx-rc-bl
+{
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+/*bottom-right rounded Corners*/
+.jqx-rc-br
+{
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+/*top rounded Corners*/
+.jqx-rc-t
+{
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+/*bottom rounded Corners*/
+.jqx-rc-b
+{
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+/*right rounded Corners*/
+.jqx-rc-r
+{
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+/*left rounded Corners*/
+.jqx-rc-l
+{
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+/*all rounded Corners*/
+.jqx-rc-all
+{
+/*    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;*/
+}
+/*reset rounded corners*/
+.jqx-rc-reset
+{
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+/*Reset Style*/
+.jqx-reset
+{
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+}
+
+/*Disable browser selection*/
+.jqx-disableselect
+{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+/* base fills for all widgets.
+----------------------------------*/
+/*applied to all widgets*/
+.jqx-widget
+{
+   border-color: #e8e8e8;
+   color: #000;
+   font-family: Verdana,Arial,sans-serif;
+   font-style: normal;
+   font-size: 13px;
+}
+
+/*applied to containers to set a background and border color. Tabs, NavigationBar, Calendar content.*/
+.jqx-widget-content { border-color: #aaa; background: #fff; color: #000; }
+/*applied to header areas. Tabs, Menu, Window, Calendar.*/
+.jqx-widget-header { border: 1px solid #aaa; background: #e5e5e5; color: #000; }
+
+.jqx-header-item-state-default{ border-color: transparent; background-color: transparent; color: #000; }
+.jqx-header-item-state-hover { border-color: #aaa; color: #000; background: #e8e8e8; }
+.jqx-header-item-state-selected { border-color: #909090; background: #d1d1d1; color: #000; }
+
+.jqx-state-default{ border-color: transparent; background-color: transparent; color: #000; }
+.jqx-state-hover { border-color: #aaa; color: #000; background: #e8e8e8; }
+.jqx-state-selected { border-color: #909090; background: #d1d1d1; color: #000; }
+.jqx-state-disabled { opacity: .45; filter:Alpha(Opacity=45); background-image: none; }
+
+
+/*jqxChart Style*/
+
+.jqx-chart-axis-text,
+.jqx-chart-label-text, 
+.jqx-chart-tooltip-text, 
+.jqx-chart-legend-text
+{
+    fill: #333333;
+    color: #333333;
+    font-size: 11px;
+    font-family: Verdana;
+}
+
+.jqx-chart-axis-description
+{
+    fill: #555555;
+    color: #555555;
+    font-size: 11px;
+    font-family: Verdana;
+}
+.jqx-chart-title-text
+{
+    fill: #111111;
+    color: #111111;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+.jqx-chart-title-description
+{
+    fill: #111111;
+    color: #111111;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: Verdana;
+}
+
+/*jqxtree Style*/
+.jqx-tree
+{
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    left: 100%;
+    right: 0;
+    float: none;
+    margin: 0px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0px;
+    background: #ffffff;
+    overflow: hidden;
+    text-align: left;
+    outline: none;
+    white-space: nowrap;
+    line-height: 14px;
+}
+/*applied to the jqxTree root UL element.*/
+.jqx-tree-dropdown-root
+{
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif;
+    font-style: normal;
+    left: 100%;
+    margin: 5px 0px 5px 0px;
+    padding: 0px 5px 0px 5px;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    float: none;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0px;
+    border-color: #fff;
+    text-align: left;
+    outline: none;
+    white-space: nowrap;
+}
+/*applied to the jqxTree UL elements.*/
+.jqx-tree-dropdown
+{
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif;
+    font-style: normal;
+    left: 100%;
+    margin: 0px;
+    padding: 0px 0px 0px 10px;
+    right: 0;
+     display: block;
+    float: none;
+    width: 100%;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 0px;
+    border-color: #fff;
+    text-align: left;
+    outline: none;
+}
+/*applied to a tree item.*/
+.jqx-tree-item
+{
+    border-style: solid;
+    border-width: 1px;
+    text-indent: 0;
+    list-style: none;
+    padding: 3px;
+    margin: 0px;
+    float: none;
+    overflow: hidden;
+    left: 100%;
+    color: #000;
+    right: 0;
+    font-size: 13px;
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif;
+    text-align: left;
+    cursor: default;
+    text-decoration: none;
+}
+/*applied to the jqxTree LI elements.*/
+.jqx-tree-item-li
+{
+    text-indent: 0;
+    background-color: transparent;
+    border: 0px solid transparent;
+    list-style: none;
+    left: 100%;
+    color: #000;
+    right: 0;
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif;
+    text-align: left;
+    outline: none;
+    margin: 1px;
+    padding: 0px;
+    padding-right: 5px;
+}
+/*applied to the last LI elements in an UL element.*/
+.jqx-tree-item-u-last
+{
+    margin: 0px 0px 0px 0px;
+}
+/*applied to a tree item when the mouse is over the item.*/
+.jqx-tree-item-hover
+{
+    color: inherit;
+    right: 0;
+    padding: 3px;
+    margin: 0px;
+    list-style: none;
+    left: 100%;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+}
+/*applied to a tree item when the item is selected.*/
+.jqx-tree-item-selected
+{
+    color: inherit;
+    right: 0;
+    padding: 3px;
+    margin: 0px;
+    list-style: none;
+    left: 100%;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+}
+/*applied to the anchor element of a tree item.*/
+.jqx-tree-item a:link
+{
+    text-indent: 0;
+    background-color: transparent;
+    border: 0px solid transparent;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    float: none;
+    overflow: hidden;
+    left: 100%;
+    color: inherit;
+    right: 0;
+    font-size: 13px;
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+}
+/*applied to a tree item when the item is disabled.*/
+.jqx-tree-item-disabled
+{
+    color: #ccc;
+    right: 0;
+    list-style: none;
+    margin: 0px;
+    left: 100%;
+    padding: 3px;
+    cursor: default;
+}
+/*applied to a tree item when it has sub items and is collapsed. Displays an arrow icon next to the item.*/
+.jqx-tree-item-arrow-collapse
+{
+    padding-right: 0px;
+    width: 17px;
+    height: 17px;
+    background-image: url(jqwidgets/styles/images/icon-right.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+/*applied to a tree item when it has sub items and is expanded. Displays an arrow icon next to the item.*/
+.jqx-tree-item-arrow-expand
+{
+    padding-right: 0px;
+    width: 17px;
+    height: 17px;
+    background-image: url(jqwidgets/styles/images/icon-down.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+/*applied to a tree item when it has sub items and is expanded and the mouse is over the arrow icon.*/
+.jqx-tree-item-arrow-expand-hover
+{
+    padding-right: 0px;
+    margin-right: 0px;
+    width: 17px;
+    height: 17px;
+    background-image: url(jqwidgets/styles/images/icon-down.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+/*applied to a tree item when it has sub items and is collapsed and the mouse is over the arrow icon.*/
+.jqx-tree-item-arrow-collapse-hover
+{
+    padding-right: 0px;
+    width: 17px;
+    height: 17px;
+    background-image: url(jqwidgets/styles/images/icon-right.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+/*applied to the tree when it is disabled.*/
+.jqx-tree-disabled
+{
+    color: #aaa;
+    cursor: default;
+}
+/*applied to the anchor elements in a tree when it is disabled.*/
+.jqx-tree-disabled a:link
+{
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif /*{ffDefault}*/;
+    cursor: default;
+    color: #aaa;
+    text-decoration: none;
+}
+.jqx-tree-disabled a:visited
+{
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif /*{ffDefault}*/;
+    cursor: default;
+    color: #aaa;
+    text-decoration: none;
+}
+.jqx-tree-disabled a:hover
+{
+    cursor: default;
+}
+
+/* jqxWindow */
+.jqx-window
+{
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #aaa;
+    background-color: #fdfdfd;   
+}
+/*applied to the jqxWindow when it’s disabled*/
+.jqx-window-disabled
+{
+}
+/*applied to the window’s header*/
+.jqx-window-header
+{
+    outline: none;
+    border-width: 0px;
+    border-bottom: 1px solid #aaa; 
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif /*{ffDefault}*/;
+    font-size: 13px;
+    overflow: hidden;
+    padding: 5px;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;  
+    background: #e8e8e8 url(jqwidgets/styles/images/imaglass.png) left center scroll repeat-x;
+}
+/*applied to the window’s header when the window is disabled*/
+.jqx-window-header-disabled
+{
+    background: #aaa;
+    border-color: #aaa;
+}
+/*applied to the window’s content*/
+.jqx-window-content
+{
+    outline: none;
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif /*{ffDefault}*/;
+    font-size: 13px;
+    overflow: auto;
+    text-align: left;
+    background-color: transparent;
+    padding: 5px;
+}
+/*applied to the window’s content when the window is disabled*/
+.jqx-window-content-disabled
+{
+    outline: none;
+    font-family: "Roboto","Roboto Condensed","Segoe UI",Arial,Verdana,sans-serif /*{ffDefault}*/;
+    font-size: 13px;
+    overflow: auto;
+    text-align: left;
+    padding: 5px;
+}
+/*applied to the window’s close button*/
+.jqx-window-close-button
+{
+    cursor: pointer;
+    background-color: #e8e8e8;
+    background-image: url(jqwidgets/styles/images/close.png);
+    background-repeat: no-repeat;    
+}
+/*applied to the window's collapse button*/
+.jqx-window-collapse-button
+{
+    background-image: url(jqwidgets/styles/images/icon-up.png);
+    cursor: pointer;
+}
+/*applied to the window's collapse button when the window is collapsed*/
+.jqx-window-collapse-button-collapsed
+{
+    cursor: pointer;
+    background-image: url(jqwidgets/styles/images/icon-down.png);
+}
+/*setting styles of the modal window’s background*/
+.jqx-window-modal
+{
+   background-color: Black;
+}
+.jqx-window-close-button-hover
+{
+}
+
+.jqx-validator-hint
+{
+    height: 19px;
+    width: auto;
+    display: inline-block;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
+    /*font-family: Verdana;*/
+    font-size: 13px;
+    border: 1px solid #6E0000;
+    background-color: #942724;
+    color: #fff;
+    z-index: 99999;
+}
+.jqx-validator-hint-arrow
+{
+    z-index: 99999;
+    height: 9px;
+    width: 9px;
+    padding: 0px;
+    margin: 0px;
+    background-color: transparent;
+    background-image: url(jqwidgets/styles/images/multi-arrow.gif);
+}
+
+/*applied to the link button's anchor element.*/
+.jqx-link
+{
+    text-decoration: none;
+    color: #111111;
+}
+/*applied to buttons background in normal, hovered, pressed and disabled states.*/
+.jqx-fill-state-normal
+{
+    background: #efefef;
+}
+.jqx-fill-state-hover
+{
+    background: #e8e8e8;
+}
+.jqx-fill-state-pressed
+{
+    background: #d1d1d1;
+}
+.jqx-fill-state-pressedhover
+{
+    background: #d1d1d1;
+}
+.jqx-fill-state-disabled
+{
+    background: #ccc;
+}
+/*shows elements.*/
+.jqx-visible
+{
+    display: block;
+}
+/*hides elements.*/
+.jqx-hidden
+{
+    display: none;
+}
+/*left, right, up and down arrow icons.*/
+.jqx-left-arrow
+{
+    background: transparent;
+    background-image: url('jqwidgets/styles/left.png');
+    cursor: pointer;
+}
+.jqx-right-arrow
+{
+    background: transparent;
+    background-image: url('jqwidgets/styles/right.png');
+    cursor: pointer;
+}
+
+.icon-arrow-up
+{
+    background-image: url('jqwidgets/styles/images/icon-up.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-down
+{
+    background-image: url('jqwidgets/styles/images/icon-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-left
+{
+    background-image: url('jqwidgets/styles/images/icon-left.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-right
+{
+    background-image: url('jqwidgets/styles/images/icon-right.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-arrow-up-hover
+{
+    background-image: url('jqwidgets/styles/images/icon-up.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-down-hover
+{
+    background-image: url('jqwidgets/styles/images/icon-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-left-hover
+{
+    background-image: url('jqwidgets/styles/images/icon-left.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-right-hover
+{
+    background-image: url('jqwidgets/styles/images/icon-right.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-arrow-up-selected
+{
+    background-image: url('jqwidgets/styles/images/icon-up.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-down-selected
+{
+    background-image: url('jqwidgets/styles/images/icon-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-left-selected
+{
+    background-image: url('jqwidgets/styles/images/icon-left.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-right-selected
+{
+    background-image: url('jqwidgets/styles/images/icon-right.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-close
+{
+    cursor: pointer;
+    background-image: url(jqwidgets/styles/images/close.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-close-hover
+{
+    cursor: pointer;
+    background-image: url(jqwidgets/styles/images/close.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* S U M M E R */
+
+/*jqxtree Style*/
+.jqx-tree-summer
+{
+    color: #000;
+    border-color: #dfdfdf;
+    /*background: #f7f5f5;*/
+}
+.jqx-tree-vertical-summer
+{
+    background: #f7f5f5;
+}
+.jqx-tree-dropdown-root-summer
+{
+    background-color: transparent;
+}
+.jqx-tree-dropdown-summer
+{
+    background-color: transparent;
+    border-color: #fff;
+}
+.jqx-tree-item-li-summer
+{
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+}
+.jqx-tree-item-u-last-summer
+{
+}
+.jqx-tree-item-summer
+{
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+}
+.jqx-tree-item-summer a:link
+{
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+}
+
+.jqx-tree-item-summer a:hover
+{
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+}
+
+.jqx-tree-item-summer a:visited
+{
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: inherit;
+}
+
+.jqx-tree-item-hover-summer
+{
+    background: #464646;
+    border: 1px solid #464646;
+    color: #fff;
+}
+.jqx-tree-item-selected-summer
+{
+    background: #fe5815;
+    border: 1px solid #fe5815;
+    color: #fff;
+}
+.jqx-tree-item-disabled-summer
+{
+    color: #ccc;
+}
+.jqx-tree-item-arrow-collapse-summer
+{
+    background-image: url(jqwidgets/styles/images/icon-right.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+.jqx-tree-item-arrow-expand-summer
+{
+    background-image: url(jqwidgets/styles/images/icon-down.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+.jqx-tree-item-arrow-expand-hover-summer
+{
+    background-image: url(jqwidgets/styles/images/icon-down.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+.jqx-tree-item-arrow-collapse-hover-summer
+{
+    background-image: url(jqwidgets/styles/images/icon-right.png);
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+}
+
+.jqx-tree-disabled-summer
+{
+    color: #aaa;
+}
+.jqx-tree-disabled-summer a:link
+{
+    color: #aaa;
+}
+.jqx-tree-disabled-summer a:visited
+{
+    color: #aaa;
+}
+.jqx-tree-disabled-summer a:hover
+{
+}
+
+/* jqxWindow */
+.jqx-window-summer
+{    
+    /*border: 1px solid #dfdfdf;*/
+    background-color: #fff;
+    /**/
+    box-shadow: 0px 0px 10px #777;
+}
+.jqx-window-disabled-summer
+{
+    background-color: #fff;
+}
+.jqx-window-header-summer
+{
+    border-color: #464646;
+    color: #fff;
+    background: #464646;
+}
+.jqx-window-header-disabled-summer
+{
+    background: #aaa;
+    border-color: #aaa;
+}
+.jqx-window-header-hover-summer
+{
+    border-color: #464646;
+    color: #fff;
+    background: #464646;
+}
+.jqx-window-content-summer
+{
+    background-color: #fff;
+}
+.jqx-window-content-disabled-summer
+{
+    background-color: #fff;
+}
+.jqx-window-close-button-summer
+{
+    background: #464646;
+    background-image: url(jqwidgets/styles/images/close_white.png);
+    background-repeat: no-repeat;    
+    background-position: 0% 50%; 
+}
+ /*applied to the window's collapse button*/
+.jqx-window-collapse-button-summer
+{
+    background-image: url(jqwidgets/styles/images/icon-up-white.png);    
+}
+/*applied to the window's collapse button when the window is collapsed*/
+.jqx-window-collapse-button-collapsed-summer
+{
+    background-image: url(jqwidgets/styles/images/icon-down-white.png);
+}
+.jqx-window-modal-summer
+{
+/*    background-color: Black;*/
+    background-color: #DDD;
+}
+.jqx-window-close-button-hover-summer
+{
+    background-image: url(jqwidgets/styles/images/close_white.png);
+    background-position: 0% 50%; 
+}
+
+.jqx-fill-state-normal-summer
+{
+    background: #f7f5f5;
+}
+.jqx-fill-state-hover-summer
+{
+    color: #fff;
+    border: 1px solid #000;
+    background: #464646;
+}
+.jqx-fill-state-pressed-summer
+{
+    color: #fff;
+    border: 1px solid #fe5815;
+    background: #fe5815;
+}
+.jqx-fill-state-pressedhover-summer
+{
+    color: #fff;
+    border: 1px solid #fe5815;
+    background: #fe5815;
+}
+.jqx-fill-state-disabled-summer
+{
+    background: #ccc;
+}
+
+.jqx-visible-summer
+{
+}
+.jqx-hidden-summer
+{
+}
+.jqx-left-arrow-summer
+{
+    background: transparent;
+    background-image: url('jqwidgets/styles/left.png');
+}
+.jqx-right-arrow-summer
+{
+    background: transparent;
+    background-image: url('jqwidgets/styles/right.png');
+}
+
+.icon-arrow-up-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-up.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+}
+.icon-arrow-down-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+}
+.jqCombo .icon-arrow-down-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-down.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 17px;
+    height: 20px;
+}
+.icon-arrow-left-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-left.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+}
+.icon-arrow-right-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-right.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+}
+
+.icon-arrow-up-hover-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-up-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-down-hover-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-down-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-left-hover-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-left-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-right-hover-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-right-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-arrow-up-selected-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-up-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-down-selected-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-down-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-left-selected-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-left-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.icon-arrow-right-selected-summer
+{
+    background-image: url('jqwidgets/styles/images/icon-right-white.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}

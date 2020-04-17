@@ -1,0 +1,306 @@
+﻿@using DmsCore.Podesavanja
+@using DmsCore.Pretrage
+@using DmsWeb.Infrastructure
+
+@{
+    Layout = null;
+    var korisnik = RuntimeDataHelpers.GetRuntimeData(Request);
+
+    var tipPretrage = (short) ViewData["tipPretrage"];
+    
+    var tekucaGodina = (string)ViewData["tekucaGodina"];
+
+    var vm = (PretragaPredmetaViewModel) ViewData["vm"];
+
+    const string wLabele = "100px;";
+    const string wLabele1 = "120px;";
+    const string wPolja = "254px";
+}
+<script>
+    $(document).ready(qPretragaPredmeta.Init);
+</script>
+
+<style>
+    .crtica {
+        float: left;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #pretragaSadrzaj, #pretragaOpisKretanja {
+        resize: none;
+        margin-bottom: 3px;
+        width: 250px;
+        height: 60px;
+    }
+
+    .nijeDetaljna {
+        display: none;
+    }
+
+    #pretragaPredmetiSlickGrid {
+        height: calc(100vh - 360px);
+    }
+
+    i.fa.info-arhiviranja, i.fa.link-predmet {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    i.fa.info-arhiviranja:hover, i.fa.link-predmet:hover {
+        opacity: 1;
+    }
+
+    .tooltip {
+        position: absolute;
+        z-index: 602;
+        background-color: white;
+        width: 200px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+
+    .tooltip-inner {
+        width: 200px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    
+</style>
+
+<div class="hederH1">
+    <h1 style="float: left;max-width: 300px;" id="pretragaNaslov">@Konverzija.VratiString(korisnik.Jezik, "Pretraga predmeta")</h1>
+    
+    <div style="float:right;">
+        <div class="teloDugmeWrapUFormi btnW3" id="pretragaBtnStampa"  style="float: left; margin-left: 10px">
+            <table class="teloDugme">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Štampa")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="qDispNone" id="url_VratiOpstine">@Url.Action("VratiOpstine")</div>
+<div class="qDispNone" id="url_VratiKlase">@Url.Action("VratiKlase")</div>
+<div class="qDispNone" id="url_VratiJedinice">@Url.Action("VratiJedinice")</div>
+<div class="qDispNone" id="url_VratiInspektoreOkruga">@Url.Action("VratiInspektoreOkruga")</div>
+<div class="qDispNone" id="url_BrisanjePredmeta">@Url.Action("ObrisiPredmete", "Predmeti")</div>
+<div class="qDispNone" id="url_VratiPredmetePretrage">@Url.Action("VratiPredmetePretrage")</div>
+<div class="qDispNone" id="url_ArhiviranjePredmeta">@Url.Action("ArhiviranjePredmeta", "Predmeti")</div>
+<div class="qDispNone" id="url_VratiStampePretrazenihPredmeta">@Url.Action("VratiStampePretrazenihPredmeta")</div>
+<div class="qDispNone" id="url_VratiMestaOpstine">@Url.Action("VratiMestaOpstine")</div>
+
+<div class="qDispNone" id="vm">@Json.Encode(vm)</div>
+<div class="qDispNone" id="tipPretrage">@tipPretrage</div>
+<div class="qDispNone" id="tekucaGodina">@tekucaGodina</div>
+<div class="qDispNone" id="brisanjePredmeta">@korisnik.BrisanjePredmeta</div>
+
+<div class="oblakTelo" id="oblakTeloWrap">
+
+    <div id="pretragaKriterijumiWrap">
+        <div style="float: left; margin-bottom: 5px;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Šifra"):</div>
+                <div style="float: left">
+                    <div id="pretragaOkruzi" style="float: left"></div>
+                    <div class="crtica">-</div>
+                    <div id="pretragaOrgani" style="float: left"></div>
+                    <div class="crtica">-</div>
+                    <div id="pretragaKlase" style="float: left"></div>
+                    <div class="crtica">-</div>
+                    <input type="text" class="myInput" id="pretragaPredmet" style="float: left; width: 80px;" />
+                    <div class="crtica">/</div>
+                    <div id="pretragaGodine" style="float: left"></div>
+                    <div class="crtica">-</div>
+                    <div id="pretragaJedinice" style="float: left"></div>
+                </div>
+            </div>
+        </div>
+    
+        <div style="float: right">
+            <div class="teloDugmeWrapUFormi btnFloatR btnResetX" id="pretragaBtnReset">
+                <table class="teloDugme teloDugmeDesno">
+                    <tr>
+                        <td><img src="@Url.Content("~/Content/img/w/x.png")" alt="" /></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="pretragaBtnPretrazi">
+                <table class="teloDugme teloDugmeLevo">
+                    <tr>
+                        <td>@Konverzija.VratiString(korisnik.Jezik, "Pretraži")</td>
+                        <td><img src="@Url.Content("~/Content/img/w/lupica.png")" alt="" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        
+        <div>
+            <div class="unosRed nijeDetaljna" style="float: left">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Organ"):</div>
+                <div class="unosRedVr"><input type="text" class="myInput" id="pretragaOznakaOrgana" style="width: @wPolja;" /></div>
+            </div>
+            
+            <div class="unosRed nijeDetaljna" style="float: left; margin-left: 20px;">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Klasa"):</div>
+                <div class="unosRedVr"><input type="text" class="myInput" id="pretragaOznakaKlase" style="width: @wPolja;" /></div>
+            </div>
+            
+            <div class="unosRed nijeDetaljna" style="float: right;">
+                <div class="unosRedLbl_taL" style="width: @wLabele1">@Konverzija.VratiString(korisnik.Jezik, "Jedinica"):</div>
+                <div class="unosRedVr"><input type="text" class="myInput" id="pretragaOznakaJedinice" style="width: @wPolja;" /></div>
+            </div>
+        </div>
+        
+         <div class="clear"></div>
+    
+        <div style="float: left;">
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Od"):</div>
+                <div class="unosRedVr"><div id="pretragaOdDatuma"></div></div>
+            </div>
+
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Stanje"):</div>
+                <div class="unosRedVr"><div id="pretragaStatusi"></div></div>
+            </div>
+            
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Opština"):</div>
+                <div class="unosRedVr"><div id="pretragaOpstine"></div></div>
+            </div>
+            
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Mesto"):</div>
+                <div class="unosRedVr"><div id="pretragaMestaOpstine"></div></div>
+            </div>
+        
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik,  "Podnosilac"):</div>
+                <div class="unosRedVr"><input type="text" class="myInput" id="pretragaPodnosilac" style="width: 1043px;"/></div>
+            </div>
+        
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik,  "Sadržaj"):</div>
+                <div class="unosRedVr"><textarea id="pretragaSadrzaj" style="width: 1039px;"></textarea></div>
+            </div>
+        </div>
+    
+        <div style="float: left; margin-left: 20px">
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Do"):</div>
+                <div class="unosRedVr"><div id="pretragaDoDatuma"></div></div>
+            </div>
+
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Vrsta"):</div>
+                <div class="unosRedVr"><div id="pretragaVrstePredmeta"></div></div>
+            </div>
+        
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Taksa"):</div>
+                <div class="unosRedVr"><div id="pretragaTakse"></div></div>
+            </div>
+        
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Strani broj"):</div>
+                <div class="unosRedVr"><input type="text" class="myInput" id="pretragaStraniBroj" style="width: @wPolja"/></div>
+            </div>
+        
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Rok"):</div>
+                <div class="unosRedVr"><input type="text" class="myInput" id="pretragaRok" style="width: @wPolja"/></div>
+            </div>
+        
+            <div class="unosRed nijeDetaljna" id="pretragaRokRadioWrap" style="margin-left: 70px;">
+                <input type="radio" name="rok" checked="checked" value="0"/> @Konverzija.VratiString(korisnik.Jezik, "Pre roka")
+                <input type="radio" style="margin-left: 20px;" name="rok" value="1" /> @Konverzija.VratiString(korisnik.Jezik, "Posle roka")
+            </div>
+            
+            <div class="unosRed nijeDetaljna" id="pretragaDatumRadioWrap" style="margin-left: 70px;">
+                <input type="radio" name="datum" checked="checked" value="0"/> @Konverzija.VratiString(korisnik.Jezik, "Datum kreiranja")
+                <input type="radio" style="margin-left: 20px;" name="datum" value="1" /> @Konverzija.VratiString(korisnik.Jezik, "Datum kretanja")
+            </div>
+        </div>
+    
+        <div style="float: right; ">
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele1">@Konverzija.VratiString(korisnik.Jezik, "Inspektor"):</div>
+                <div class="unosRedVr"><div id="pretragaInspektori"></div></div>
+            </div>
+            
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele1">@Konverzija.VratiString(korisnik.Jezik, "Subjekt kontrole"):</div>
+                <div class="unosRedVr"><input type="text" class="myInput" id="pretragaLiceKontrole" style="width: @wPolja"/></div>
+            </div>
+
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele1">@Konverzija.VratiString(korisnik.Jezik, "Datum kretanja"):</div>
+                <div class="unosRedVr"><div id="pretragaDatumKretanja"></div></div>
+            </div>
+
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele1">@Konverzija.VratiString(korisnik.Jezik, "Vrsta kretanja"):</div>
+                <div class="unosRedVr"><div id="pretragaVrsteKretanja"></div></div>
+            </div>
+
+            <div class="unosRed nijeDetaljna">
+                <div class="unosRedLbl_taL" style="width: @wLabele1">@Konverzija.VratiString(korisnik.Jezik, "Opis kretanja"):</div>
+                <div class="unosRedVr"><textarea id="pretragaOpisKretanja"></textarea></div>
+            </div>
+
+            @if (tipPretrage == 1 || tipPretrage == 3)
+            {
+
+                <div class="unosRed nijeDetaljna">
+                    <div class="unosRedLbl_taL" style="width: @wLabele1">@Konverzija.VratiString(korisnik.Jezik, "Rok čuvanja"):</div>
+                    <div class="unosRedVr"><input type="text" class="myInput" id="pretragaRokCuvanja" style="width: @wPolja" /></div>
+                </div>
+            }
+        </div>
+        
+        <div id="detaljiPretrage" class="manjaPretraga" title="@Konverzija.VratiString(korisnik.Jezik, "Detaljna pretraga")"></div>
+    </div>
+    
+    <div class="clear withLine"></div>
+    
+    <div id="pretragaNemaRez" style="text-align: center; padding: 0 20px; display: none;">@Konverzija.VratiString(korisnik.Jezik, "Nema rezultata. Ponovite pretragu sa drugačijim kriterijumima.")</div>
+    
+    @if (tipPretrage == 3 && korisnik.BrisanjePredmeta)
+    {
+        <div style="float: right;">
+            <div class="teloDugmeWrapUFormi btnW3" id="pretragaBtnBrisanje" style="display: none;">
+                <table class="teloDugme">
+                    <tr>
+                        <td>@Konverzija.VratiString(korisnik.Jezik, "Brisanje")</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+    
+    @if (tipPretrage == 4)
+    {
+        <div style="float: right;">
+            <div class="teloDugmeWrapUFormi btnW3" id="pretragaBtnArhiviranje" style="display: none;">
+                <table class="teloDugme">
+                    <tr>
+                        <td>@Konverzija.VratiString(korisnik.Jezik, "Arhiviranje")</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+    
+    <div class="clear"></div>
+
+    <div style="position:relative; margin-top: 10px; width:100%;">
+        <div id="pretragaPredmetiSlickGrid" style="width:100%;"></div>
+        <div id="pretragaPredmetiSlickGridPager" style="width:100%;height:20px;"></div>
+    </div>
+</div>

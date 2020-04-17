@@ -1,0 +1,786 @@
+﻿@using DmsCore.Logovanje
+@using DmsCore.Podesavanja
+@using DmsCore.Predmeti
+@{
+    Layout = null;
+
+    var tipDokumenta = (short)ViewData["tipDokumenta"];
+
+    var korisnik = (UlogovaniKorisnik)ViewData["korisnik"];
+
+    var vm = (PredmetViewModel)ViewData["vm"];
+
+    var dms = (bool?) ViewData["dms"];
+    var close = (bool?) ViewData["close"];
+
+    var stampa = (bool?)ViewData["stampa"];
+
+    var poruka = (string)ViewData["poruka"];
+
+    string naslov = null;
+
+    const string wLabele = "130px;";
+    const string wLabele1 = "50px;";
+    const string wLabele2 = "200px;";
+    const string wPolja = "50%";
+    const string wPolja1 = "100%";
+
+    switch (tipDokumenta)
+    {
+        case 1:
+            naslov = "Unos novog predmeta";
+            break;
+        case 2:
+            naslov = "Rezervisanje brojeva";
+            break;
+        case 3:
+            if (korisnik.IzmenaPredmeta)
+            {
+                naslov = "Pregled predmeta";
+            }
+            else
+            {
+                goto case 4;
+            }
+
+            break;
+        case 4:
+            naslov = "Izmena predmeta";
+            break;
+    }
+
+    var izmenaDms = korisnik.IzmenaPredmeta;
+}
+
+<script>
+    $(document).ready(qPredmeti.Init);
+</script>
+
+<style>
+    #predmetSadrzaj, #predmetIstorijaNapomena {
+        resize: none;
+        height: 100px;
+        width: calc(100% - 4px);
+        margin-bottom: 3px;
+    }
+
+    #predmetTabelaIstorijeTBody tr {
+        cursor: pointer;
+    }
+
+    #predmetTabelaIstorijeTBody tr.obrisanoKretanje {
+        font-style: italic;
+        background-color: #C2C2C2;
+    }
+
+    .unosRedVr {
+        width: calc(100% - 150px);
+    }
+
+    .signalZaBtnUnosKretanja {
+        background-color: #fe8049;
+        padding: 5px;
+        margin-top: -5px;
+    }
+
+    .tabSekcije {
+        margin-top: 10px;
+        max-height: 90%;
+    }
+
+    #nbsOverlej {
+        opacity: .5;
+        z-index: 550;
+    }
+    #nbsWrap {
+        padding: 2px 10px 10px;
+        position: fixed;
+        width: 780px;
+        height: 250px;
+        top: 50%;
+        left: 50%;
+        margin-top: -225px;
+        margin-left: -315px;
+        z-index: 551;
+        box-shadow: 0 10px 50px #444;
+        background-color: #EEE;
+    }
+    #nbsTabelaWrap tr {
+        cursor: pointer;
+        background-color: white !important;
+    }
+    #nbsTabelaWrap tr:hover {
+        background-color: #FFF0E5 !important;
+    }
+    #nbsTabelaWrap tr td {
+        border-bottom: 1px solid #dfdfdf;
+    }
+    #nbsTabelaWrap tr td:nth-child(5) {
+        white-space: nowrap;
+    }
+    #nbsTabelaWrap tr:last-child td {
+        border-bottom: none !important;
+    }
+    #nbsRacun1,
+    #nbsRacun2,
+    #nbsRacun3 {
+        display: block;
+        float: left;
+    }
+
+    #nbsWrap .unosRedVr {
+        width: auto !important;
+    }
+
+    .unosRedVrNbs {
+        width: calc(100% - 230px) !important;
+        float: left;
+    }
+
+    .unosRedVrNbsLinkovi {
+        width: calc(100% - 350px) !important;
+        float: left;
+    }
+
+    .predmetiNbs {
+        float: left;
+        margin-left: 20px;
+        margin-top: 3px;
+    }
+
+    #predmetObrisiVrednostPodnosioca, #predmetObrisiVrednostLicaKontrole {
+        opacity: 0.5;
+        margin-top: -1px;
+    }
+
+    #predmetObrisiVrednostPodnosioca:hover,
+    #predmetObrisiVrednostLicaKontrole:hover {
+        opacity: 1;
+    }
+
+    i.fa-info-circle,
+    i.fa-times,
+    i.fa-spinner {
+        opacity: 0.3;
+        cursor: pointer;
+    }
+
+    i.fa-info-circle:hover,
+    i.fa-times:hover {
+        opacity: 0.6;
+        color: black !important;
+        background-color: transparent !important;
+    }
+
+    #predmetTabelaPovezanihPredmetaTBody i.fa {
+        opacity: 0.6;
+        font-size: 1.4em;
+        cursor: pointer;
+    }
+
+    #predmetTabelaPovezanihPredmetaTBody i.fa:hover {
+        opacity: 1;
+    }
+
+    .unselectable {
+        -webkit-touch-callout: auto;
+        -webkit-user-select: auto;
+        -khtml-user-select: auto;
+        -moz-user-select: auto;
+        -ms-user-select: auto;
+        user-select: auto;
+    }
+</style>
+
+@if (!string.IsNullOrEmpty(poruka))
+{
+    <div id="greskaNaTransakciji" class="qDispNone">@poruka</div>
+}
+else
+{
+    <div class="hederH1">
+        <h1 style="float: left; max-width: 300px;">@Konverzija.VratiString(korisnik.Jezik, naslov)</h1>
+
+        <div style="float: right;">
+            @* PROSTOR ZA DUGMAD *@
+            <div id="predmetBtnWrap">
+                @if (tipDokumenta == 1 || tipDokumenta == 2)
+                {
+                    <div class="teloDugmeWrapUFormi btnFloatR btnResetX" id="predmetBtnReset">
+                        <table class="teloDugme teloDugmeDesno">
+                            <tr>
+                                <td><img src="@Url.Content("~/Content/img/w/x.png")" alt=""/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="predmetBtnSacuvaj" style="height: 26px !important;">
+                        <table class="teloDugme teloDugmeLevo">
+                            <tr>
+                                <td>@Konverzija.VratiString(korisnik.Jezik, "Potvrdi unos")</td>
+                            </tr>
+                        </table>
+                    </div>
+                }
+
+                @if (tipDokumenta == 3 && korisnik.IdOkruga != null && korisnik.IzmenaPredmeta)
+                {
+                    if (korisnik.SamoSvojePredmete)
+                    {
+                        if (vm.Predmet != null && (vm.Predmet.IdKreator == korisnik.IdKorisnika || vm.Predmet.IdInspektora == korisnik.IdKorisnika) && !korisnik.Inspektor)
+                        {
+                            <div class="teloDugmeWrapUFormi btnW1" id="predmetBtnIdiNaIzmenu" style="float: left; margin-left: 20px;">
+                                <table class="teloDugme">
+                                    <tr>
+                                        <td>@Konverzija.VratiString(korisnik.Jezik, "Idi na izmenu")</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        if (!korisnik.Inspektor)
+                        {
+                            <div class="teloDugmeWrapUFormi btnW1" id="predmetBtnIdiNaIzmenu" style="float: left; margin-left: 20px;">
+                                <table class="teloDugme">
+                                    <tr>
+                                        <td>@Konverzija.VratiString(korisnik.Jezik, "Idi na izmenu")</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        }
+                    }
+                }
+
+                @if (tipDokumenta == 4)
+                {
+                    <div class="teloDugmeWrapUFormi btnW3" id="predmetBtnIzmeni" style="float: left; margin-left: 20px">
+                        <table class="teloDugme">
+                            <tr>
+                                <td>@Konverzija.VratiString(korisnik.Jezik, "Sačuvaj")</td>
+                            </tr>
+                        </table>
+                    </div>
+                }
+
+                @if (tipDokumenta == 3 || tipDokumenta == 4)
+                {
+                    if (tipDokumenta == 3 && korisnik.IzmenaPredmeta && !korisnik.Inspektor && korisnik.IdOkruga != null)
+                    {
+                        <div class="teloDugmeWrapUFormi btnW3 qDispNone" id="predmetBtnUnosKretanja" style="float: left; margin-left: 10px">
+                            <table class="teloDugme">
+                                <tr>
+                                    <td>@Konverzija.VratiString(korisnik.Jezik, "Potvrdi unos")</td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                    else if (tipDokumenta == 4)
+                    {
+                        <div class="teloDugmeWrapUFormi btnW3 qDispNone" id="predmetBtnUnosKretanja" style="float: left; margin-left: 10px">
+                            <table class="teloDugme">
+                                <tr>
+                                    <td>@Konverzija.VratiString(korisnik.Jezik, "Potvrdi unos")</td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                }
+
+                @if (tipDokumenta == 3 || tipDokumenta == 4)
+                {
+                    if (close == true)
+                    {
+                        <div class="teloDugmeWrapUFormi" id="predmetBtnZatvoriProzor" style="float: left; margin-left: 10px; width: 80px;">
+                            <table class="teloDugme">
+                                <tr>
+                                    <td>@Konverzija.VratiString(korisnik.Jezik, "Zatvori")</td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+
+                    <div class="teloDugmeWrapUFormi btnW3" id="predmetBtnStampa" style="float: left; margin-left: 10px">
+                        <table class="teloDugme">
+                            <tr>
+                                <td>@Konverzija.VratiString(korisnik.Jezik, "Štampa")</td>
+                            </tr>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="qDispNone" id="url_VratiKlaseOrgana">@Url.Action("VratiKlaseOrgana")</div>
+    <div class="qDispNone" id="url_VratiJediniceOrgana">@Url.Action("VratiJediniceOrgana")</div>
+    <div class="qDispNone" id="url_SnimiPredmet">@Url.Action("SnimiPredmet")</div>
+    <div class="qDispNone" id="url_SnimiKretanjePredmeta">@Url.Action("SnimiIstorijuPredmeta")</div>
+    <div class="qDispNone" id="url_VratiLinkDokumentaPredmeta">@Url.Action("VratiLinkDokumentaPredmeta", "Dms")</div>
+    <div class="qDispNone" id="url_PretraziNbsKlijente">@Url.Action("PretraziNbsKlijente")</div>
+    <div class="qDispNone" id="url_VratiIstorijuPredmeta">@Url.Action("VratiIstorijuPredmeta")</div>
+    <div class="qDispNone" id="url_VratiStampePredmeta">@Url.Action("VratiStampePredmeta", "Izvestaji")</div>
+    <div class="qDispNone" id="url_VratiObrisaniDokument">@Url.Action("VratiObrisaniDokument", "Dms")</div>
+    <div class="qDispNone" id="url_ObrisiKretanjePredmeta">@Url.Action("ObrisiKretanjePredmeta")</div>
+    <div class="qDispNone" id="url_VratiSledeciSlobodanBrojPredmeta">@Url.Action("VratiSledeciSlobodanBrojPredmeta")</div>
+    <div class="qDispNone" id="url_SnimiAktivnostPredmeta">@Url.Action("SnimiAktivnostPredmeta")</div>
+    <div class="qDispNone" id="url_VratiIdPredmetaPrekoBroja">@Url.Action("VratiIdPredmetaPrekoBroja")</div>
+    <div class="qDispNone" id="url_VratiMestaOpstine">@Url.Action("VratiMestaOpstine")</div>
+    <div class="qDispNone" id="url_VratiDokumentePredmeta">@Url.Action("VratiDokumentePredmeta", "DMS")</div>
+
+    <div class="qDispNone" id="tipDokumenta">@tipDokumenta</div>
+    <div class="qDispNone" id="vm">@Json.Encode(vm)</div>
+    <div class="qDispNone" id="dmsTabSelektuj">@dms</div>
+    <div class="qDispNone" id="dmsIzmena">@izmenaDms</div>
+
+    if (stampa == true)
+    {
+        <div class="qDispNone" id="predmetiUcitavanjeStampe"></div>
+    }
+
+    <div class="oblakTelo" id="oblakTeloWrap">
+
+    @if (tipDokumenta == 3 || tipDokumenta == 4)
+    {
+        <div class="unosRed oblakTelo" style="padding: 5px; width: 500px; float: right; margin-top: -15px;">
+            <div class="unosRedLbl_taL" style="width: 100px">@Konverzija.VratiString(korisnik.Jezik, "Broj predmeta"):</div>
+            <div class="unosRedLbl_taL unselectable" style="width: 250px; float: left"><b>@vm.Predmet.OznakaOkruga-@vm.Predmet.OznakaOrgana-@vm.Predmet.OznakaKlase-@string.Format(@"{0}", vm.Predmet.BrojPredmeta).PadLeft(6, '0')/@vm.Predmet.Godina-@vm.Predmet.OznakaJedinice </b>
+            </div>
+            <div style="float: right; margin-right: 10px; margin-top: 3px;" id="nazivStatusaPredmeta">@vm.Predmet.NazivStatusa</div>
+        </div>
+    }
+
+    @if (tipDokumenta == 3 || tipDokumenta == 4)
+    {
+        <div id="predmetiTaboviWrap">
+            <ul class="taboviBar" id="predmetiTabovi" style="width: 100%;">
+                <li class="tab tabSel" data-tab="#predmetPodaciPredmeta"><span class="tabText">@Konverzija.VratiString(korisnik.Jezik, "Podaci")</span></li>
+                <li class="tab" data-tab="#predmetDmsPredmeta"><span class="tabText">@Konverzija.VratiString(korisnik.Jezik, "DMS")</span></li>
+                <li class="tab" data-tab="#predmetKretanjePredmeta"><span class="tabText">@Konverzija.VratiString(korisnik.Jezik, "Kretanje predmeta")</span></li>
+                <li class="tab" data-tab="#predmetIstorijaPredmeta"><span class="tabText">@Konverzija.VratiString(korisnik.Jezik, "Istorija predmeta")</span></li>
+            </ul>
+        </div>
+    }
+
+
+    @* PODACI PREDMETA *@<section id="predmetPodaciPredmeta" class="tabSekcije">
+        <div style="float: left; width: 50%;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Datum"):</div>
+                <div class="unosRedVr">
+                    <div class="unosRedLbl_taL" id="predmetDatum" style="width: @wPolja1"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="float: right; margin-right: 10px;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Korisni linkovi"):</div>
+                <a class="predmetiNbs" href="http://www.nbs.rs/rir_pn/rir.html.jsp?lang=SER_CIR&amp;konverzija=no" target="_blank">@Konverzija.VratiString(korisnik.Jezik, "Link 1")</a>
+                <a class="predmetiNbs" href="http://pretraga2.apr.gov.rs/ObjedinjenePretrage/Search/Search" target="_blank">@Konverzija.VratiString(korisnik.Jezik, "Link 2")</a>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="unosRed" style="float: left; width: 60%;">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Okrug"):</div>
+            <div class="unosRedVr"><input class="myInput" id="predmetOkrug" disabled="disabled" value="@vm.Okrug.Naziv" data-idOkruga="@vm.Okrug.IdElementa" style="width: 517px"/>
+            </div>
+        </div>
+
+        <div style="float: right; margin-right: 10px; display: none;" id="predmetSledeciSlobodanBrojWrap">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele2">@Konverzija.VratiString(korisnik.Jezik, "Sledeći slobodan broj predmeta"):</div>
+                <div class="unosRedLbl_taR" id="predmetSledeciSlobodanBroj" style="width: 52px;"></div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Opština"):</div>
+            <div class="unosRedVr">
+                <div id="predmetOpstine"></div>
+            </div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Mesto"):</div>
+            <div class="unosRedVr">
+                <div id="predmetMesta"></div>
+            </div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Organ"):</div>
+            <div class="unosRedVr">
+                <div id="predmetOrgani"></div>
+            </div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Klasa"):</div>
+            <div class="unosRedVr">
+                <div id="predmetKlase"></div>
+            </div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Jedinica"):</div>
+            <div class="unosRedVr">
+                <div id="predmetJedinice"></div>
+            </div>
+        </div>
+
+        @if (tipDokumenta == 2)
+        {
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Količina"):</div>
+                <div class="unosRedVr"><input class="myInput" id="predmetKolicina" data-val="1" style="width: @wPolja"/>
+                </div>
+            </div>
+        }
+
+        @if (tipDokumenta != 2 && korisnik.StrogoPoverljivi)
+        {
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Strogo poverljiv"):</div>
+                <div class="unosRedVr"><input class="myInput" type="checkbox" style="margin-top: 2px !important;" id="predmetStrogoPoverljiv"/>
+                </div>
+            </div>
+        }
+
+        <div class="clear"></div>
+
+
+        <div class="unosRed" id="radioWrapInspektor">
+            <input type="radio" name="inspektor" checked="checked" value="0"/> @Konverzija.VratiString(korisnik.Jezik, "Fizičko lice")
+            <input type="radio" style="margin-left: 20px;" name="inspektor" value="1"/> @Konverzija.VratiString(korisnik.Jezik, "Pravno lice")
+            <input type="radio" style="margin-left: 20px;" name="inspektor" value="2"/> @Konverzija.VratiString(korisnik.Jezik, "Inspektor")
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Podnosilac"):</div>
+            <div class="unosRedVrNbs">
+                <input class="myInput" id="predmetPodnosilac" style="width: @wPolja1"/>
+            </div>
+            <img class="predmetiNbs x qDispNone" id="predmetObrisiVrednostPodnosioca" src="@Url.Content("~/Content/img/b/x.png")" title="@Konverzija.VratiString(korisnik.Jezik, "Obriši vrednost")" style="margin-left: -25px"/>
+            <a class="predmetiNbs qDispNone" href="#" id="predmetPodnosilacNBS" data-provera="1">@Konverzija.VratiString(korisnik.Jezik, "NBS")</a>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Inspektor"):</div>
+            <div class="unosRedVr">
+                <div id="predmetInspektori"></div>
+            </div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Subjekt kontrole"):</div>
+            <div class="unosRedVrNbs">
+                <input class="myInput" id="predmetKontrolnoLice" style="width: @wPolja1"/>
+            </div>
+            <img class="predmetiNbs x qDispNone" id="predmetObrisiVrednostLicaKontrole" src="@Url.Content("~/Content/img/b/x.png")" title="@Konverzija.VratiString(korisnik.Jezik, "Obriši vrednost")" style="margin-left: -25px"/>
+            <a href="#" class="predmetiNbs" id="predmetKontrolnoLiceNBS" data-provera="2">@Konverzija.VratiString(korisnik.Jezik, "NBS")</a>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Vrsta predmeta"):</div>
+            <div class="unosRedVr">
+                <div id="predmetVrste"></div>
+            </div>
+        </div>
+
+        <div class="unosRed">
+            <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Sadržaj"):</div>
+            <div class="unosRedVr"><textarea id="predmetSadrzaj"></textarea>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div style="float: left; width: 35%;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Taksa"):</div>
+                <div class="unosRedVr">
+                    <div id="predmetTakse"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="float: left; margin-left: 5%; width: 20%;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele1">@Konverzija.VratiString(korisnik.Jezik, "Rok"):</div>
+                <div class="unosRedVr">
+                    <div class="unosRedLbl_taL" id="predmetRok" style="width: @wPolja1;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div style="float: left; margin-left: 3%; width: 37%;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Strani broj"):</div>
+                <div class="unosRedVr"><input class="myInput" id="predmetStraniBroj" style="width: @wPolja1"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        @* PREZAVODJENJE PREDMETA *@
+
+        <div style="float: left; width: 40%;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Prezavodjenje"):</div>
+                <div class="unosRedVr" style="width: calc(100% - 240px);"><input type="text" id="predmetBrojNadredjenogPredmeta" class="myInput" style="width: @wPolja1;"/>
+                </div>
+                <div style="float: left; margin-left: 10px;">
+                    <i class="fa fa-info-circle fa-2x qTdPopupPredmeti qDispNone" id="predmetBrojNadredjenogPredmetaInfo" aria-hidden="true"></i>
+                    <i class="fa fa-times qDispNone fa-2x" id="predmetBrojNadredjenogPredmetaDelete" aria-hidden="true"></i>
+                    <i class="fa fa-spinner fa-pulse fa-2x fa-fw" id="predmetBrojNadredjenogPredmetaLoader" aria-hidden="true" style="display: none;"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div style="float: left; width: 35%;">
+            <table class="qTabela modTd qDispNone" id="predmetTabelaPovezanihPredmeta">
+                <thead>
+                <tr>
+                    <td class="qTabelaHeadTd tac" style="width: 30px;"></td>
+                    <td class="qTabelaHeadTd tac">@Konverzija.VratiString(korisnik.Jezik, "Povezani predmet")</td>
+                </tr>
+                </thead>
+                <tbody id="predmetTabelaPovezanihPredmetaTBody">
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    @if (tipDokumenta == 3 || tipDokumenta == 4)
+    {
+        @* DMS PREDMETA *@
+        <section id="predmetDmsPredmeta" class="qDispNone tabSekcije">
+            <div id="_dmsIco" style="display: none;">@Url.Content("~/Content/img/dms/v2/")</div>
+            <div id="dmsWrap">
+                <div class="dmsTeloWrap">
+                    <div id="leviDeo">
+                        <div id="donjiLeviDeo">
+                            <h1 class="dmsH1" style="float: left;">@Konverzija.VratiString(korisnik.Jezik, "Postojeći fajlovi"):</h1>
+                            @if ((korisnik.Administracija || korisnik.IdOkruga != null) && korisnik.IzmenaPredmeta && !korisnik.Inspektor)
+                            {
+                                <div style="float: right">
+                                    <input type="checkbox" id="dmsPrikaziObrisane"/> @Konverzija.VratiString(korisnik.Jezik, "Prikaži obrisane")
+                                </div>
+                            }
+
+                            <div class="clear"></div>
+
+                            <div id="dmsFilesWrap">
+                            </div>
+                        </div>
+
+                        <div id="dmsLeviDeoDelimiter" class="clear withLine"></div>
+
+                        <div id="dmsLevo">
+                            <h1 class="dmsH1" style="float: left;">@Konverzija.VratiString(korisnik.Jezik, "Pošalji nove fajlove"):</h1>
+
+                            <div class="clear"></div>
+
+                            <div id="dmsUpload" class="qq-regular-button" style="position: absolute; right: 10px; z-index: 560"><span class="ubt">@Konverzija.VratiString(korisnik.Jezik, "Sačuvaj")</span></div>
+                            <div id="dmsBrowse"></div>
+                        </div>
+                    </div>
+                    <div id="dmsDesno">
+                        <div id="dmsDesnoDonjiRed">
+                            <div id="dmsPorukaZaZoom" style="display: none; margin-top: 10px; float: right;">
+                                @Konverzija.VratiString(korisnik.Jezik, "Za zumiranje koristiti točkić na mišu.")
+                            </div>
+
+                            <div id="dmsLinkoviWrap" class="qDispNone" style="float: left; margin-top: 10px;">
+                                <a href="" class="pregledaj" target="_blank">@Konverzija.VratiString(korisnik.Jezik, "Pregledaj")</a>
+                                <a href="#" class="link" target="_blank">@Konverzija.VratiString(korisnik.Jezik, "Preuzmi")</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </section>
+
+        @* KRETANJE PREDMETA *@
+        <section id="predmetKretanjePredmeta" class="qDispNone tabSekcije">
+            <div id="predmetTabelaKretanjaWrap" class="qTabelaScrWrap">
+                <div id="predmetTabelaKretanjaScroll" class="qTabelaScrScroll" style="max-height: 300px;">
+
+                    <div id="predmetKretanjaTabela">
+                        <table class="qTabela modTd" id="predmetTabelaKretanja">
+                            <thead>
+                            <tr>
+                                <td class="qTabelaHeadTd tac" style="width: 120px">@Konverzija.VratiString(korisnik.Jezik, "Vreme")</td>
+                                <td class="qTabelaHeadTd tac" style="width: 250px">@Konverzija.VratiString(korisnik.Jezik, "Korisnik")</td>
+                                <td class="qTabelaHeadTd tac" style="width: 270px">@Konverzija.VratiString(korisnik.Jezik, "Opis")</td>
+                                <td class="qTabelaHeadTd tac">@Konverzija.VratiString(korisnik.Jezik, "Napomena")</td>
+                                <td class="qTabelaHeadTd tac" style="width: 90px">@Konverzija.VratiString(korisnik.Jezik, "Datum roka")</td>
+                                <td class="qTabelaHeadTd tac" style="width: 30px;"></td>
+                            </tr>
+                            </thead>
+                            <tbody id="predmetTabelaKretanjaTBodyFilter">
+                            <tr>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                                <td class="qTabelaTd"></td>
+                            </tr>
+                            </tbody>
+                            <tbody id="predmetTabelaKretanjaTBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="qTabelaScrHead"><table class="qTabela modTd" id="predmetTabelaKretanjaCloneHead"></table>
+                    </div>
+                </div>
+            </div>
+
+            @if ((tipDokumenta == 4 || (tipDokumenta == 3 && !korisnik.Inspektor)) && korisnik.IzmenaPredmeta && korisnik.IdOkruga != null)
+            {
+                <div class="clear" style="margin-top: 30px;"></div>
+
+                <div class="unosRed" style="float: left;">
+                    <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Vrsta kretanja"):</div>
+                    <div class="unosRedVr">
+                        <div id="predmetIstorijaVrsteKretanja"></div>
+                    </div>
+                </div>
+
+                <div class="unosRed qDispNone" id="predmetIstorijaKretanjaDatumRokaWrap" style="float: right; margin-right: 13px;">
+                    <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Rok"):</div>
+                    <div class="unosRedVr">
+                        <div id="predmetIstorijaKretanjaDatumRoka"></div>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="unosRed">
+                    <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Napomena"):</div>
+                    <div class="unosRedVr"><textarea id="predmetIstorijaNapomena"></textarea>
+                    </div>
+                </div>
+            }
+        </section>
+
+        @* ISTORIJA PREDMETA *@
+        <section id="predmetIstorijaPredmeta" class="qDispNone tabSekcije">
+            <div id="predmetTabelaIstorijaWrap" class="qTabelaScrWrap">
+                <div id="predmetTabelaIstorijaScroll" class="qTabelaScrScroll" style="max-height: 300px;">
+
+                    <div id="predmetIstorijaTabela">
+                        <table class="qTabela modTd" id="predmetTabelaIstorije">
+                            <thead>
+                            <tr>
+                                <td class="qTabelaHeadTd tac" style="width: 120px">@Konverzija.VratiString(korisnik.Jezik, "Vreme")</td>
+                                <td class="qTabelaHeadTd tac" style="width: 250px">@Konverzija.VratiString(korisnik.Jezik, "Korisnik")</td>
+                                <td class="qTabelaHeadTd tac" style="width: 300px">@Konverzija.VratiString(korisnik.Jezik, "Opis")</td>
+                                <td class="qTabelaHeadTd tac">@Konverzija.VratiString(korisnik.Jezik, "Napomena")</td>
+                            </tr>
+                            </thead>
+                            <tbody id="predmetTabelaIstorijeTBodyFilter">
+                            <tr>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                                <td class="qTabelaTd" data-quitablefilter-type="txt"></td>
+                            </tr>
+                            </tbody>
+                            <tbody id="predmetTabelaIstorijeTBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="qTabelaScrHead"><table class="qTabela modTd" id="predmetTabelaIstorijeCloneHead"></table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    </div>
+
+    <section id="_nbs" style="display: none">
+        @{
+            const string nbsLbl1 = "120px";
+            const string nbsVr1 = "255px";
+        }
+        <div id="nbsOverlej" class="overlej"></div>
+        <div id="nbsWrap">
+            <img id="nbsX" src="@Url.Content("~/Content/img/b/x.png")" alt="" style="position: absolute; top: 2px; right: 5px; cursor: pointer"/>
+            <h1 class="dmsH1" style="font-weight: 300" id="nbsNaslov">@Konverzija.VratiString(korisnik.Jezik, "NBS")</h1>
+            <div id="nbsTeloWrap">
+                <div style="float: left; width: 49%">
+                    <div class="unosRed">
+                        <div class="unosRedLbl_taL" style="width: @nbsLbl1">@Konverzija.VratiString(korisnik.Jezik, "PIB"):</div>
+                        <div class="unosRedVr"><input type="text" id="nbsPib" class="myInput" style="width: @nbsVr1"/>
+                        </div>
+                    </div>
+                    <div class="unosRed">
+                        <div class="unosRedLbl_taL" style="width: @nbsLbl1">@Konverzija.VratiString(korisnik.Jezik, "Matični broj"):</div>
+                        <div class="unosRedVr"><input type="text" id="nbsMaticni" class="myInput" style="width: @nbsVr1"/>
+                        </div>
+                    </div>
+                    <div class="unosRed">
+                        <div class="unosRedLbl_taL" style="width: @nbsLbl1">@Konverzija.VratiString(korisnik.Jezik, "Naziv"):</div>
+                        <div class="unosRedVr"><input type="text" id="nbsNaziv" class="myInput" style="width: @nbsVr1"/>
+                        </div>
+                    </div>
+                </div>
+                <div style="float: right; width: 49%">
+                    <div class="unosRed">
+                        <div class="unosRedLbl_taL" style="width: @nbsLbl1">@Konverzija.VratiString(korisnik.Jezik, "Mesto"):</div>
+                        <div class="unosRedVr"><input type="text" id="nbsMesto" class="myInput" style="width: @nbsVr1"/>
+                        </div>
+                    </div>
+                    <div class="unosRed">
+                        <div class="unosRedLbl_taL" style="width: @nbsLbl1">@Konverzija.VratiString(korisnik.Jezik, "Račun"):</div>
+                        <div class="unosRedVr">
+                            <input type="text" id="nbsRacun1" class="myInput" style="width: 50px"/>
+                            <input type="text" id="nbsRacun2" class="myInput" style="width: 171px"/>
+                            <input type="text" id="nbsRacun3" class="myInput" style="width: 30px"/>
+                        </div>
+                    </div>
+                    <div class="unosRed">
+                        <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="nbsBtnPretrazi">
+                            <table class="teloDugme">
+                                <tr>
+                                    <td>@Konverzija.VratiString(korisnik.Jezik, "Pretraži")</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div id="nbsGreskaWrap" style="padding: 5px; display: none; text-align: center"></div>
+                <div id="nbsTabelaWrap" style="overflow-y: auto; margin-top: 6px; display: none">
+                    <table class="qTabela modTd">
+                        <thead>
+                        <tr>
+                            <td>@Konverzija.VratiString(korisnik.Jezik, "Naziv")</td>
+                            <td>@Konverzija.VratiString(korisnik.Jezik, "PIB")</td>
+                            <td>@Konverzija.VratiString(korisnik.Jezik, "Matični broj")</td>
+                            <td>@Konverzija.VratiString(korisnik.Jezik, "Adresa")</td>
+                            <td>@Konverzija.VratiString(korisnik.Jezik, "Tekući račun")</td>
+                        </tr>
+                        </thead>
+                        <tbody id="nbsTabelaTBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+}

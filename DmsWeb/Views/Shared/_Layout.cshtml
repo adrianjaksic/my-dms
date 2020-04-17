@@ -1,0 +1,248 @@
+﻿@using DmsCore.Data
+@using DmsCore.Podesavanja
+@using DmsWeb.Infrastructure
+@{
+    var korisnik = RuntimeDataHelpers.GetRuntimeData(Request);
+
+    var jira = !string.IsNullOrEmpty(DmsData.JiraUrl);
+
+    var appendVersion = Html.AppendAppVer();
+
+    var minified = ".min";
+
+    if (System.Diagnostics.Debugger.IsAttached)
+    {
+        minified = string.Empty;
+    }
+
+}
+<script type="text/javascript" src="../../Content/feedback/html2canvas.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+    <title>@Konverzija.VratiString(korisnik.Jezik, "Sistem za evidenciju predmeta")</title>
+    <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon.ico")"/>
+    
+    <!-- CSS: Awesome fonts -->
+    <link href="@Url.Content("~/Content/font-awesome-4.5.0/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    
+    <!-- CSS: JQWidgets -->
+    <link href="@Url.Content("~/Content/jqwstyle.css")" rel="stylesheet" type="text/css" />
+    
+    <!-- CSS: SlickGrid -->
+    <link href="@Url.Content("~/Content/slickgrid/css/smoothness/jquery-ui-1.8.16.custom.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/slickgrid/slick.grid.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/slickgrid/controls/slick.pager.css")" rel="stylesheet" type="text/css" />
+
+    <!-- JS: JQuery, JQWidgets -->
+    <script src="@Url.Content("~/Scripts/jquery-1.7.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.ba-hashchange.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/signals.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/jqwidgets/jqx-all-mod-3.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.color.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.total-storage.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-highlight1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/stupidtable.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/easyBackground.js")" type="text/javascript"></script>
+    
+    <!-- JS: SlickGrid -->
+    @*<script src="@Url.Content("~/Content/slickgrid/lib/firebugx.js")" type="text/javascript"></script>*@
+    @*<script src="@Url.Content("~/Content/slickgrid/lib/jquery-ui-1.8.16.custom.min.js")" type="text/javascript"></script>*@
+    <script src="@Url.Content("~/Content/slickgrid/lib/jquery.event.drag-2.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/slickgrid/slick.core.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/slickgrid/plugins/slick.rowselectionmodel.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/slickgrid/plugins/slick.checkboxselectcolumn.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/slickgrid/slick.dataview.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/slickgrid/slick.grid.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/slickgrid/controls/slick.pager.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/slickgrid/controls/slick.columnpicker.js")" type="text/javascript"></script>
+    
+    <script src="@Url.Content("~/Content/fineuploader/fineuploader-3.0.min.js")" type="text/javascript"></script>
+    
+    <!-- CSS: Quinta -->
+    <link href="@Url.Content("~/Content/style.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jQuintaUI/jQuintaUI/content/qui.css")" rel="stylesheet" type="text/css" />
+
+     <!-- CSS: Quinta -->
+    <link href="@Url.Content("~/Content/qPlugins.css")" rel="stylesheet" type="text/css" />
+    
+    <!-- JS/CSS: FineUploader -->
+    <script src="@Url.Content("~/Content/fineuploader/fineuploader-3.0.min.js")" type="text/javascript"></script>
+    
+    <!-- JS: Quinta -->
+    <script src="@Url.Content("~/Scripts/quinta.putanje.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/jQuintaUI/jQuintaUI/qui.all.n" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/quinta.keys" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/quinta.ui" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    
+    <!-- JS: Wheelzoom script za image zoom kod dms-a -->
+    <script src="@Url.Content("~/Scripts/wheelzoom.js")" type="text/javascript"></script>
+    
+    <!-- LS: PdfObject -->
+    <script type="text/javascript" src="@Url.Content("~/Content/pdfobject/pdfobject.min.js")"></script>
+    
+    <!-- JS: E-Pisarnica-->
+    <script src="@Url.Content("~/Scripts/pisarnica.sifarnici" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/pisarnica.predmeti" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/pisarnica.konverzija" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/pisarnica.pretraga" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/pisarnica.dms" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/pisarnica.izvestaji" + minified + ".js")@appendVersion" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/pisarnica.zapisnici" + minified + ".js")@appendVersion" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="eb"></div>
+
+    <div class="qDispNone" id="url_PosaljiStampuNaMail">@Url.Action("PosaljiStampuNaMail", "AppGlobal")</div>
+    <div class="qDispNone" id="url_PrijaviGresku">@Url.Action("PrijaviGresku", "Predmeti")</div>
+
+    <div class="qDispNone" id="mailKorisnikaZaSlanjeStampe">@korisnik.Email</div>
+
+    <div id="prozOverlej" class="overlej" style="display: none"></div>
+    <div id="popupOverlej" class="overlej" style="display: none"></div>
+
+    <div id="preHeder" class="qDispNone">
+
+        <div class="unosRed1" style="float:left; text-align: center">
+            <img src="@Url.Content("~/Content/img/mainlogo/logoGenericMali.png")" alt="" />
+        </div>
+
+        <div class="unosRed2" style="float:left; margin-left: -20px;">
+            <h3>@Konverzija.VratiString(korisnik.Jezik, "DMS")</h3>
+            <p>@Konverzija.VratiString(korisnik.Jezik, "Sistem za evidentiranje, obradu i upravljanje dokumentima.")</p>
+        </div>
+
+        <div class="unosRed3" style="float:left; margin-left: 30px;">
+            <h3>@Konverzija.VratiString(korisnik.Jezik, "Adrian Jakšić")</h3>
+            <p style="float: left;">@Konverzija.VratiString(korisnik.Jezik, "Email"):</p>
+            <p style="float: right;"><a href="mailto:adrian@jaksic.net">adrian@jaksic.net</a></p>
+        </div>
+    </div>
+
+    <div class="preHederLine">
+        <div id="phExpander">@Konverzija.VratiString(korisnik.Jezik, "DMS")</div>
+    </div>
+
+    <div id="content">
+        <header class="hederGlavni" style="height: 37px;">
+            @Html.Action("Meni", "Meni")
+        </header>
+
+        <div id="main">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div id="loader">
+        <div id="loaderGif2"></div>
+    </div>
+
+    <i id="main-feedback" class="fa fa-exclamation-triangle" aria-hidden="true" title="@Konverzija.VratiString(korisnik.Jezik, "Za prijavu greške kliknite na trougao.")" data-html2canvas-ignore="true" data-jira="@jira"></i>
+
+    <div id="trxSearch" style="position: fixed; top: 100px; left: 50%; margin-left: -200px; display: none;"></div>
+
+    <section id="sviProzori">
+        <div class="proz" id="proz" style="display: none; overflow: visible;">
+            <div class="prozHeder">
+                <div class="prozHederNaslov">@Konverzija.VratiString(korisnik.Jezik, "DMS") - <span id="prozNaslov"></span></div>
+            </div>
+            <div class="prozTelo" id="prozTelo" style="overflow: auto;">
+
+            </div>
+            <div class="prozDugmad" style="position: relative">
+                <div id="prozDugmad1">
+                    <input type="button" value="a" id="prozT1Zatvorii" style="width: 1px; height: 1px; padding: 0; margin: 0; border:none; position: absolute; top: 0; left: -100px;" />
+                    <div class="teloDugmeWrapUProzoru btnW3" id="prozT1Zatvori">
+                        <table class="teloDugme">
+                            <tr>
+                                <td data-defaultLbl="@Konverzija.VratiString(korisnik.Jezik, "ZATVORI")">@Konverzija.VratiString(korisnik.Jezik, "ZATVORI")</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="prozDugmad2">
+                    <div class="teloDugmeWrapUProzoru btnW3" id="prozT2Potvrdi">
+                        <table class="teloDugme">
+                            <tr>
+                                <td data-defaultLbl="@Konverzija.VratiString(korisnik.Jezik, "POTVRDI")">@Konverzija.VratiString(korisnik.Jezik, "POTVRDI")</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="teloDugmeWrapUProzoru btnW3" id="prozT2Otkazi">
+                        <table class="teloDugme">
+                            <tr>
+                                <td data-defaultLbl="@Konverzija.VratiString(korisnik.Jezik, "OTKAŽI")">@Konverzija.VratiString(korisnik.Jezik, "OTKAŽI")</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="prozDugmad3">
+                    <div class="teloDugmeWrapUProzoru btnW3" id="prozT31">
+                        <table class="teloDugme">
+                            <tr>
+                                <td data-defaultLbl="@Konverzija.VratiString(korisnik.Jezik, "DA")"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="teloDugmeWrapUProzoru btnW3" id="prozT32">
+                        <table class="teloDugme">
+                            <tr>
+                                <td data-defaultLbl="@Konverzija.VratiString(korisnik.Jezik, "NE")"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="teloDugmeWrapUProzoru btnW3" id="prozT33">
+                        <table class="teloDugme">
+                            <tr>
+                                <td data-defaultLbl="@Konverzija.VratiString(korisnik.Jezik, "OTKAŽI")"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="prozDugmad4">
+                    <div class="teloDugmeWrapUProzoru btnW3" id="prozT4Potvrdi">
+                        <table class="teloDugme">
+                            <tr>
+                                <td>FISK</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="prozDugmadCustom">
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="helpContainer" style="display: none"></div>
+
+    <div id="helpWindow" style="display: none">
+        <div>@Konverzija.VratiString(korisnik.Jezik, "DMS")</div>
+        <div><div id="helpWindowContent"></div></div>
+    </div>
+
+    <div id="qHoverPopup" class="qPopup_box" style="display: none; z-index: 602;"></div>
+
+    <div id="qHoverPopupNapomena" class="qPopup_box" style="display: none;">
+        <img src="@Url.Content("~/Content/img/b/x.png")" title='Zatvori' alt='' />
+        <div style="padding: 10px">
+            <div>NAPOMENA:</div>
+            <div><textarea class="myInput" style="width: 300px;height: 100px; resize: none;"></textarea></div>
+        </div>
+    </div>
+
+    <div id="jqwZaSklanjanje"></div>
+
+</body>
+</html>

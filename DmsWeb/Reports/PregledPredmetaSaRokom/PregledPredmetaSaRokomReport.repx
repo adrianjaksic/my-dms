@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="14.2.3.0" Ref="1" Name="PregledPredmetaSaRokomReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Version="14.2" Landscape="true" PageWidth="1100" Margins="70, 70, 40, 40" PageHeight="850">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" Expanded="false" HeightF="40" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" Padding="0,0,0,0,100" TextAlignment="TopLeft" HeightF="40.00001">
+      <Controls>
+        <Item1 Ref="4" Name="xrLabel6" ControlType="XRLabel" SizeF="960,23" LocationFloat="0, 17.00001" Font="Times New Roman, 9.75pt, style=Bold, charSet=238" Padding="2,2,0,0,100" Text="Pregled predmeta sa rokom">
+          <StylePriority Ref="5" UseFont="false" />
+        </Item1>
+        <Item2 Ref="6" ControlType="XRPageInfo" Name="xrPageInfo1" PageInfo="DateTime" SizeF="960,17" LocationFloat="1.589457E-05, 0" Padding="2,2,0,0,100" TextAlignment="TopRight" Format="{0:dd.MM.yyyy}">
+          <StylePriority Ref="7" UseTextAlignment="false" />
+        </Item2>
+      </Controls>
+    </Item2>
+    <Item3 Ref="8" Name="BottomMargin" ControlType="BottomMarginBand" Padding="0,0,0,0,100" TextAlignment="TopLeft" HeightF="40" />
+    <Item4 Ref="9" ControlType="DetailReportBand" Name="DetailReport" DataMember="Stavke" DataSource="#Ref-0" Level="0">
+      <Bands>
+        <Item1 Ref="10" ControlType="DetailBand" Name="Detail1" HeightF="15">
+          <Controls>
+            <Item1 Ref="11" Name="xrTable2" ControlType="XRTable" SizeF="960.0001,15" LocationFloat="1.589457E-05, 0">
+              <Rows>
+                <Item1 Ref="12" Name="xrTableRow2" ControlType="XRTableRow" Weight="0.6">
+                  <Cells>
+                    <Item1 Ref="13" Name="xrTableCell6" ControlType="XRTableCell" Weight="0.16782411779395634">
+                      <Summary Ref="14" Running="Report" Func="RecordNumber" />
+                    </Item1>
+                    <Item2 Ref="15" Name="xrTableCell7" ControlType="XRTableCell" Weight="0.95254625340421883">
+                      <DataBindings>
+                        <Item1 Ref="16" PropertyName="Text" DataMember="Stavke.SifraPredmeta" />
+                      </DataBindings>
+                    </Item2>
+                    <Item3 Ref="17" Name="xrTableCell12" ControlType="XRTableCell" Weight="0.59953580974873222">
+                      <DataBindings>
+                        <Item1 Ref="18" FormatString="{0:dd.MM.yyyy}" PropertyName="Text" DataMember="Stavke.DatumRoka" />
+                      </DataBindings>
+                    </Item3>
+                    <Item4 Ref="19" Name="xrTableCell8" ControlType="XRTableCell" Multiline="true" Weight="1.015047122215355">
+                      <DataBindings>
+                        <Item1 Ref="20" PropertyName="Text" DataMember="Stavke.Podnosilac" />
+                      </DataBindings>
+                    </Item4>
+                    <Item5 Ref="21" Name="xrTableCell9" ControlType="XRTableCell" Multiline="true" Weight="1.1412035474483">
+                      <DataBindings>
+                        <Item1 Ref="22" PropertyName="Text" DataMember="Stavke.NazivInspektora" />
+                      </DataBindings>
+                    </Item5>
+                    <Item6 Ref="23" Name="xrTableCell10" ControlType="XRTableCell" Weight="1.4571766977434706">
+                      <DataBindings>
+                        <Item1 Ref="24" PropertyName="Text" DataMember="Stavke.Sadrzaj" />
+                      </DataBindings>
+                    </Item6>
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item1>
+        <Item2 Ref="25" ControlType="GroupHeaderBand" Name="GroupHeader1" HeightF="15">
+          <Controls>
+            <Item1 Ref="26" Name="xrTable1" ControlType="XRTable" SizeF="960.0001,15" LocationFloat="0, 0">
+              <Rows>
+                <Item1 Ref="27" Name="xrTableRow1" ControlType="XRTableRow" Weight="0.60000003814697267">
+                  <Cells>
+                    <Item1 Ref="28" Name="xrTableCell1" ControlType="XRTableCell" Text="R.Br." Weight="0.16782416017947863" />
+                    <Item2 Ref="29" Name="xrTableCell2" ControlType="XRTableCell" Text="Šifra predmeta" Weight="0.95254637490624317" />
+                    <Item3 Ref="30" Name="xrTableCell11" ControlType="XRTableCell" Text="Datum roka" Weight="0.59953575849852736" />
+                    <Item4 Ref="31" Name="xrTableCell3" ControlType="XRTableCell" Text="Podnosilac&#xD;&#xA;" Multiline="true" Weight="1.0150468606048972" />
+                    <Item5 Ref="32" Name="xrTableCell4" ControlType="XRTableCell" Text="Inspektor&#xD;&#xA;" Multiline="true" Weight="1.1412038037074868" />
+                    <Item6 Ref="33" Name="xrTableCell5" ControlType="XRTableCell" Text="Sadržaj" Weight="1.4571763610188204" />
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item2>
+      </Bands>
+    </Item4>
+  </Bands>
+  <StyleSheet>
+    <Item1 Ref="34" Name="Title" BorderStyle="Inset" Font="Times New Roman, 20pt, style=Bold" ForeColor="Maroon" BackColor="Transparent" BorderColor="Black" BorderWidthSerializable="1" Sides="None" StringFormat="Near;Near;0;None;Character;Default" />
+    <Item2 Ref="35" Name="FieldCaption" BorderStyle="Inset" Font="Arial, 10pt, style=Bold" ForeColor="Maroon" BackColor="Transparent" BorderColor="Black" BorderWidthSerializable="1" Sides="None" StringFormat="Near;Near;0;None;Character;Default" />
+    <Item3 Ref="36" Name="PageInfo" BorderStyle="Inset" Font="Times New Roman, 10pt, style=Bold" ForeColor="Black" BackColor="Transparent" BorderColor="Black" BorderWidthSerializable="1" Sides="None" StringFormat="Near;Near;0;None;Character;Default" />
+    <Item4 Ref="37" Name="DataField" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Times New Roman, 10pt" ForeColor="Black" BackColor="Transparent" BorderColor="Black" BorderWidthSerializable="1" Sides="None" StringFormat="Near;Near;0;None;Character;Default" />
+  </StyleSheet>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v14.2" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PERhdGFTb3VyY2UgVHlwZT0iRG1zQ29yZS5JenZlc3RhamkuUHJlZ2xlZFByZWRtZXRhU2FSb2tvbVphZ2xhdmxqZSwgRG1zQ29yZSwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PFBhcmFtZXRlcnMgLz48L09iamVjdERhdGFTb3VyY2U+" />
+    <Item2 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v14.2" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PERhdGFTb3VyY2UgVHlwZT0iRG1zQ29yZS5JenZlc3RhamkuUHJlZ2xlZFByZWRtZXRhU2FSb2tvbVphZ2xhdmxqZSwgRG1zQ29yZSwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PFBhcmFtZXRlcnMgLz48L09iamVjdERhdGFTb3VyY2U+" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

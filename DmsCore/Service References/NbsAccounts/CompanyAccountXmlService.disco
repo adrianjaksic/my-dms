@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://webservices.nbs.rs/CommunicationOfficeService1_0/CompanyAccountXmlService.asmx?wsdl" docRef="https://webservices.nbs.rs/CommunicationOfficeService1_0/CompanyAccountXmlService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://webservices.nbs.rs/CommunicationOfficeService1_0/CompanyAccountXmlService.asmx" xmlns:q1="http://communicationoffice.nbs.rs" binding="q1:CompanyAccountXmlServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://webservices.nbs.rs/CommunicationOfficeService1_0/CompanyAccountXmlService.asmx" xmlns:q2="http://communicationoffice.nbs.rs" binding="q2:CompanyAccountXmlServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

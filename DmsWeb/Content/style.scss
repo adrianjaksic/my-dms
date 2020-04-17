@@ -1,0 +1,3483 @@
+﻿$bojaFonta: #444;
+$bojaFontaSvetlija: #888;
+$bojaFonta2: #ddd;
+$boja1: #444;
+$boja1Svetlija: #555;
+$boja1Svetlija2: #666;
+$boja1Svetlija3: #888;
+
+// ------------------------------------------------
+// difoltne boje, NE MENJATI nego komentarisati
+//$boja2:#fe5815; // tamnija
+//$boja3:#fe8049; // svetlija
+
+// boje za pisarnicu
+$boja2:#00419A; // tamnija
+$boja3:#80A0CC; // svetlija
+
+//$boja2:#f39c12; // tamnija
+//$boja3:#f1c40f; // svetlija
+// ------------------------------------------------
+
+$boja3PunoSvetlija: #FFF0E5;
+$boja3PunoSvetlija2: #FFB793;
+$bojaSenkeOut: #999;
+$bojaSenkeIn: #222;
+$bojaSenkeIn2: #bbb;
+$bojaSenkeHtexta: #aaa;
+$bojaInpBordera: #dfdfdf;
+$bojaHelpNaslovaH1: #D84A10;
+$bojaHelpNaslovaH2: #B36545;
+
+$ff: 'Roboto', 'Roboto Condensed', 'Segoe UI', 'SegoeUI', Arial, sans-serif;
+
+@mixin senkaOut($ver, $hor, $rad, $boja){
+    box-shadow: $ver $hor $rad $boja;
+    -moz-box-shadow: $ver $hor $rad $boja;
+    -webkit-box-shadow: $ver $hor $rad $boja;
+    -o-box-shadow: $ver $hor $rad $boja;
+}
+@mixin senkaInset($ver, $hor, $rad, $boja){
+    box-shadow: inset $ver $hor $rad $boja;
+    -moz-box-shadow: inset $ver $hor $rad $boja;
+    -webkit-box-shadow: inset $ver $hor $rad $boja;
+    -o-box-shadow: inset $ver $hor $rad $boja;
+}
+@mixin borderRadius($rad){
+	border-radius: $rad;
+	-moz-border-radius: $rad;
+	-webkit-border-radius: $rad;
+}
+@mixin borderRadius2($gl,$gd,$dd,$dl){
+	border-radius: $gl $gd $dd $dl;
+	-moz-border-radius: $gl $gd $dd $dl;
+	-webkit-border-radius: $gl $gd $dd $dl;
+}
+@mixin borderRadius2Imp($gl,$gd,$dd,$dl){
+	border-radius: $gl $gd $dd $dl !important;
+	-moz-border-radius: $gl $gd $dd $dl !important;
+	-webkit-border-radius: $gl $gd $dd $dl !important;
+}
+@mixin trans($el,$vreme){
+	-moz-transition: $el $vreme linear;
+	-o-transition: $el $vreme linear;
+	-webkit-transition: $el $vreme linear;
+	transition: $el $vreme linear;
+}
+@mixin senkaText($boja){
+	text-shadow: 1px 1px 3px $boja;
+}
+@mixin gradijent($gore,$dole){
+	background-color: $dole;
+    background-image: -webkit-gradient(linear,0 0,0 100%,from($gore),to($dole));
+    background-image: -moz-linear-gradient(top,$gore,$dole); 
+    background-image: -o-linear-gradient(top,$gore,$dole);
+}
+
+/*
+	Uopsteno
+*/
+@font-face {
+	font-family: 'SegoeUI';
+	src: local("Segoe UI"),
+		 url(SegoeUI.ttf);
+}
+
+/*
+::selection {
+	background-color: $boja2;
+	color: white;
+}
+::-webkit-selection {
+	background-color: $boja2;
+	color: white;
+}
+::-moz-selection {
+	background-color: $boja2;
+	color: white;
+}
+*/
+::-webkit-scrollbar {
+    width: 17px !important;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 9px rgba(0,0,0,0.3) !important;
+    background-color: #F7F5F5 !important;
+} 
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1) !important; 
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3) !important; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.2) !important; 
+}
+
+
+html
+{
+    background-image: url(img/back1-dark.png);
+    background-repeat: repeat;
+
+    -webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: -moz-none;
+	-ms-user-select: none;
+	user-select: none;
+}
+body
+{
+    font-size: 13px;
+    font-family: $ff;
+    overflow-x:hidden;
+	background-image: url(img/background.png);
+	background-repeat: repeat-x;
+}
+html, body
+{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+h1{
+	font-size: 22px;
+	font-weight: 300;
+	margin: 0;
+	padding: 0;
+
+	@include senkaText($bojaSenkeHtexta);
+}
+h2{
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+
+	@include senkaText($bojaSenkeHtexta);
+}
+h3{
+	font-size: 15px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+}
+h4{
+	font-size: 13px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+}
+img{
+	border: none;
+}
+.hederH1{
+	position: relative;
+	margin-bottom: 15px;
+	min-height: 30px;
+}
+.hederH2{
+	position: relative;
+	margin-bottom: 10px;
+}
+.myInput
+{
+    font-size: 13px;
+    font-family: $ff;
+    border: 1px solid $bojaInpBordera;
+    outline: none;
+    height: 22px;
+    margin: 0px !important;
+    padding: 0px;
+
+    -webkit-touch-callout: text;
+	-webkit-user-select: text;
+	-khtml-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+.myInput:hover
+{
+    border-color: $boja1;
+}
+.myInput:focus
+{ 
+    border-color: $boja2;
+}
+.myInput[type="text"]:disabled,textarea.myInput:disabled
+{
+	border-color: $bojaInpBordera;
+}
+.myInput.w100p{
+	width:100%;
+}
+.inpW1{ width: 222px; }
+.inpW2{ width: 398px; }
+.inpW3{ width: 320px; }
+.inpWpretA{ width: 328px; }
+.qDispNone { display: none; }
+
+.qChBox{
+	margin: 3px 3px 0 0;
+	vertical-align: top;
+}
+
+a, a:visited{
+	border: none;
+	background-color: transparent;
+	outline: none;
+	//color: $boja2 !important;
+	color: $boja2;
+	text-decoration: underline;
+	padding: 0 5px;
+
+	@include borderRadius(4px);
+	@include trans(all,0.2s);
+}
+a:hover{
+	background-color: $boja2;
+	color: white !important;
+	text-decoration: none;
+}
+a.izbor{ // koristi se u tabeli ispred naziva stavke za dijalog serije
+	position: relative;
+	left: -5px;
+	font-size: 11px;
+	text-transform:uppercase;
+}
+.clear{
+	clear: both;
+}
+.clear.withLine{
+	padding-top: 8px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid $bojaInpBordera;
+}
+.tar{text-align: right;}
+.tal{text-align: left;}
+.tac{text-align: center;}
+.taj{text-align: justify;}
+.wsnw{white-space: nowrap;}
+
+/*
+	nav gore
+*/
+.hederGlavni
+{
+	// margin:0 -600px;
+	// left:50%;
+	// top:0px;
+	position:relative;
+	width:1200px;
+    background-color: $boja1;
+    color: $bojaFonta2;
+    height: 45px;
+    z-index:12;
+
+	//@include senkaOut(0px, 3px, 6px, $bojaSenkeOut);
+	@include gradijent($boja1Svetlija2,$boja1);
+}
+.hederLogo{
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 40px;
+	width: 150px;
+	margin: 0px 5px 0px 10px;
+}
+.hederLogo img{
+	margin: 10px 0 0 20px;
+}
+.hederMeniDugme{
+	float:left;
+	margin: 7px 0 0 3px;
+	height: 30px;
+	//min-width:130px;
+	background-color: $boja1Svetlija;
+	color: $bojaFonta2;
+	cursor: pointer;
+	font-size: 15px;
+	text-shadow:1px 1px 1px $bojaFonta;
+	@include borderRadius(4px);
+	@include senkaInset(0,0,6px,$bojaSenkeIn);
+	@include trans(all,0.2s);
+}
+.hederMeniDugme:hover{
+	background-color: $boja2;
+	color: $bojaFonta;
+	text-shadow:none;
+}
+.hederMeniDugme:active{
+	background-color: $boja3;
+}
+.hederMeniDugmeText{
+	margin-top:5px;
+	text-align: center;
+	padding: 0 5px;
+}
+
+#hederMeniDugmePretragaTrx {
+	float:left;
+	margin: 5px 0 0 5px;
+	width: 30px;
+	height: 25px;
+	background-color: $boja1Svetlija;
+	color: $bojaFonta2;
+	cursor: pointer;
+	font-size: 15px;
+	text-shadow:1px 1px 1px $bojaFonta;
+	@include borderRadius(4px);
+	@include senkaInset(0,0,6px,$bojaSenkeIn);
+	@include trans(all,0.2s);
+}
+
+#hederMeniDugmePretragaTrx:hover{
+	background-color: $boja2;
+	color: $bojaFonta;
+	text-shadow:none;
+}
+
+#hederMeniDugmePretragaTrx:active{
+	background-color: $boja3;
+}
+
+.drugiNivoMenu {
+	//position:relative;
+	padding-top: 2px;
+    padding-left: 2px;
+    height: 20px;
+    margin-top: 7px;
+    background-color: $boja3;
+    border: solid 1px black;
+	//@include senkaInset(0,0,6px,$bojaSenkeIn);
+	&:a, &:a:visited{
+
+	}
+
+	&:a:hover{
+
+	}
+
+	& .meniDugmeKliknuto {
+		background-color: $boja1Svetlija !important;
+		color: $bojaFonta2 !important;
+	}
+
+	& .meniDugmeKliknuto:hover {
+		background-color: $boja1Svetlija !important;
+		color: $bojaFonta2 !important;
+	}
+}
+
+.drugiNivoMenuBarLink {
+    color: $bojaFonta !important;
+    border: solid 1px black !important;
+	background-color: $boja3 !important;
+	text-shadow:none !important;
+}
+
+.drugiNivoMenuBarLinkKliknut {
+    background-color: $boja1Svetlija !important;
+	color: $bojaFonta2 !important;
+}
+
+.drugiNivoMenuBarLink:hover {
+    background-color: $boja2 !important;
+	color: $bojaFonta !important;
+	text-shadow:none !important;
+}
+
+#hederMeniDugmePodesavanja{
+	float:right;
+	margin: 10px 10px 0 5px;
+	height: 30px;
+	width: 40px;
+	background-color: $boja1Svetlija;
+	color: $bojaFonta2;
+	cursor: pointer;
+	font-size: 16px;
+	@include borderRadius(4px);
+	@include senkaInset(0,0,6px,$bojaSenkeIn);
+	@include trans(all,0.2s);
+	background-image:url(img/podeW.png);
+    background-repeat:no-repeat;
+	background-position: 50%;
+}
+#hederMeniDugmePodesavanja:hover{
+	background-image:url(img/podeB.png);	
+	background-color: $boja2;
+	color: $bojaFonta;
+}
+.hederMeniDugmePodesavanjaHover{
+	background-image:url(img/podeB.png) !important;	
+	background-color: $boja3 !important;
+	color: $bojaFonta !important;
+}
+#hederMeniDugmePodesavanja:active{
+	background-color: $boja3;
+}
+#hederMeniDugmeHelp, #hederMeniDugmeRefresh{
+	float:right;
+	margin: 10px 5px 0 5px;
+	height: 30px;
+	width: 40px;
+	background-color: $boja1Svetlija;
+	color: $bojaFonta2;
+	cursor: pointer;
+	font-size: 16px;
+	@include borderRadius(4px);
+	@include senkaInset(0,0,6px,$bojaSenkeIn);
+	@include trans(all,0.2s);
+	background-image:url(img/menuHelpW.png);
+    background-repeat:no-repeat;
+	background-position: 50%;
+}
+#hederMeniDugmeHelp:hover{
+	background-image:url(img/menuHelpB.png);	
+	background-color: $boja2;
+	color: $bojaFonta;
+}
+.hederMeniDugmeHelpHover{
+	background-image:url(img/menuHelpB.png) !important;	
+	background-color: $boja3 !important;
+	color: $bojaFonta !important;
+}
+#hederMeniDugmeHelp:active, #hederMeniDugmeRefresh:active{
+	background-color: $boja3;
+}
+#hederMeniDugmeRefresh{
+	background-image:url(img/menuRefreshW.png);
+	margin: 10px 5px 0 0;
+}
+#hederMeniDugmeRefresh:hover{
+	background-image:url(img/menuRefreshB.png);	
+	background-color: $boja2;
+	color: $bojaFonta;
+}
+
+#hederMeniDugmeOmiljeneTrx{
+	float:left;
+	margin: 10px 10px 0 3px;
+	height: 30px;
+	width: 40px;
+	background-color: $boja1Svetlija;
+	color: $bojaFonta2;
+	cursor: pointer;
+	font-size: 16px;
+	@include borderRadius(4px);
+	@include senkaInset(0,0,6px,$bojaSenkeIn);
+	@include trans(all,0.2s);
+	background-image:url(img/favW.png);
+    background-repeat:no-repeat;
+	background-position: 50%;
+}
+#hederMeniDugmeOmiljeneTrx:hover{
+	background-image:url(img/favB.png);	
+	background-color: $boja2;
+	color: $bojaFonta;
+}
+#hederMeniDugmeOmiljeneTrx:active{
+	background-color: $boja3;
+}
+#hederMeniDugmeOmiljeneTrxWrap span {
+	float: right;
+	font-weight: bold;
+	font-size: 19px;
+	display: inline-block;
+	height: 4px;
+	width: 14px;
+	background-color: $bojaFonta2;
+	position: relative;
+	top: 2px;
+	border: 5px solid $boja1;
+}
+#hederMeniDugmeOmiljeneTrxWrap span:hover {
+	border-color: $bojaFonta2;
+	background-color: $boja1;
+}
+
+
+
+.meniDugmeKliknuto{
+	background-color: $boja3 !important;
+	color: $bojaFonta !important;
+	text-shadow:none !important;
+}
+#hederMeniDugmeNoviProzor{
+	@extend #hederMeniDugmePodesavanja;
+	padding: 0;
+	margin: 5px 0 0 5px;
+	background-image:url(img/noviProzor2W.png);
+	height: 25px !important;
+}
+#hederMeniDugmeNoviProzor:hover{
+	background-image:url(img/noviProzor2B.png);	
+	background-color: $boja2;
+	color: $bojaFonta;
+}
+.dropdown-menu:after {
+	bottom: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.dropdown-menu:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: $boja1;
+	border-width: 6px;
+	right: 14px;
+	margin-left: -6px;
+}
+
+.menuFlag img{
+	display: inline-block;
+	vertical-align: top;
+}
+.menuFlag span{
+	display: inline-block;
+	margin: 3px 0 0 5px;
+}
+
+#detaljiPretrage{
+	position: absolute;
+	top: 320px;
+	left: 580px;
+	width: 24px;
+	height: 24px;
+	border-color: #AAA;
+	border-width: 1px 1px 1px 1px;
+	border-style: solid;
+	cursor: pointer;
+	background-image: url(img/b/atoolbar/arrgore.png);
+	background-repeat: no-repeat;
+	background-position: 50%;
+	@include borderRadius2(0, 0, 5px, 5px);
+	@include trans(all,0.2s);
+}
+#detaljiPretrage:hover{
+	background-color: $boja1;
+	border-color: $boja1;
+	height: 26px;
+}
+#detaljiPretrage.manjaPretraga{
+	top: 210px;
+	background-image: url(img/b/atoolbar/arrdole.png);
+}
+
+#detaljiPretrage.manjaPretraga.izvestaji{
+	top: 240px;
+	background-image: url(img/b/atoolbar/arrdole.png);
+}
+
+#detaljiPretrage.izvestaji {
+	top: 375px;
+}
+
+/*
+	nav levo
+*/
+nav{
+	position:fixed;
+	top:0;
+	left:50%;
+	width:170px;
+	height:100%;
+	margin:0 -600px;
+	background-color: $boja1;
+	z-index:11;
+}
+nav > div:nth-child(2){
+	margin-top:10px;
+}
+.navMeniDugme{
+	float:left;
+	margin: 0 10px 1px;
+	min-height: 24px;
+	width:150px;
+	background-color: $boja1Svetlija;
+	color: $bojaFonta2;
+	cursor: pointer;
+	font-size: 13px;
+	text-shadow:1px 1px 1px $bojaFonta;
+	@include borderRadius(4px);
+	@include senkaInset(0,0,6px,$bojaSenkeIn);
+	@include trans(all,0.2s);
+}
+.navMeniDugmeCvor{
+	background-image: url(img/w/arr_r.png);
+	background-repeat: no-repeat;
+	background-position: 10% 50%;
+}
+.navMeniDugmeCvor:hover{
+	background-image: url(img/b/arr_r.png);
+}
+.navMeniDugmeCvorKliknut{
+	background-image: url(img/b/arr_d.png) !important;
+	@include borderRadius2(4px,20px,0px,20px);
+}
+.navMeniDugmeCvor > div{
+	margin: 3px 0 0 34px;
+}
+.navMeniDugmeGlavno{
+
+}
+.navMeniDugmeGlavno > div{
+	margin: 4px 0 4px 14px;
+}
+.navMeniDugmePodnivo1{
+	//@extend .navMeniDugme;
+	position: relative;
+	font-size: 12px !important;
+	min-height: 17px !important;
+	max-height: 40px !important;
+	width: 134px !important;
+	margin-left: 26px !important;
+	margin-bottom: 0 !important;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	background-color: transparent;
+	@include borderRadius(0);
+	@include senkaInset(0,0,0,transparent);
+
+	//HREF fix
+	padding: 0 !important;
+	text-decoration: none !important;
+	color: $bojaFonta2 !important;
+}
+.navMeniDugmePodnivo1 > div{
+	margin: 1px 0 0px 3px;
+}
+// .navMeniDugme:hover{
+// 	background-color: $boja2;
+// 	color: $bojaFonta;
+// 	text-shadow:none;
+// }
+// .navMeniDugme:active{
+// 	background-color: $boja3;
+// }
+.navMeniDugmeCvor:hover{
+	background-color: $boja2;
+	color: $bojaFonta;
+	text-shadow:none;
+}
+.navMeniDugmeCvor:active{
+	background-color: $boja3;
+}
+.navMeniDugmeText{
+	//width:150px;
+	margin-top:4px;
+	text-align:center;
+}
+.navMeniDugmePodnivo1:hover{
+	color: $boja2 !important;
+	background-color: transparent !important;
+}
+.navMeniDugmePodnivo1.meniDugmeKliknuto{
+	background-color: transparent !important;
+	color: $boja3 !important;
+	left:10px;
+}
+.navMeniDugmePodnivo1.meniDugmeKliknuto:after{
+	content: " ";	
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 8px;
+	height: 100%;
+	background-color: $boja3;
+	@include borderRadius2(8px,0,0,8px);
+	@include senkaInset(1px,0,2px,$bojaSenkeIn);
+}
+.navMeniDugmeIskljuceno, .navMeniDugmeIskljuceno:hover, .navMeniDugmeIskljuceno.navMeniDugmePodnivo1.meniDugmeKliknuto{
+	cursor: default !important;
+	color: #aaa !important;
+	background-color: transparent !important;
+	// font-style: italic;
+	font-weight: 300;
+}
+
+#navUmanjivac{
+	position: absolute;
+	top: 105px;
+	right: -11px;
+	width: 10px;
+	height: 50px;
+	border-color: #AAA;
+	border-width: 1px 1px 1px 0px;
+	border-style: solid;
+	cursor: pointer;
+	background-image: url(img/al.png);
+	background-repeat: no-repeat;
+	background-position: 50%;
+	@include borderRadius2(0,5px,5px,0);
+	@include trans(all,0.2s);
+}
+#navUmanjivac:hover{
+	background-color: $boja1;
+	border-color: $boja1;
+	right: -20px;
+	width: 19px;
+}
+
+
+
+
+/*
+	Popup pretrage
+*/
+.pretPopup{
+	position: fixed;
+	top:50px;
+	//min-height:537px;
+	z-index:501;
+	background-image: url(img/back1.png);
+    background-repeat: repeat;
+    overflow: auto;
+    @include senkaOut(-5px, 5px, 50px, #444);
+    @include borderRadius2(10px, 0px, 0px, 10px);
+}
+.pretPopupA{
+	right:-900px;
+	width:850px;
+}
+.pretPopupS{
+	right:-900px;
+	width:850px;
+}
+.pretPopupD{
+	right:-760px;
+	width:709px;
+}
+.pretPopupN{
+	right:-700px;
+	width:630px;
+}
+.pretPopupK{
+	right:-800px;
+	width:750px;
+}
+.pretHeder{
+	position: relative;
+	height: 30px;
+	@include borderRadius2(10px, 0px, 0px, 0px);
+	@include senkaOut(0px, 3px, 6px, $bojaSenkeOut);
+	@include gradijent($boja1Svetlija2,$boja1);
+}
+.pretHederNaslov{
+	padding: 3px 0 0 10px;
+	color: $bojaFonta2;
+	font-size: 16px;
+	text-shadow:1px 1px 1px $bojaFonta;	
+}
+.pretTelo{
+	padding:10px;
+	overflow: auto;
+}
+.pretClose{
+	position: absolute;
+	height: 24px;
+	width: 24px;
+	background-image: url(img/w/x.png);
+	opacity: 0.7;
+	cursor: pointer;
+	top:3px;
+	right:4px;
+}
+.pretClose:hover{
+	opacity:1;
+}
+.nalogImaSaldo{
+	background-color: #FFBEBE !important;
+}
+.nalogImaPrivKonta{
+	color: red;
+}
+
+/*
+	Prozori
+*/
+.overlej{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: white;
+}
+#popupOverlej{
+	opacity: .3;	
+	z-index: 500;
+}
+#dmsOverlej, #odabirFirmeOverlej{
+	opacity: .5;	
+	z-index: 550;
+}
+#prozOverlej{
+	opacity: .7;
+	z-index: 600;
+}
+.proz{
+	position: fixed;
+	z-index: 601;
+	top: 40%;
+	left: 50%;
+	width: 400px;
+	margin-left: -200px;
+	margin-top: -100px;
+	background-color: white;
+    overflow: hidden;
+    @include senkaOut(0px, 10px, 50px, #444);
+    @include borderRadius(10px);
+}
+.prozHeder{
+	height: 24px;
+	@include borderRadius2(10px, 10px, 0px, 0px);
+	@include senkaOut(0px, 3px, 6px, $bojaSenkeOut);
+	@include gradijent($boja1Svetlija2,$boja1);
+}
+.prozHederNaslov{
+	padding: 2px 0 0 10px;
+	color: $bojaFonta2;
+	font-size: 14px;
+	text-shadow:1px 1px 1px $bojaFonta;	
+}
+.prozTelo{
+	margin:20px 10px;
+	min-height:20px;
+	max-height:250px;
+	text-align:center;
+	overflow:auto;
+}
+.prozDugmad{
+	margin:0px 10px 15px;
+	//min-height:26px;
+	text-align:center;
+}
+.prozStampaImg{
+	vertical-align: top !important;
+	margin-top: 4px;
+	cursor: pointer;
+	padding: 0 5px;
+	opacity: .4;
+}
+.prozStampaImg:hover{
+	opacity: 1;
+}
+.prozStampaTable{
+	border-spacing: 0;
+	text-align: left;
+	margin: 0 auto;
+}
+.prozStampaForm{
+	width: 430px;
+	margin: 6px auto 0;
+}
+.prozStampaFormLoader{
+	display:none;
+	margin-top: 5px;
+	vertical-align: top;
+}
+
+#odabirFirmeWrap {
+    z-index: 551;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    margin-left: -300px;
+    width: 580px;
+    padding: 10px;
+    max-height: 380px;
+    background-color: #eee;
+    border: 1px solid #dfdfdf;
+    box-shadow: 0 0 12px #999;
+}
+#firmeWrap {
+    margin-top: 10px;
+    max-height: 300px;
+    overflow: auto;
+}
+.firma {
+    text-align: center;
+    border: 1px solid #dfdfdf;
+    padding: 3px 0;
+    margin-bottom: 3px;
+    background-color: #f7f5f5;
+    cursor: pointer;
+    color: #888888; 
+}
+.firma:hover {
+    color: #444444;
+    border-color: #999;
+}
+#firmeFilterWrap{
+    margin: 5px 0;
+    text-align: center;
+}
+#firmeFilter{
+    display: inline-block;
+    width: 200px;
+    color: #666;
+    text-align: center;
+}
+
+/* 
+	PRE HEDER
+*/
+
+#preHeder{
+	width: 100%;
+	padding: 10px calc((100% - 1200px) / 2) !important;
+	color: $bojaInpBordera;
+	height: 122px;
+	padding: 12px 0 12px 0;
+	overflow: auto;
+	background-image: url(img/background.png);
+    background-repeat: repeat-x;
+    background-overflow: hidden;
+	z-index: 20;
+	position: absolute;
+	
+
+	& .unosRed1{
+		width: 270px;
+		height: 32px;
+	}
+
+	& .unosRed2{
+		width: 470px;
+		height: 32px;
+	}
+
+	& .unosRed3{
+		width: 370px;
+		height: 32px;
+	}
+
+	& h3{
+		font-size: 18px;
+        font-weight: 400;
+        padding-bottom: 4px;
+        border-bottom: 1px solid $boja1Svetlija2;
+        margin-bottom: 5px;
+	}
+
+	& p {
+		  font-size: 14px;
+		  margin-bottom: 3px;
+		  font-weight: 400;
+		  margin-top: 0;
+		  text-align: justify;
+	}
+}
+
+.preHederLine {
+	height: 3px;
+	background-color: $boja2;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 21;
+}
+.preHederLine.detalji-dms {
+	top: 142px;
+}
+#phExpander {
+	display: inline-block;
+	padding: 0 8px 1px;
+	background-color: $boja2;
+	color: white;
+	font-size: 13px;
+	cursor: pointer;
+	@include borderRadius2(0,0,6px,6px);
+	@include trans(all,0.2s);
+	float: right;
+    text-align: right;
+}
+#phExpander:hover {
+	background-color: $boja2;
+	padding-top: 16px;
+}
+
+
+
+/*
+	sredina
+*/
+#content{
+	position: relative;
+    background-image: url(img/back1.png);
+    background-repeat: repeat;
+    margin: 0 auto;
+    width: 1200px;
+    overflow: auto;
+    color: $bojaFonta;
+
+	@include senkaOut(0px, 0px, 6px, $bojaSenkeOut);
+
+    height: auto !important;
+    min-height: calc(100% - 3px);
+    height: calc(100% - 3px);
+}
+
+//#loader{
+//	background-image: url(img/viewLoad.gif);
+//	background-repeat: no-repeat;
+//	background-position: 610px 50%;
+//	position: absolute;
+//	top: 0px;
+//	left: 0px;
+//	background-color: #ccc;
+//	opacity: 0.7;
+//	display: none;
+//	width: 100%;
+//	height:100%;
+//}
+#loader {
+	display: none;
+//	background-image: url(img/viewLoaders/Preloader_7.gif);
+//	background-repeat: no-repeat;
+//	background-position: 50% 50%;
+	position: fixed;
+	top: 0px;
+	left: 50%;
+	margin-left: -600px;
+	background-color: white;
+	background: -webkit-radial-gradient(white 16%, $bojaInpBordera);
+	background: -o-radial-gradient(white 16%, $bojaInpBordera);
+	background: -moz-radial-gradient(white 16%, $bojaInpBordera);
+	background: radial-gradient(white 16%, $bojaInpBordera);
+	opacity: 0.8;
+	width: 100%;
+	max-width: 1200px;
+	height: 100%;
+	z-index:5;
+}
+#loader.navUmanjena{
+	margin-left: -600px;
+	max-width: 1200px;
+}
+#loaderText{
+	font-size:16px;
+	text-align: center;
+	width:128px;
+	position: absolute;
+	top: 57%;
+	left: 50%;
+	left: calc(50% - 64px);
+	color:$bojaFontaSvetlija;
+}
+#loaderGif{
+	background-image: url(img/viewLoaders/Preloader_7.gif);
+	width: 128px;
+	height: 128px;
+	top: 50%;
+	top: calc(50% - 64px);
+	left: 50%;
+	left: calc(50% - 64px);
+	position: absolute;
+}
+
+#loaderGif2 {
+    display: block;
+    position: relative;
+	width: 128px;
+	height: 128px;
+	top: 50%;
+	top: calc(50% - 64px);
+	left: 50%;
+	left: calc(50% - 64px);
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: $boja2; // #3498db;
+    -webkit-animation: loaderGif2spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+            animation: loaderGif2spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+} 
+#loaderGif2:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: $boja1; //#e74c3c;
+    -webkit-animation: loaderGif2spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+            animation: loaderGif2spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+} 
+#loaderGif2:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: $boja3; //#f9c922;
+    -webkit-animation: loaderGif2spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+            animation: loaderGif2spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+} 
+@-webkit-keyframes loaderGif2spin {
+    0%   {
+        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);  /* IE 9 */
+        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);  /* IE 9 */
+        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+}
+@keyframes loaderGif2spin {
+    0%   {
+        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);  /* IE 9 */
+        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+    100% {
+        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);  /* IE 9 */
+        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+}
+
+.wide #loader{
+	left: 0;
+	margin-left: 0;
+	max-width: 100%;
+}
+
+#main{
+	padding-top: 15px;
+	margin:0px 15px 0px 15px;
+	position: relative;
+}
+#main.ceoEkran{
+	background-image: url(img/back1.png);
+    background-repeat: repeat;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0 !important;
+	width: 100%;
+	height: 100%;
+	z-index: 502;
+	overflow: auto;
+}
+#telo{
+	overflow: auto;
+}
+.oblakTelo{
+	overflow: auto;
+	padding: 25px 10px;
+    background-image: url(img/back1-light.png);
+    background-repeat: repeat;
+
+	@include borderRadius(5px);
+	@include senkaInset(0,0,10px,$bojaSenkeIn2);
+}
+#oblakTeloWrap{
+	min-height: 300px;
+	min-height: calc(100vh - 167px);
+}
+.oblakTeloUPopup{
+	@extend .oblakTelo;
+	padding: 10px 10px 0px;
+	margin-bottom: 5px;
+}
+.oblakDokumentPodaci{
+	padding: 3px 6px;
+	position: absolute;
+	right: 0px;
+	top: -13px;
+	width: 500px;
+	height: 47px;
+	background-color: rgba(238, 238, 238, .5);
+	border: 1px solid $bojaInpBordera;
+	font-size: 11px;
+	overflow: hidden;
+	color: #777;
+
+	@include borderRadius(5px);
+	@include senkaInset(0,0,10px,$bojaSenkeIn2);
+}
+#karArtTeloLevo,#kupTeloLevo1{
+	/*float: left;
+	width: 35.2%;*/
+}
+#karArtTeloDesno, #kupTeloDesno1{
+	float: right;
+	width: 58.5%;
+}
+
+.unosRed{
+	height: 24px;
+	margin-bottom: 3px;
+	//overflow: auto;
+}
+.unosRedNaslov{
+	@extend .unosRed;
+	margin-bottom: 6px;
+}
+.unosRedZaDugmad{
+	@extend .unosRed;
+	height: 26px;
+	margin-top: 10px;
+}
+.unosRedZaTabelu{
+	min-height: 24px;
+	margin-bottom: 3px;
+	overflow: auto;	
+}
+
+@mixin unosRedLbl(){
+	float: left;
+	width: 125px;
+	margin-right: 5px;
+	margin-top: 3px;
+}
+.unosRedLbl_taR{
+	text-align: right;
+	@include unosRedLbl();
+}
+.unosRedLbl_taL{
+	text-align: left;
+	@include unosRedLbl();
+}
+.unosRedLbl_taL2{
+	@extend .unosRedLbl_taL;
+	width: 70px !important;
+}
+.unosRedLbl_naslov{
+	margin-top:0;
+	font-size:16px;
+	@include senkaText($bojaSenkeHtexta);
+}
+//.jqCombo input{
+//	margin-top: 3px !important;
+//	margin-left: 3px !important;
+//}
+
+
+.unosRedVr{
+	float: left;
+}
+
+
+.info{
+	position:relative;
+	height: 24px;
+	width: 24px;
+	margin-left: 5px;
+	background-image: url(img/b/info.png);
+	opacity: 0.7;
+	cursor: pointer;
+	display:inline-block;
+	vertical-align:top;
+}
+.info:hover{
+	opacity:1;
+}
+.info span{
+	position: absolute;
+	color: white;
+	background-color: #F85900;
+	padding: 0px 2px 1px;
+	font-size: 10px;
+	font-weight: bold;
+	border-radius: 5px;
+	top: 9px;
+	right: 0px;
+}
+.lupica{
+	float:left;
+	height: 24px;
+	width: 24px;
+	margin-left: 5px;
+	background-image: url(img/b/lupica.png);
+	opacity: 0.5;
+	cursor: pointer;
+}
+.lupica:hover{
+	opacity:1;
+}
+.loaderFrm24{
+	display: none;
+	top: 3px;
+	position: absolute;
+	height: 18px;
+	width: 18px;
+	background-image: url(img/loader.gif);
+	background-size: 100%;
+}
+
+.taboviBar{
+	border-bottom: 2px solid $boja1;
+	cursor: default;
+	outline: none;
+	padding: 2px 0 0;
+	line-height: 0;
+	margin:1px 0px;
+}
+.tab{
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	color: $bojaFonta2;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight:bold;
+	border-bottom: 24px solid $boja1;
+	border-right: 24px solid transparent;
+	height: 0;
+	padding: 0;
+	margin-right: -12px;
+	margin-top: -1px;
+	opacity: 1;
+
+	@include trans(all, 0.2s);
+}
+.tab:hover{
+	color: $bojaFonta;
+	border-bottom: 24px solid $boja2;
+	opacity:1;
+	z-index: 1;
+}
+.tabSel{
+	opacity: 1.0;
+	z-index: 2;
+	border-bottom: 24px solid $boja3 !important;
+	color: $bojaFonta !important;
+}
+.tabText{
+	margin: 0 11px 0 15px;
+	line-height: 26px;
+	position: relative;
+}
+
+#wizWrap{
+	padding: 10px;
+}
+#wizTabelaWrap{
+	
+}
+#wizTabela{
+	width: 100%;
+	border-spacing: 0px;
+	border-collapse: separate;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: bold;
+	@include senkaOut(0px, 0px, 6px, $boja1);
+	@include borderRadius(6px);
+}
+#wizTabela td:first-child{
+	@include borderRadius2(6px,0,0,6px);
+}
+#wizTabela td:last-child{
+	@include borderRadius2(0,6px,6px,0);
+}
+.wizTd{
+	padding: 0;
+	height: 27px;
+	background-color: $boja1Svetlija;
+	color: $bojaFonta2;
+	cursor: pointer;
+	text-shadow:1px 1px 1px $bojaFonta;
+	@include senkaInset(0,0,6px,$bojaSenkeIn);
+	@include trans(all,0.2s);
+}
+.wizTd:hover{
+	background-color: $boja2;
+	color: $bojaFonta;
+	text-shadow:none;
+}
+.wizTdIskljuceno{
+	cursor: default;
+	background-color: $boja1Svetlija !important;
+	color: $bojaFonta2 !important;
+	text-shadow:1px 1px 1px $bojaFonta !important;
+	opacity:0.7;
+}
+.wizTdKliknuto{
+	background-color: $boja3 !important;
+	color: $bojaFonta !important;
+	text-shadow:none !important;
+}
+
+
+
+.teloDugmeWrap{
+	height:28px;
+	/*@include senkaOut(0,0,5px,$bojaSenkeOut);*/
+	@include borderRadius(6px);
+}
+.teloDugmeWrapUFormi{
+	@extend .teloDugmeWrap;
+	height: 24px !important;
+}
+.teloDugmeWrapUProzoru{
+	height: 32px;
+	display:inline-block;
+	margin:0 3px;
+	@include borderRadius(6px);
+}
+.btnFloatL{
+	float: left;
+	margin-right: 5px;
+}
+.btnFloatR{
+	float: right;
+	margin-left: 5px;
+}
+.btnResetX{
+	width: 30px;
+	margin: 0;
+}
+.btnW1{	width: 140px; }
+.btnW2{	width: 170px; }
+.btnW3{	width: 100px; }
+.btnW4{	width:  80px; }
+.btnWauto{ min-width: 70px; }
+.btnWauto .teloDugme{
+	padding: 0 5px;
+}
+.teloDugme{
+	width: 100%;
+	height: 100%;
+	border-spacing: 0px;
+	font-size: 11px;
+	text-transform: uppercase;
+	text-align: center;
+	cursor: pointer;
+	color: $bojaFonta2;
+	text-shadow:1px 1px 2px $bojaFonta;	
+	@include borderRadius(6px);
+	@include gradijent($boja1Svetlija2,$boja1);
+}
+.teloDugmeBold{
+	color: white;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.teloDugmeIskljuceno, .teloDugmeIskljuceno:hover, .teloDugmeIskljuceno:active{
+	background-color: $boja1Svetlija2 !important;
+	background-image: none !important;
+	opacity: 0.6;
+	cursor: default;
+}
+.teloDugmeUToku, .teloDugmeUToku:hover, .teloDugmeUToku:active{
+	text-transform: none !important;
+	background-image: none !important;
+	background-color: $boja1Svetlija !important;
+	opacity: 0.8;
+}
+.teloDugmeKliknuto, .teloDugmeKliknuto:hover, .teloDugmeKliknuto:active{
+	
+	background-image: none !important;
+	background-color: $boja2 !important;
+	opacity: 0.8;
+}
+.teloDugmeLevo{
+	@include borderRadius2Imp(6px,0,0,6px);
+	//border-right: 1px solid $boja1Svetlija2;
+}
+.teloDugmeSredina{
+	@include borderRadius2Imp(0,0,0,0);
+	//border-right: 1px solid $boja1Svetlija2;
+}
+.teloDugmeDesno{
+	@include borderRadius2Imp(0,6px,6px,0);
+}
+
+.teloDugme:hover{
+	color: white;
+	@include gradijent($boja3,$boja2);
+}
+.teloDugme:active{
+	color: white;
+	@include gradijent($boja2,$boja3);
+}
+.teloDugme img{
+	vertical-align: middle;
+}
+
+
+/************************* POCETNA STRANICA *******************************/
+#unosNovogPredmeta, #pretragaPredmeta, #izvestaji, #sifarnici {
+	cursor: pointer;
+	opacity: 0.5;
+	width: 300px;
+	height: 300px;
+
+	&.manjaSlika {
+		width: 200px;
+		height: 200px;
+	}
+}
+
+#homeStranica {
+	width: 24px;
+	float: left;
+	height: 24px;
+	margin-top: 3px;
+	margin-right: 4px;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+#unosNovogPredmeta:hover,
+#pretragaPredmeta:hover,
+#izvestaji:hover,
+#sifarnici:hover,
+#homeStranica:hover {
+	opacity: 1;
+}
+
+#main-feedback {
+    position: fixed;
+	opacity: 0.3;
+	font-size: 2.4em;
+	cursor: pointer;
+	z-index: 1100;
+	width: auto;
+    height: auto;
+    right: 3px;
+    bottom: 5px;
+
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+
+.qTabela{
+	cursor: default;
+	width: 100%;
+	border-spacing: 0px;
+	border-collapse: separate;
+	border: 1px solid $bojaInpBordera;
+	font-size: 11px;
+}
+.qTabelaHeadTd,
+.qTabela.modTd thead td{ // mod de ne mora da se kuca klasa na TD
+	padding: 0px 4px;
+	height: 44px;
+	color: $bojaFonta2;
+	text-shadow:1px 1px 1px $bojaFonta;
+	text-transform: uppercase;
+	font-size: 11px;
+	@include gradijent($boja1Svetlija2,$boja1);
+	text-align: center;
+}
+.qTabelaMala .qTabelaHeadTd,
+.qTabelaMala.modTd thead td{ // mod de ne mora da se kuca klasa na TD
+	height: 30px !important;
+}
+.qTabelaTd,
+.qTabela.modTd tbody td {
+	padding: 2px 4px;
+	height: 20px;
+
+	padding-bottom: 1px;
+	padding-top: 1px;
+
+	img {
+		height: 20px;
+		width: 20px;
+	}
+}
+.qTabelaTd.o{
+	background-image: url(img/b/atoolbar/olovka.png);
+	background-repeat: no-repeat;
+	background-position: 97.5% 50%;
+	background-size: 20px;
+}
+.qTabelaTdStrelice{
+	background-color: $boja1;
+}
+.qTabelaTdPromena{
+	cursor: pointer;	
+}
+.qTabelaTdPromena input{
+	font-size: 12px;	
+}
+.qTabelaTdPromena:hover{
+	background-color: $boja3PunoSvetlija2 !important;
+}
+.qTabelaTdGreska{
+	background-color: #FFC4C4;
+}
+.qTabelaTdDrag{
+	background-color: $boja3PunoSvetlija2 !important;
+	color:black;
+	opacity: 0.7;
+}
+.dragHandle{
+	//cursor:move;
+}
+.qTabela tr:nth-child(odd){
+	background-color:#f5f5f5;
+}
+.qTabela tr:nth-child(even){
+	background-color:#fff;
+}
+/*.qTabela > tbody > tr:hover{
+	background-color: $boja3PunoSvetlija;
+}*/
+.qTabela tbody tr{
+	background-color: white;
+}
+.qTabelaTrSelektovan, .qTabelaTrSelektovan:hover{
+	background-color: #888 !important;
+	color: #EEE;
+	font-weight: bold;
+	cursor: default;
+}
+.qTrKliknut{
+	background-color: $boja3 !important;
+	color: white !important;
+}
+.qTrKliknutCrveni{
+	background-color: #E96351 !important;
+	color: white !important;
+}
+.qTrNeaktivan{
+	opacity: .4;
+	cursor: default !important;
+}
+.qTabela img,
+.kk-tr img, .kk-tr-aktivan img,
+.kp-tr img, .kp-tr-aktivan img
+{
+	vertical-align: middle;
+	opacity: 0.5;
+	cursor: pointer;
+}
+.qTabela img:hover,
+.kk-tr img:hover, .kk-tr-aktivan img:hover,
+.kp-tr img:hover, .kp-tr-aktivan img:hover
+{
+	opacity: 1;
+}
+.kp-tr{
+	cursor:default;
+}
+.kp-tr:hover,
+.kp-tr-aktivan
+{
+	background-color: #F8F8F8;
+}
+.kp-tr img{
+	display: none;
+}
+.kp-tr:hover img, .kp-tr-aktivan img{
+	display: inline;
+}
+
+.qTabelaUnutrasnjaWrap
+{
+	padding: 5px 5px 15px 20px;
+	background-color:#f4f4f4;
+}
+.qTabelaUnutrasnjaWrap .qTabelaHeadTd
+{
+	color: $bojaFonta;
+	text-shadow: none;
+	@include gradijent(#ddd,#ccc);
+}
+.qTabelaUnutrasnjaWrap .trTotal, .qTabelaUnutrasnjaWrap .trTotal1
+{
+	color: $bojaFonta !important;
+	text-shadow: none !important;
+	@include gradijent(#ccc,#ddd);
+}
+/* Mod za TD tabele, da ne moraju da se koriste klase */
+
+
+
+.oblakTelo.scrTabela{
+    padding: 25px 10px 10px;
+}
+.qTabelaScrWrap {
+    position: relative;
+}
+.qTabelaScrScroll {
+    overflow-y: scroll;
+	max-height:450px;
+}
+.qTabelaScrWrap .qTabela {
+    border: none;
+}
+.qTabelaScrHead {
+    position: absolute;
+    width: calc(100% - 17px);
+    top: 0;
+}
+.qTabelaScrTotal {
+    position: absolute;
+    width: calc(100% - 17px);
+    bottom: 0;
+}
+.qTabelaScrWrap tbody.glavniTBody tr{
+	background-color: white !important;
+}
+.qTabelaScrWrap tbody.glavniTBody td{
+	border-bottom: 1px solid $bojaInpBordera;
+}
+
+
+
+.qTabelaFuterWrap{
+	padding: 4px;
+	height: 16px;
+	border: solid;
+	border-width: 0px 1px 1px 1px;
+	border-color: $bojaInpBordera;
+	color: $bojaFonta2;
+	text-shadow:1px 1px 1px $bojaFonta;
+	font-size: 12px;
+	@include gradijent($boja1,$boja1Svetlija2);
+}
+.qTabelaFuter{
+	position: relative;
+}
+.trTotal, .trTotal1, .trTotal:hover{
+	font-weight:bold !important;
+	text-shadow:1px 1px 1px $bojaFonta !important;
+	color: $bojaFonta2 !important;
+	background-color: $boja1 !important;
+	@include gradijent($boja1,$boja1Svetlija2);	
+}
+.tableFloatingHeader{
+	z-index: 11;
+	opacity: .86;
+}
+.tableFloatingHeader .qTabelaHeadTd{
+	background-color: $boja1Svetlija2 !important;
+	background-image: none !important;
+}
+
+#mainFullScr, #mainFullScrBack, #mainScroll, #mainFeedback, #mainImgTemp, #mainWide, #mainNoWide{
+	position: fixed;
+	right: 0px;
+	cursor: pointer;
+	opacity: .5;
+	z-index: 1000;
+	width: 32px;
+	height: 32px;
+}
+#mainScroll{	
+	bottom: 5px;
+}
+#mainFeedback{
+	bottom: 35px;
+}
+#mainFullScr,#mainFullScrBack{
+	bottom: 65px;
+}
+#mainImgTemp{
+	bottom: 95px;
+}
+#mainWide, #mainNoWide{
+	bottom: 95px;
+}
+#mainScroll:hover,
+#mainFeedback:hover,
+#mainFullScr:hover,
+#mainFullScrBack:hover,
+#mainWide:hover,
+#mainNoWide:hover {
+	opacity: 1;
+}
+.mainEBIcons{
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	cursor: pointer;
+	opacity: .25;
+	z-index: 1;
+	width:  24px;
+	height: 24px;
+}
+.mainEBIcons:hover{
+	opacity: .8;
+}
+
+.pretXIdiNaStarnu, .pregIdiNaStarnu{
+	cursor: pointer;
+	background-color: $boja1Svetlija2;
+	padding: 0 3px;
+	@include borderRadius(3px);
+}
+.pretXIdiNaStarnu:hover,
+.pregIdiNaStarnu:hover{
+	text-decoration: underline;
+}
+.pretXAktivnaStrana{
+	cursor: default !important;
+	background-color: #FE8049;
+	color: white;
+}
+.pretXAktivnaStrana:hover{
+	text-decoration: none !important;
+}
+.pretXViseOd200{
+	cursor: pointer;
+	background-color: red;
+	padding: 0 5px;
+	margin-left: 5px;
+	@include borderRadius(3px);
+}
+
+.kkDodajNovuKontaktOsobu, .karArtDodajNoviKod{
+	border-color: $bojaInpBordera;
+	border-style: solid;
+	border-width: 0px 1px 1px 1px;
+	padding: 4px;
+	font-size: 12px;
+	color: $bojaFonta2;
+	background-color: $boja1;
+	display: inline-block;
+	text-shadow:1px 1px 3px $bojaFonta;
+	cursor: pointer;
+	@include trans(all,0.2s);
+}
+.kkDodajNovuKontaktOsobu:hover, .karArtDodajNoviKod:hover{
+	background-color: $boja2;
+}
+.kkDodajNovuKontaktOsobu:active, .karArtDodajNoviKod:active{
+	background-color: $boja3;	
+}
+.kkDodajNovuKontaktOsobuNeaktivan,
+.kkDodajNovuKontaktOsobuNeaktivan:hover,
+.kkDodajNovuKontaktOsobuNeaktivan:active{
+	opacity: .4;
+	cursor: default;
+	background-color: $boja1;
+}
+
+.kkDodajNoviKontaktPodatak{
+	padding: 4px;
+	font-size: 12px;
+	color: $bojaFonta;
+	background-color: $bojaInpBordera;
+	cursor: pointer;
+	display: inline-block;
+
+	@include borderRadius(4px);
+	@include trans(all,0.2s);
+}
+.kkDodajNoviKontaktPodatak:hover{
+	background-color: $boja2;
+	color:	white;
+}
+.kkDodajNoviKontaktPodatak:active{
+	background-color: $boja3;
+	color:	white;
+}
+
+.kk-tr{
+	cursor: pointer;
+}
+#kkKontaktPodaci{
+	float: right;
+	width: 43%;
+}
+.kkKontaktPodaci{
+	min-width: 420px;
+	padding: 4px;
+	border: 1px solid $bojaInpBordera;
+	@include senkaInset(0, 0, 10px, $bojaInpBordera);
+	@include borderRadius(4px);
+}
+
+#dokZagIDKomitenta_wrap img{
+	cursor: pointer;
+	width: 20px;
+	padding-top: 2px;
+	opacity: .7;
+}
+#dokZagIDKomitenta_wrap img:hover{
+	opacity: 1;
+}
+
+.kockiceLoader{
+	margin: 7px 4px 6px;
+}
+
+.dokFakFakturaWrap
+{
+	padding: 15px;
+	border: 1px solid $bojaInpBordera;
+	background-color: #f2f2f2;
+}
+
+
+.qHelpUl{
+	margin: 6px 0;
+}
+.qHelpUlNaslov{
+	display: inline-block;
+	padding: 0 6px 0 23px;
+	margin: 0px 0 3px -24px;
+	font-size: 16px;
+	cursor: pointer;
+	background-image: url(img/b/arr_r.png);
+	background-repeat: no-repeat;
+	background-position: 4px 50%;
+
+	@include trans(all, 0.2s);
+	@include borderRadius(3px);
+}
+.qHelpUlNaslov:hover{
+	background-image: url(img/w/arr_r.png);
+	background-color: $boja2;
+	color: #eee;
+}
+.qHelpUlNaslovKliknut{
+	background-image: url(img/w/arr_d.png) !important;
+	background-color: $boja3;
+	color: #eee;
+}
+.qHelpLi{
+	display:none;
+	list-style-type: square;
+	padding: 3px 0;
+}
+.qHelpLiBroj{
+	display: inline-block;
+	color: $boja1Svetlija2;
+	width: 35px;
+}
+.qHelpLiText{
+	cursor: pointer;
+	@include trans(all, 0.2s);
+}
+.qHelpLiText:hover{
+	text-decoration: underline;
+	color: $boja2;
+}
+.qHelpClanakWrap{
+	display: block;
+	border:1px solid $bojaInpBordera;
+	padding: 8px;
+	background-color: #f7f5f5;
+	text-align: justify;
+	margin-bottom: 15px;
+}
+#mainPodaciOFirmiWrap
+{	
+	z-index:11;
+	padding: 5px 5px;
+	position:fixed;
+	bottom: 25px;
+	margin:0 -590px;
+	left:50%;
+	width:140px;
+	background-color: $boja1Svetlija;
+	color: $bojaFonta2;
+	font-size: 11px;
+	text-shadow:1px 1px 1px $bojaFonta;
+	@include borderRadius(4px);
+	@include senkaInset(0,0,6px,$bojaSenkeIn);
+//	@include trans(all,0.2s);
+}
+#mainPodaciOFirmiWrap div:first-child
+{
+	cursor: pointer;
+	font-size: 11px;
+	// margin-bottom: 3px;
+}
+#mainPodaciOFirmiWrap div:nth-child(2)
+{
+	// margin-bottom: 3px;
+}
+
+#mainTehnickaPodrska{
+	z-index:11;
+	padding: 5px 5px;
+	position:fixed;
+	bottom: 2px;
+	margin:0 -590px;
+	left:50%;
+	width:140px;
+	font-size: 11px;
+	text-shadow:1px 1px 1px $bojaFonta;
+	text-transform: uppercase;
+}
+
+/* #dokStavExcelWrap:hover .teloDugme
+{
+	@include gradijent($boja3,$boja2);
+}
+#dokStavExcelWrap
+{
+	position: relative;
+	float: left;
+	overflow: hidden;
+	width: 150px;
+	height: 26px;
+}
+#dokStavExcel
+{
+	position: absolute;
+	top: 0; left: 0;	
+} */
+#dokStavExcelLoader
+{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	margin: -5px 0 0 10px;
+	vertical-align: middle;
+	background-image: url(img/loader.gif);
+	background-size: 100%;
+}
+#file
+{
+	float: left;
+	margin-top: 4px;
+	max-width: 300px;
+	overflow: hidden;
+}
+#fileDl
+{
+	float: right;
+	margin-top: 4px;
+}
+#file b
+{
+	margin-left: 10px;
+}
+#file div
+{
+	display: none;
+}
+
+#dokCenTotaliWrap{
+	font-size: 12px;
+	width: 250px;
+	position: absolute;
+	top: -48px;
+	right: 0;
+}
+#dokCenTotaliWrap span.lbl{
+	float: left;
+	display: inline-block;
+	min-width: 100px;
+	color: $boja1Svetlija2;
+}
+#dokCenTotaliWrap span.vr{
+	font-weight: bold;
+	float: right;
+	display: inline-block;
+}
+
+
+#helpMicro h2{
+	//cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	color: $bojaHelpNaslovaH2;
+	margin-top: 5px;
+	margin-left: -4px;
+	font-weight: bold;
+	padding: 0 4px;
+	// @include borderRadius(3px);
+	// @include trans(all, 0.2s);
+}
+// #helpMicro h2:hover{
+// 	background-color: $boja1;
+// 	color: $bojaInpBordera;
+// }
+#helpMicro h3{
+	font-size: 14px;
+	margin-top: 25px;
+}
+/*#helpMicro h3, #helpMicro p, #helpMicro .margina{
+	display: none;
+}*/
+#helpVMeniWrap
+{
+	padding: 20px 0;
+	width: 270px;
+	overflow: auto;
+	float: left;
+	text-align: left;
+	border-right: 1px solid $boja2;
+}
+.helpVMeniDugme
+{
+	padding: 5px 5px 5px 0px;
+	cursor: pointer;
+	text-shadow: 1px 1px 1px white;
+	@include trans(all,0.2s);
+}
+.helpVMeniDugme:hover
+{
+	color: $boja2;
+	padding-left: 5px;
+}
+.helpVMeniDugmeKliknuto,
+.helpVMeniDugmeKliknuto:hover
+{
+	background-color: #F58323;
+	text-align: right;
+	cursor: default;
+	color: white;
+	text-shadow: none;
+	@include borderRadius2(5px,0,0,5px);
+}
+
+
+
+#porFolderiWrap
+{
+	float:left;
+	min-height:200px;
+	border-right:1px solid $boja1;
+	width:23%;
+}
+.porFolder
+{
+	cursor:pointer;
+	margin: 5px 0;
+	padding: 5px 0;
+	@include trans(all,0.2s);
+}
+#porFolderiWrap .porFolder:first-child
+{
+	margin-top:0px;
+}
+.porFolder:hover
+{
+	padding-left: 5px;
+	color: $boja2;
+}
+.porFolderKliknut,
+.porFolderKliknut:hover
+{
+	cursor:default;
+	padding-left: 5px;
+	color: $bojaFonta2;
+	background-color: $boja1Svetlija;
+	text-shadow:1px 1px 1px $bojaFonta;
+	@include borderRadius2(4px,0,0,4px);
+}
+
+
+#porGrupeWrap
+{
+	float:right;
+	min-height:200px;
+	width:75%;
+}
+.porGrupa
+{
+	cursor:pointer;
+	//margin: 5px 0;
+	padding: 5px 2px;
+	border-bottom:1px solid $bojaInpBordera;
+	border-top:1px solid white;
+	@include trans(all,0.2s);
+	background-color: #eee;
+}
+.porGrupaNeprocitana
+{
+	font-weight:bold;
+}
+.porGrupa:hover
+{
+	background-color: $boja3PunoSvetlija;
+}
+#porGrupeWrap .porGrupa:first-child
+{
+	border-top:1px solid $bojaInpBordera;
+}
+.porGrupa span
+{
+	display: inline-block;
+}
+.porGrupa span:nth-child(3)
+{
+	color: $bojaFontaSvetlija;
+}
+
+#porPorukeWrap
+{
+	background-color: #eee;
+	border: 1px solid $bojaInpBordera;
+}
+#porPorukeNaslov
+{
+	padding: 5px 0 5px 10px;
+	border-bottom: 1px solid $bojaInpBordera;
+	font-size: 16px;
+	@include gradijent(#fff,#dfdfdf);
+}
+#porPorukeTelo
+{
+	//border-bottom: 1px solid $bojaInpBordera;padding: 10px 20px 10px 20px;
+}
+.porPorukeUcitajStarije
+{
+	height: 24px;
+	border-bottom: 1px solid #DFDFDF;
+	background-color: #f5f5f5;
+	padding: 3px 0;
+	cursor: pointer;
+}
+.porPorukeUcitajStarije:hover
+{
+	background-color: $boja3PunoSvetlija;
+}
+.porPorukeUcitajStarije img
+{
+	width: 24px;
+	height: 24px;
+	display: block;
+	margin: 0 auto;
+	opacity: .6;
+}
+.porPorukeUcitajStarije:hover img
+{
+	opacity: 1;
+}
+#porPorukeTextarea
+{
+	border-top: 1px solid $bojaInpBordera;
+	padding: 10px 20px 10px 20px;
+}
+
+.porPoruka
+{
+	position: relative;
+	padding: 10px 0 20px;
+	border-bottom: 1px solid #DFDFDF;
+	border-top: 1px solid white;
+}
+.porPoruka i.triangle
+{
+	display:none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid $boja1;
+}
+.porPorukaNeprocitana
+{
+	background-color: #f5f5f5;
+}
+.porPorukaNeprocitana i.triangle
+{
+	display:block !important;
+}
+.porPorukaNaslov
+{
+	padding: 0 0 5px;
+	border-bottom: 1px solid $bojaInpBordera;
+	margin: 0 20px;
+	color: $bojaFontaSvetlija;
+}
+.porPorukaNaslov span
+{
+	display: inline-block;
+}
+.porPorukaNaslov span:first-child
+{
+	color: $bojaFonta;
+}
+.porPorukaNaslov span:last-child
+{
+	float: right;
+}
+#porPorukeWrap .porPoruka:first-child
+{
+	border-top: none;
+}
+#porPorukeWrap .porPoruka:last-child
+{
+	border-bottom: none;
+}
+
+.porPorukaTelo
+{
+	margin: 0 20px;
+	padding: 5px 0;
+	text-align: justify;
+}
+
+#porPorukePosalji,
+#porNovaPosalji
+{
+	cursor:pointer;
+	display: inline-block;
+	padding: 2px 10px 4px 12px;
+	border: 1px solid $bojaInpBordera;
+}
+#porPorukePosalji:hover,
+#porNovaPosalji:hover
+{
+	background-color: $boja3PunoSvetlija;
+	border-color: $boja2;
+}
+#porPorukePosalji:active,
+#porNovaPosalji:active
+{
+	background-color: $boja3PunoSvetlija2;
+}
+
+
+#porPorukePosalji span,
+#porPorukePosalji img,
+#porNovaPosalji span,
+#porNovaPosalji img
+{
+	vertical-align: middle;
+}
+
+
+#porPorukeITulbarWrap
+{
+	float:right;
+	width:75%;
+}
+#porPorukeTulbar
+{
+	border: 1px solid #DFDFDF;
+	padding: 5px 0 5px 6px;
+	border-bottom: none;
+	background-color: white;
+	height: 24px;
+}
+#porPorukeTulbar img
+{
+	float:left;
+	display:block;
+	margin: 0 10px 0 0;
+	height: 24px;
+	cursor: pointer;
+	opacity: .5;
+}
+#porPorukeTulbar img:hover
+{
+	opacity: 1;
+}
+
+.myInputTAFix
+{
+	width:100%;
+	max-width:100%;
+	resize:none;
+	padding: 3px 0 5px;
+	height:55px;
+}
+
+
+#porTulbarWrap
+{
+	overflow: auto;
+	clear: both;
+	border: 1px solid $bojaInpBordera;
+	background-color: white;
+	padding: 5px;
+	margin-bottom: 15px;
+}
+#porTulbarNew
+{
+	float:left;
+	border: 1px solid $bojaInpBordera;
+	background-color: #eee;
+	padding: 0 3px 0 10px;
+}
+#porTulbarNew span
+{
+	padding: 4px 0;
+	display:inline-block;
+	vertical-align: middle;
+}
+#porTulbarNew span:first-child
+{
+	border-right:1px solid $bojaInpBordera;
+	padding-right: 10px;
+}
+
+#porNew,
+#porOsvezi
+{
+	cursor:pointer;
+	display: block;
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	opacity: .7;
+	background-repeat: no-repeat;
+}
+#porNew
+{
+	background-image: url(img/b/pnovaporuka.png);
+	top: 5px;
+	left: 100px;
+}
+#porOsvezi
+{
+	background-image: url(img/b/posvezi.png);
+	top: 3px;
+	left: 140px;
+}
+#porNew:hover,
+#porOsvezi:hover
+{
+	opacity: 1;
+}
+
+
+#mainPOFNotif
+{
+	display: block;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	cursor:pointer;
+	font-size: 11px;
+	background-color: $boja3;
+	padding: 0 4px 1px;
+	border-radius: 6px;
+	text-shadow: none;
+	color: $bojaFonta;
+	margin-top: 2px;
+	font-weight: bold;
+}
+
+
+#porNovaPorukaWrap
+{
+	background-color: #eee;
+	border: 1px solid $bojaInpBordera;
+	float:right;
+	min-height:200px;
+	width:75%;
+}
+
+
+#sifToolbar
+{
+	padding:5px;
+	height: 32px;
+	background-color: white;
+	width: 550px;
+	border: 1px solid $bojaInpBordera;
+	border-bottom: none;
+}
+#sifToolbar img
+{
+	height:32px;
+	display:block;
+	opacity: .5;
+	cursor:pointer;
+}
+#sifToolbar img:hover
+{
+	opacity: 1;
+}
+#sifToolbar img.L
+{
+	float:left;
+	margin-right:5px;
+}
+#sifToolbar img.R
+{
+	float:right;
+	margin-left:5px;
+}
+
+/* SLICKGRID BEGIN */
+.slick-headerrow-column {
+    border-bottom: none;
+}
+
+.slick-headerrow-column {
+    text-overflow: clip;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.slick-headerrow-column input {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.slick-header-column.qDispNone {
+    display: none !important;
+}
+
+.no-filter {
+    border: none;
+    background: none;
+}
+
+.slick-viewport {
+	.ui-widget-content {
+        background: none;
+    }
+
+	.qTabelaTd {
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding: 2px 4px;
+	}
+
+    .slick-row.even {
+        background-color:#fff;
+    }
+
+    .slick-row.odd {
+        background-color:#f5f5f5;
+    }   
+
+    i.fa {
+        font-size: 1.2em;
+        vertical-align: middle;
+        opacity: 0.5;
+    }
+
+    i.fa:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+}
+
+.slick-footer-columns.tar {
+    & .qTabelaHeadTd {
+        text-align: right;
+    }
+}
+
+
+
+
+/* WELCOME STRANA */
+#welHeder
+{
+	overflow: auto;
+	padding-bottom: 10px;
+	padding: 10px;
+	background-color: #F6F6F6;
+	margin-bottom: 20px;
+	@include senkaOut(0px, 0px, 12px, $bojaSenkeOut);
+}
+#welHeder h1
+{
+	float: left; width: 550px; text-align: center; font-size: 35px; margin: 20px 0 25px;
+}
+#welHeder img
+{
+	width: 400px; float: right;
+}
+#welHeder p
+{
+	float: left; width: 550px; text-align: center;
+	margin: 10px 0 0;
+}
+
+#welTelo article
+{
+	//margin: 0 0 15px;
+	padding: 10px 10px 10px;
+	border-bottom: 1px solid $bojaInpBordera;
+	@include trans(all,0.2s);
+}
+#welTelo article:hover
+{
+	background-color: #fafafa;
+}
+#welTelo article:nth-child(1)
+{
+	border-top: 1px solid $bojaInpBordera;
+}
+#welTelo article h2
+{
+	cursor: pointer;
+}
+#welTelo article p, #welTelo article div.p
+{
+	margin: 14px 0;
+	overflow: auto;
+}
+#welTelo article ul li
+{
+	list-style-type: circle;
+	margin: 3px 0 0;
+}
+#welTelo article ul li span:nth-child(1)
+{
+	color: $boja2;
+}
+#welTelo article ul li span:nth-child(2)
+{
+	font-size: 11px;
+}
+#welTelo article a, #welTelo article a:visited
+{
+	padding: 0 1px !important;
+}
+.welArtTelo
+{
+	overflow: auto;
+	display: none;
+}
+.welArtTelo span.fL, .welArtTelo div.fL
+{
+	display: block;
+	float: left;
+	width: 160px;
+	padding-top: 4px;
+}
+.welArtTelo span.fR
+{
+	display: block;
+	float: left;
+	width: 800px;
+	text-align: justify;
+}
+
+
+
+.qTdPopupHover,
+.qTdPopupHover:hover
+{
+	background-color: $boja1Svetlija3 !important;
+	color: white !important;
+	font-weight: 700;
+}
+.qTdPopupKomitenti, .qTdPopupDokumenti, .qTdPopupArtikli, .qTdPopupPredmeti{
+	font-weight: 700;
+	color: black;
+}
+.qPopup_box, .qClick_boxl, .qClick_boxd {
+	font-size: 11px;
+	position: fixed;
+	background: white;
+	z-index:502;
+	@include senkaOut(0px, 0px, 15px, $bojaSenkeOut);
+	@include borderRadius(4px);
+}
+.qPopup_box img{
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	height: 16px;
+	opacity: 0.5;
+}
+.qPopup_box img:hover{
+	opacity: 1;
+}
+.qClick_boxl, .qClick_boxd { position: absolute !important; }
+.qPopup_box:after {
+	right: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.qPopup_box:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-right-color: white;
+	border-width: 8px;
+	//top: 14px;
+	top:50%;
+	margin-top: -8px;
+}
+.qPopup_box label
+{
+	color: $bojaFontaSvetlija;
+	display: inline-block;
+	min-width: 62px;
+}
+.qPopup_box section
+{
+	float:left;
+	padding: 10px;
+}
+#qHoverPopup .infoOKom{
+	max-width: 200px;
+}
+#qHoverPopup .infoODok{
+	max-width: 300px;
+}
+#qHoverPopup .infoODokumentu label{
+	min-width: 95px !important;
+}
+#qHoverPopup .infoOPredmetu label{
+	min-width: 90px !important;
+}
+
+.qClick_boxd:after {
+	left: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.qClick_boxl:after {
+	right: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.qClick_boxl:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-right-color: white;
+	border-width: 8px;
+	top: 43px;
+	margin-top: -8px;
+}
+.qClick_boxd:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-left-color: white;
+	border-width: 8px;
+	top: 43px;
+	margin-top: -8px;
+}
+
+.calGodine
+{
+	float:left;
+	width:60px;
+}
+.calMeseci
+{
+	float:right;
+	width:60px;
+}
+
+.dokPDRedNovogDok{
+	cursor: pointer;
+	margin-bottom: 3px;
+	background-color: white;
+	border: 1px solid $bojaInpBordera;
+}
+.dokPDRedNovogDok:hover{
+	border-color: black;
+	color: white;
+	background-color: $boja1;
+}
+.dokPDRedNovogDok span{
+	display: inline-block;
+	padding: 4px;
+}
+.dokPTNoviDok{
+	color: $boja1 !important;
+	cursor: pointer;
+	background-color: white;
+	border: 1px solid $bojaInpBordera;
+	text-align: center;
+}
+.dokPTNoviDok:hover{
+	border-color: black;
+	color: white !important;
+	background-color: $boja1;
+}
+.dokPTNoviDok span{
+	display: inline-block;
+	padding: 2px;
+}
+
+
+.skokNaTab{ display: none }
+
+.nadredjeniDokument{
+	cursor: pointer;
+	text-decoration: underline;
+}
+.nadredjeniDokument:hover{
+	color: $boja2;
+}
+
+input[type="file"]
+{
+	font-size: 17px !important;
+	width: 140px;
+	cursor: pointer !important;
+	left: 0 !important;
+}
+
+.xB{
+	opacity: .5;
+	cursor: pointer;
+}
+.xB:hover{
+	opacity: 1;
+}
+
+
+
+
+/*************************** DMS ***************************/
+#dmsWrap{
+    color: $boja1;
+    padding: 2px 10px 10px;
+	height: calc(100vh - 300px);
+}
+
+#leviDeo{
+	float: left;
+	height: 100%;
+	width: 300px;
+	position: relative;
+	border-right: 1px solid #dfdfdf;
+	padding-right: 10px;
+}
+
+.dmsH1{
+	font-size: 18px;
+	font-weight: normal;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid $bojaInpBordera;
+}
+#dmsLevo{
+	float: left;
+	margin-top: 20px;
+	height: 80px;
+	width: 300px;
+	position: relative;
+	border-right: 1px solid #dfdfdf;
+	padding-right: 10px;
+}
+#donjiLeviDeo{
+	float: left;
+	width: 100%;
+	height: calc(100% - 90px);
+	position: relative;
+	border-right: 1px solid #dfdfdf;
+	padding-right: 10px;
+}
+#dmsDesno{
+	float: right;
+	height: 100%;
+	width: 800px;
+}
+
+#dmsDesno iframe {
+	float: right;
+	height: calc(100% - 20px);
+	max-width: 800px;
+	width: 100%;
+	max-height: calc(100vh - 300px);
+	position: absolute;
+}
+
+#dmsDesnoDonjiRed{
+	top: calc(100% - 120px);
+	position: absolute;
+	width: 800px;
+}
+
+.dmsTeloWrap {
+	height: 100%;
+	width: 100%;
+}
+.dmsTeloWrap h1{ font-size: 13px; text-shadow: none; }
+
+#dmsWrap.ro{
+	//margin: -225px 0 0 -300px !important;
+}
+
+#dmsWrap.ro #dmsLevo, #dmsWrap.ro .del, #dmsWrap.ro .undoDel, #dmsWrap.ro #dmsLeviDeoDelimiter{
+	display: none !important;
+}
+
+#dmsWrap.ro #donjiLeviDeo{
+	height: 100% !important;
+}
+
+#dmsWrap.ro .red.dane{
+	display: none !important;
+}
+
+#dmsWrap.ro #dmsDesno{
+	//float: none !important;
+}
+
+#dmsImg {
+	max-width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+
+#dmsFilesWrap{
+	max-height: 100%;
+	overflow: auto;
+}
+
+#dmsWrap.ro #dmsFilesWrap {
+	max-height: 100% !important;
+	overflow: auto;
+}
+
+.dmsFile.obrisan {
+	background-color: #6E6E6E;
+	display: none;
+}
+
+.dmsFile{
+	overflow: hidden;
+	background-position: 3px center;
+	background-repeat: no-repeat;
+	height: 32px;
+	padding: 3px;
+	background-color: #f7f5f5;
+	border: 1px solid #dfdfdf;
+	line-height: 1.2;
+	margin-bottom: 3px;
+}
+.dmsFile.thumbnail{
+	border-color: $boja2;
+}
+
+.dmsFile:hover{
+	cursor: pointer;
+}
+
+.dmsFile.kliknut{
+	background-color: #C6C4C4;
+}
+
+.dmsFile div.red{
+	margin-left: 32px;
+}
+.dmsFile div.red.dane{
+	margin-top: 5px;
+	text-align: center;
+	font-weight: bold;
+}
+.dmsFile div.red.dane a{
+	margin: 0 0 0 10px;
+	padding: 0 6px;
+}
+.dmsFile span{ padding-left: 3px }
+.dmsFile a{
+	font-size: 11px;
+	padding: 0 3px;
+	margin-right: 3px;
+}
+.dmsFile i{
+	text-align: right;
+	color: $bojaFontaSvetlija;
+	font-size: 11px;
+	float: right;
+	display: inline-block;
+	font-style: normal;
+	margin-top: 2px;
+}
+
+
+
+
+/*************************** DIJALOG ***************************/
+.dijalogOverlej{
+    opacity: .5;	
+    z-index: 550;
+}
+// glavni wraper, dodati inline width, height, margin-top i margin-left u minus
+// margin-left = (width + 20) / 2 - 85 px
+.dijalogWrap{
+    padding: 4px 10px 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 550;
+    box-shadow: 0 10px 50px #444;
+    background-color: #EEE;
+}
+.dijalogH1{
+	font-size: 18px;
+	font-weight: 300;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid $bojaInpBordera;
+}
+// img src dodati iz koda
+.dijalogX{
+	position: absolute;
+	top: 2px;
+	right: 5px;
+	cursor: pointer;
+	opacity: .6;
+}
+.dijalogX:hover{
+	opacity: 1;
+}
+
+
+
+
+
+#mainSearchWrap
+{
+    display: none;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    margin-left: -107px;
+    width: 204px;
+    height: 24px;
+    background-color: #444;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: left;
+}
+#mainSearchInp
+{
+    vertical-align: top;
+    width: 120px;
+    border-radius: 5px;
+}
+#mainSearchWrap img
+{
+    cursor: pointer;
+    opacity: .7;
+}
+#mainSearchWrap img:hover
+{
+    opacity: 1;
+}
+.highlight
+{
+    background-color: yellow;
+    color: black;
+    padding: 0 1px;
+    box-shadow: 1px 1px 2px #999;
+    border-radius: 4px;
+}
+.highlight.active
+{
+    background-color: orange !important;
+}
+
+button.close{
+	position: absolute;
+	top: 2px;
+	right: 6px;
+	line-height: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	-webkit-appearance: none;
+	opacity: .5;
+	color: #444;	
+}
+button.close:hover {
+    opacity: 1;
+}
+
+.sort-arrow{
+	font-weight: 700;
+}
+.sort-sortable{
+	cursor: pointer;
+	text-decoration: underline;
+}
+.sort-active{
+	text-decoration: none !important;
+	@include gradijent($boja1,$boja1);
+}
+.sort-active-column{
+	background-color: $bojaInpBordera;
+}
+
+
+#akpUloge{
+	float: left;
+	width: 49%;
+}
+#akpSkladista{
+	float: right;
+	width: 49%;
+}
+#akpUloge h2, #akpSkladista h2{
+	font-size: 16px;
+	margin-bottom: 10px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid $bojaInpBordera;
+}
+.akpUloga{
+	border-bottom: 1px solid $bojaInpBordera;
+	overflow: auto;
+	margin-bottom: 5px;
+	padding-bottom: 3px;
+	overflow: visible;
+}
+.akpUlogaNaziv{
+	font-size: 16px;
+	font-weight: 300;
+}
+.akpUlogaUpitnik{
+	background-image: url(img/b/help.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	opacity: .7;
+	cursor: pointer;
+	margin-left: 10px;
+	float: right;
+	vertical-align: top;
+}
+.akpUlogaUpitnik.poredInput{
+	width: 24px;
+	height: 24px;
+	cursor: default;
+	float: none;
+}
+.akpUlogaUpitnik:hover{
+	opacity: 1;
+}
+.akpUlogaSwitch{
+	float: right;
+}
+.akpUlogaOpis{
+	display: none;
+	clear: both;
+}
+#akpIzabranWrap{
+	position: relative;
+	background-color: #eee;
+	border: 1px solid $bojaInpBordera;
+	padding: 10px;
+	margin: 10px 0;
+}
+
+#keysIcon{
+	cursor: pointer;
+	position:absolute;
+	left:0;
+	top:-24px
+}
+.focusable{
+	padding: 2px;
+    border: 1px dotted transparent;
+    border-radius: 3px;
+}
+.unosRed.focusable {
+    padding: 1px 2px;
+    border: 1px dotted transparent;
+    margin: 0;
+    border-radius: 3px;
+}
+// .focusable {
+//     cursor: default;
+// }
+.focus {
+    border-color: $boja3 !important;
+}
+
+
+.komNijeUPdv{
+	color: red;
+}
+.unosRedZaInfoOKom{
+	min-height: 30px;
+	font-size: 11px;
+	font-weight: 700;
+	cursor: default;
+	max-width: 200px;
+}
+.unosRedZaInfoOKom.padd{
+	padding: 3px 0 0 3px;
+}
+
+
+
+
+.artSharer{
+	text-align: center;
+}
+.artSharer a{
+	display: inline-block;
+	width: 20px;
+	height: 30px;
+}
+.artSharer a.fb{
+	background: url('WP/img/post-function.png') -10px -40px no-repeat;
+}
+.artSharer a.fb:hover{
+	background: url('WP/img/post-function-color.png') -10px -40px no-repeat;
+}
+
+
+#serverskoObavestenje{
+	display: none;
+	cursor: default;
+	position: fixed;
+	left: 50%;
+	margin-left: -430px;
+	bottom: 0;
+	padding: 3px 5px;
+	background-color: #E20000;
+	color: #FFF;
+	text-shadow: 1px 1px 2px $boja1;
+	@include trans(opacity, 0.2s);
+}
+#serverskoObavestenje:hover{
+	opacity: .1;
+}
+
+
+body.wide #content{
+	width: 100%;
+}
+body.wide .hederGlavni{
+	width: 100%;
+}
+body.wide #navLevo{
+	margin: 0;
+	left: 0;
+}
+body.wide #mainPodaciOFirmiWrap,
+body.wide #mainTehnickaPodrska{
+	left: 10px;
+	margin: 0;
+}
+
+#changeLog{
+	text-align:left !important;	
+}
+#changeLog {
+	p {
+        padding-left: 10px;
+        display: inline-block;
+		margin: 0;
+		font-size: 12px !important;
+    }
+    .chItem {
+        font-size: 15px;
+        padding: 2px 0;
+        font-weight: 300;
+		font-size: 12px !important;
+    }
+
+    .legendItem {
+        font-weight: 600;
+        font-size: 11px;
+        width: 72px;
+        border-radius: 3px;
+        color: white;
+        padding: 2px 0;
+        text-align: center;
+        display: inline-block;
+        margin-top: 1px;
+        vertical-align: top;
+		font-size: 9px !important;
+    }
+    .legendItem.add { background: #3498db }
+    .legendItem.remove { background: #e74c3c }
+    .legendItem.change { background: #34495e }
+    .legendItem.fix { background: #2ecc71 }
+
+    em {
+        font-style: normal;
+        color: black;
+        font-weight: 400;
+    }
+    strong {
+        color: #BB8E1E;
+        font-weight: 600;
+    }
+}
+
+
+
+/*************************** QQ ***************************/
+.qq-uploader {
+    position: relative;
+    width: 100%;
+}
+.qq-upload-button, .qq-regular-button {
+	height: 26px;
+    display: block;
+    cursor: pointer;
+    /*or inline-block*/
+    width: 120px;
+    text-transform: uppercase;
+    // padding: 4px 0;
+    font-size: 11px;
+    text-align: center;
+	color: $bojaFonta2 !important;
+	text-shadow:1px 1px 2px $bojaFonta;
+	@include borderRadius(6px);
+    @include gradijent($boja1Svetlija2,$boja1);
+}
+.qq-regular-button:hover{
+	color: white !important;
+	@include gradijent($boja3,$boja2);
+}
+.qq-upload-button-hover {
+	color: white !important;
+    @include gradijent($boja3,$boja2);
+}
+.qq-upload-button .ubt, .qq-regular-button .ubt{
+	display: inline-block;
+	vertical-align: bottom;
+	margin-top: 5px;
+}
+.qq-upload-button-focus {
+    outline: 1px dotted #000000;
+}
+.qq-upload-drop-area, .qq-upload-extra-drop-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 30px;
+    z-index: 2;
+    background: #FF9797;
+    text-align: center;
+}
+.qq-upload-drop-area span {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    margin-top: -8px;
+    font-size: 16px;
+}
+.qq-upload-extra-drop-area {
+    position: relative;
+    margin-top: 50px;
+    font-size: 16px;
+    padding-top: 30px;
+    height: 20px;
+    min-height: 40px;
+}
+.qq-upload-drop-area-active {
+    background: #FF7171;
+}
+.qq-upload-list {
+    margin: 5px 0 0;
+    padding: 0;
+    list-style: none;
+    max-height: 100px;
+    overflow: auto;
+	overflow-y: scroll;
+}
+.qq-upload-list li {
+    margin: 0;
+    padding: 3px 5px;
+    background-color: $boja3PunoSvetlija;
+}
+.qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-retry, .qq-upload-failed-text, .qq-upload-finished {
+    margin-right: 12px;
+}
+.qq-upload-file {
+}
+.qq-upload-spinner {
+    display: inline-block;
+    background: url("loading.gif");
+    width: 15px;
+    height: 15px;
+    vertical-align: text-bottom;
+}
+.qq-upload-finished {
+    display:none;
+    width:15px;
+    height:15px;
+    vertical-align:text-bottom;
+}
+.qq-upload-retry {
+    display: none;
+    color: #000000;
+}
+.qq-upload-cancel {
+	color: #000000;
+}
+.qq-upload-retryable .qq-upload-retry {
+    display: inline;
+}
+.qq-upload-size, .qq-upload-cancel, .qq-upload-retry {
+    font-size: 12px;
+    font-weight: normal;
+}
+.qq-upload-failed-text {
+    display: none;
+    font-style: italic;
+    font-weight: bold;
+}
+.qq-upload-failed-icon {
+    display:none;
+    width:15px;
+    height:15px;
+    vertical-align:text-bottom;
+}
+.qq-upload-fail .qq-upload-failed-text {
+    display: inline;
+}
+.qq-upload-retrying .qq-upload-failed-text {
+    display: inline;
+    color: #D60000;
+}
+.qq-upload-list li.qq-upload-success {
+    background-color: #5DA30C;
+    color: #FFFFFF;
+}
+.qq-upload-list li.qq-upload-fail {
+    background-color: #D60000;
+    color: #FFFFFF;
+}
+.qq-progress-bar {
+    // background: -moz-linear-gradient(top,  rgba(30,87,153,1) 0%, rgba(41,137,216,1) 50%, rgba(32,124,202,1) 51%, rgba(125,185,232,1) 100%); /* FF3.6+ */
+    // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(50%,rgba(41,137,216,1)), color-stop(51%,rgba(32,124,202,1)), color-stop(100%,rgba(125,185,232,1))); /* Chrome,Safari4+ */
+    // background: -webkit-linear-gradient(top,  rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); /* Chrome10+,Safari5.1+ */
+    // background: -o-linear-gradient(top,  rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); /* Opera 11.10+ */
+    // background: -ms-linear-gradient(top,  rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); /* IE10+ */
+    // background: linear-gradient(to bottom,  rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(32,124,202,1) 51%,rgba(125,185,232,1) 100%); /* W3C */
+    @include gradijent($boja3,$boja2);
+    width: 0%;
+    height: 10px;
+    border-radius: 6px;
+    margin-bottom: 3px;
+    display: none;
+}
+/*************************** SKYPE ***************************/
+span.skype_pnh_container {display:none !important;}
+span.skype_pnh_print_container, span[class^="skype_pnh_print_container"] {display:inline !important;}
+
+.feedback-modal{max-height: 300px !important;}
+
+.qTabela .fa{
+    cursor: pointer;
+    opacity: 0.5;
+    font-size: 1.4em;
+
+    &:hover {
+        opacity: 1;
+    }
+}

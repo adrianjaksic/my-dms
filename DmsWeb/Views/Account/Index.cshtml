@@ -1,0 +1,272 @@
+﻿@using DmsCore.Data
+@using DmsCore.Podesavanja
+@{
+    Layout = null;
+
+    HttpCookie langCookie = Request.Cookies["_lang"];
+    var jezik = langCookie != null ? langCookie.Value : "0";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+    <title>Sistem za evidenciju predmeta</title>
+    <link rel="icon" type="image/png" href="@Url.Content("~/Content/favicon.ico")"/>
+    
+    <!-- JS: JQuery, JQWidgets -->
+    <script src="@Url.Content("~/Scripts/jquery-1.7.2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.ba-hashchange.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.color.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.total-storage.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery-highlight1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/easyBackground.js")" type="text/javascript"></script>
+    
+    <!-- CSS: Quinta -->
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jQuintaUI/jQuintaUI/content/qui.css")" rel="stylesheet" type="text/css" />
+    
+    <!-- JS: Quinta -->
+    <script src="@Url.Content("~/Scripts/quinta.putanje.js")" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cookieKey = '_lang',
+                cookieOpts = { expires: 365, path: '/' },
+                lang = $('#jezik').text();
+
+            $('#logovanjeKorisnickoIme').focus();
+
+            @*
+            $('#phExpander').on('click', function() {
+                if ($(this).hasClass('_ex')) {
+                    $(this).removeClass('_ex');
+                    $('#preHeder').slideUp();
+                    $('.preHederLine').animate({ top: '0px !important' }, 400);
+                } else {
+                    $(this).addClass('_ex');
+                    $('#preHeder').slideDown();
+                    $('.preHederLine').animate({ top: '142x !important' }, 400);
+                }
+            });
+            *@
+            
+            // centriranje prozora
+            $('#loginWrap').css({ 'left': 'calc(50% - ' + $('#loginWrap').width() / 2 + 'px)' });
+
+            var url_UlogujKorisnika = $('#url_UlogujKorisnika').text();
+
+            function UlogujKorisnika() {
+                var $btn = $("#btnUloguj").find('table');
+                if ($btn.hasClass('teloDugmeIskljuceno')) return;
+
+                var korisnickoIme = $('#logovanjeKorisnickoIme').val().trim();
+                var lozinka = $('#logovanjeLozinka').val().trim();
+                
+                var $greska = $('#greskaLogovanja');
+                
+                if (korisnickoIme.length == 0 || lozinka.length == 0) {
+                    $greska.find('p').text($greska.attr('data-defaultPoruka'));
+                    $greska.show(500).delay(3000).hide(500);
+
+                    return;
+                }
+
+                $('body').css('cursor', 'wait');
+                $btn.addClass('teloDugmeIskljuceno');
+                $.ajax({
+                    type: 'GET',
+                    url: url_UlogujKorisnika,
+                    data: {
+                        korisnickoIme: korisnickoIme,
+                        lozinka: lozinka
+                    },
+                    success: function(data) {
+                        if (data.Greska) {
+                            $greska.find('p').text(data.Poruka);
+                            $greska.show(500).delay(3000).hide(500);
+                            $('body').css('cursor', 'default');
+                            return;
+                        }
+
+                        // definisana putanja
+                        window.location = _pathHome;
+                    },
+                    complete: function () {
+                        $btn.removeClass('teloDugmeIskljuceno');
+                    }
+                });
+            }
+            
+            $("#btnUloguj").click(UlogujKorisnika);
+
+            $('.myInput').on('keydown', function(e) {
+                if (e.keyCode == 13) {
+                    $("#btnUloguj").click();
+                }
+            });
+
+            $('.appJezik').on('click', function (e) {
+                e.preventDefault();
+                lang = $(this).attr('data-val');
+                
+                $.cookie(cookieKey, lang, cookieOpts);
+                
+                window.location.reload();
+            });
+            
+            $.cookie(cookieKey, lang, cookieOpts);
+
+        });
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #upustvo {
+            position: relative;
+            margin-left: 0;
+            left: calc(50% - 130px);
+        }
+
+        #loginWrap {
+            /*top: 520px;*/
+            position: relative;
+            left: 50%;
+            margin-left: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+            border: 0;
+        }
+
+        .container {
+            margin-right: auto;
+            margin-left: auto;
+            width: 1170px;
+        }
+
+        #preHeder {
+            color: #dfdfdf;
+            padding: 12px 0;
+            height: 122px;
+        }
+
+        #preHeder h3 {
+            font-size: 18px;
+            font-weight: 400;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #666;
+            margin-bottom: 5px;
+        }
+
+        #preHeder p {
+            font-size: 15px;
+            margin-bottom: 3px;
+            font-weight: 300;
+        }
+
+        #preHeder a {
+            font-weight: 400;
+            color: #fe5815;
+        }
+
+        [class*="span"] {
+            float: left;
+            min-height: 1px;
+            margin-left: 30px;
+        }
+
+        .span3 {
+            width: 270px;
+        }
+
+        .span4 {
+              width: 370px;
+        }
+
+        .span5 {
+              width: 470px;
+        }
+
+        .row {
+            margin-left: -30px;
+        }
+
+        #phExpander:hover {
+	        padding-top: 0 !important;
+        }
+
+        #phExpander {
+            float: right;
+            text-align: right;
+        }
+    </style>
+    
+</head>
+
+    <body>
+        <div id="eb"></div>
+    
+        <div class="qDispNone" id="jezik">@jezik</div>
+        <div class="qDispNone" id="url_UlogujKorisnika">@Url.Action("UlogujKorisnika")</div>
+
+        <div id="content" class="detalji-dms">
+            <div class="unosRed" style="width: 100%; height: 200px; background-color: white; margin-bottom: 40px;">
+                <img src="@Url.Content("~/Content/img/grb.jpg")" style="position: relative; height: 200px; float:left; padding-left: 30px;"/>
+                <div style="float: left; margin-left: 60px; padding-top: 30px;">
+                    <h1 style="font-size: 45px;">@Konverzija.KonvertujUCirilicu("Republika Srbija")</h1>
+                    <h1 style="font-size: 45px;">@Konverzija.KonvertujULatinicu("Republika Srbija")</h1>
+                </div>
+            </div>
+        
+            @* Login prozor *@
+            <div class="proz" id="loginWrap" style="margin-top: 0; z-index: 1;">
+            
+                <div class="prozHeder">
+                    <div class="prozHederNaslov">@Konverzija.VratiString(@jezik, "Pisarnica " + DmsData.Naziv + " - logovanje")</div>
+                </div>
+                <div class="prozTelo" id="prozTelo" style="overflow: auto;">
+                    <div id="greskaLogovanja" class="qDispNone" data-defaultPoruka="@Konverzija.VratiString(@jezik, "Podaci za logovanje nisu uneti.")">
+                        <p style="color: red;" ></p>
+                    </div>
+                    <div class="unosRed">
+                        <div class="unosRedLbl_taL" style="width: 100px;">@Konverzija.VratiString(@jezik, "Korisničko ime"):</div>
+                        <div class="unosRedVr"><input type="text" class="myInput" style="width: 180px;" id="logovanjeKorisnickoIme" tabindex="1"/></div>
+                        <div class="unosRed" style="float: left;">
+                            <a class="appJezik" data-val="1" href="#">@Konverzija.VratiString(@jezik, "Ćirilica")</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="unosRed">
+                        <div class="unosRedLbl_taL" style="width: 100px;">@Konverzija.VratiString(@jezik, "Lozinka"):</div>
+                        <div class="unosRedVr"><input type="password" style="width: 180px;" class="myInput" id="logovanjeLozinka" tabindex="2"/></div>
+                        <div class="unosRed" style="float: left;">
+                            <a class="appJezik" data-val="0" href="#">@Konverzija.VratiString(@jezik, "Latinica")</a>
+                        </div>
+                    </div>
+                    <div class="prozDugmad" style="position: relative">
+                        <div class="teloDugmeWrapUProzoru btnW3" id="btnUloguj">
+                            <table class="teloDugme">
+                                <tbody>
+                                    <tr>
+                                        <td data-defaultlbl="uloguj">@Konverzija.VratiString(@jezik, "Logovanje")</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

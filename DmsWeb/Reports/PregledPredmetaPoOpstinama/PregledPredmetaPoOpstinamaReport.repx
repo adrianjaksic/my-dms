@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.1.5.0" Ref="1" Name="PregledPredmetaPoOpstinamaReport" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DataSource="#Ref-0" Dpi="254" Version="15.1" PageWidth="2100" PageHeight="2970" PaperKind="A4" Margins="167, 156, 106, 101" ReportUnit="TenthsOfAMillimeter">
+  <Bands>
+    <Item1 Ref="2" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Dpi="254" Padding="0,0,0,0,254" HeightF="0" />
+    <Item2 Ref="3" Name="TopMargin" ControlType="TopMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,254" HeightF="105.8333" Dpi="254" />
+    <Item3 Ref="4" Name="BottomMargin" ControlType="BottomMarginBand" TextAlignment="TopLeft" Padding="0,0,0,0,254" HeightF="100.5417" Dpi="254" />
+    <Item4 Ref="5" ControlType="DetailReportBand" Name="DetailReport" Dpi="254" DataMember="Stavke" Level="0" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="6" ControlType="DetailBand" Name="Detail1" Dpi="254" HeightF="63.5">
+          <Controls>
+            <Item1 Ref="7" Name="xrLabel7" ControlType="XRLabel" SizeF="253,58.42" LocationFloat="1524, 0" Dpi="254" Padding="5,5,0,0,254" Text="xrLabel7">
+              <DataBindings>
+                <Item1 Ref="8" PropertyName="Text" DataMember="Stavke.BrojPredmeta" />
+              </DataBindings>
+            </Item1>
+            <Item2 Ref="9" Name="xrLabel6" ControlType="XRLabel" SizeF="254,58.42" LocationFloat="1270, 0" Dpi="254" Padding="5,5,0,0,254" Text="xrLabel6">
+              <DataBindings>
+                <Item1 Ref="10" PropertyName="Text" DataMember="Stavke.PostanskiBrojOpstine" />
+              </DataBindings>
+            </Item2>
+            <Item3 Ref="11" Name="xrLabel5" ControlType="XRLabel" SizeF="254,58.42" LocationFloat="1016, 0" Dpi="254" Padding="5,5,0,0,254" Text="xrLabel5">
+              <DataBindings>
+                <Item1 Ref="12" PropertyName="Text" DataMember="Stavke.NazivVrstePredmeta" />
+              </DataBindings>
+            </Item3>
+            <Item4 Ref="13" Name="xrLabel4" ControlType="XRLabel" SizeF="254,58.42" LocationFloat="762, 0" Dpi="254" Padding="5,5,0,0,254" Text="xrLabel4">
+              <DataBindings>
+                <Item1 Ref="14" PropertyName="Text" DataMember="Stavke.NazivOrgana" />
+              </DataBindings>
+            </Item4>
+            <Item5 Ref="15" Name="xrLabel3" ControlType="XRLabel" SizeF="254,58.42" LocationFloat="508, 0" Dpi="254" Padding="5,5,0,0,254" Text="xrLabel3">
+              <DataBindings>
+                <Item1 Ref="16" PropertyName="Text" DataMember="Stavke.NazivOpstine" />
+              </DataBindings>
+            </Item5>
+            <Item6 Ref="17" Name="xrLabel2" ControlType="XRLabel" SizeF="254,58.42" LocationFloat="254, 0" Dpi="254" Padding="5,5,0,0,254" Text="xrLabel2">
+              <DataBindings>
+                <Item1 Ref="18" PropertyName="Text" DataMember="Stavke.NazivJedinice" />
+              </DataBindings>
+            </Item6>
+            <Item7 Ref="19" Name="xrLabel1" ControlType="XRLabel" SizeF="254,58.42" LocationFloat="0, 0" Dpi="254" Padding="5,5,0,0,254" Text="xrLabel1">
+              <DataBindings>
+                <Item1 Ref="20" PropertyName="Text" DataMember="Stavke.NazivKlase" />
+              </DataBindings>
+            </Item7>
+          </Controls>
+        </Item1>
+      </Bands>
+    </Item4>
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v15.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2U+PE5hbWU+b2JqZWN0RGF0YVNvdXJjZTE8L05hbWU+PERhdGFTb3VyY2UgVHlwZT0iRG1zQ29yZS5JenZlc3RhamkuUHJlZ2xlZFByZXRtZXRhUG9PcHN0aW5hbWFaYWdsYXZsamUsIERtc0NvcmUsIFZlcnNpb249MS4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsIiAvPjwvT2JqZWN0RGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

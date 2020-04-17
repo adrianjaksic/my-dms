@@ -1,0 +1,89 @@
+﻿@using DmsCore.Izvestaji
+@using DmsCore.Podesavanja
+@using DmsWeb.Infrastructure
+@{
+    Layout = null;
+
+    var korisnik = RuntimeDataHelpers.GetRuntimeData(Request);
+    
+    const string wLabele = "100px;";
+    const string wLabele1 = "120px;";
+    const string wPolja = "254px";
+}
+
+<script>
+    $(document).ready(qIzvestajPoOpstinama.Init);
+</script>
+
+<style>
+    .crtica {
+        float: left;
+        margin-left: 5px;
+        margin-right: 5px;}
+
+    #izvPoOpsSlickGrid {
+        height: calc(100vh - 260px);
+    }
+</style>
+
+<div class="hederH1">
+    <h1 style="float: left;max-width: 300px;">@Konverzija.VratiString(korisnik.Jezik, "Izveštaj po opštinama")</h1>
+    
+    <div style="float:right;">
+        <div class="teloDugmeWrapUFormi btnW3" id="izvPoOpsBtnStampa"  style="float: left; margin-left: 10px">
+            <table class="teloDugme">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Štampa")</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*<div class="qDispNone" id="url_VratiKlaseJedinice">@Url.Action("VratiKlaseJedinice", "Pretrage")</div>
+<div class="qDispNone" id="url_VratiKlase">@Url.Action("VratiKlase", "Pretrage")</div>*@
+<div class="qDispNone" id="url_VratiPredmetePoOpstinama">@Url.Action("VratiPredmetePoOpstinama")</div>
+<div class="qDispNone" id="url_VratiStampePredmetaPoOpstinama">@Url.Action("VratiStampePredmetaPoOpstinama")</div>
+
+<div class="oblakTelo" id="oblakTeloWrap">
+    <div style="float: left; margin-bottom: 5px;">
+        <div style="float: left;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Od"):</div>
+                <div class="unosRedVr"><div id="izvPoOpsOdDatuma"></div></div>
+            </div>
+        </div>
+
+        <div style="float: left; margin-left: 20px;">
+            <div class="unosRed">
+                <div class="unosRedLbl_taL" style="width: @wLabele">@Konverzija.VratiString(korisnik.Jezik, "Do"):</div>
+                <div class="unosRedVr"><div id="izvPoOpsDoDatuma"></div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="float: right">
+        <div class="teloDugmeWrapUFormi btnFloatR btnResetX" id="izvPoOpsBtnReset">
+            <table class="teloDugme teloDugmeDesno">
+                <tr>
+                    <td><img src="@Url.Content("~/Content/img/w/x.png")" alt="" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="teloDugmeWrapUFormi btnW3 btnFloatR" id="izvPoOpsBtnPretrazi">
+            <table class="teloDugme teloDugmeLevo">
+                <tr>
+                    <td>@Konverzija.VratiString(korisnik.Jezik, "Pretraži")</td>
+                    <td><img src="@Url.Content("~/Content/img/w/lupica.png")" alt="" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div class="clear withLine"></div>
+    
+    <div style="position:relative; margin-top: 10px; width:100%;">
+        <div id="izvPoOpsSlickGrid" style="width:100%;"></div>
+        <div id="izvPoOpsSlickGridPager" style="width:100%;height:20px;"></div>
+    </div>
+</div>

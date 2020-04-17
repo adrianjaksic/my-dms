@@ -1,0 +1,17 @@
+*.swp
+*.suo
+*.user
+*.userosscache
+[Dd]ebug/
+[Rr]elease/
+[Rr]eleases/
+[Bb]in/
+[Oo]bj/
+packages/
+msbuild.log
+msbuild.err
+msbuild.wrn
+.vs/
+/Web/Web.local.config
+/Web/app-log.txt
+/Web/archives/

@@ -1,0 +1,282 @@
+﻿@using DmsCore.Logovanje
+@using DmsCore.Podesavanja
+@{
+    Layout = null;
+
+    var korisnik = (UlogovaniKorisnik) ViewData["korisnik"];
+}
+
+<link href="@Url.Content("~/Content/bootstrap3/css/bootstrap.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="@Url.Content("~/Content/bootstrap3/js/bootstrap.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/pisarnica.meni.js")"></script>
+
+<style>
+    #hederMeniDugmePodesavanja, .hederMeniDugme {
+        height: 25px !important;
+        margin: 5px 0 0 5px;
+        font-size: 15px;
+    }
+
+    .hederMeniDugmeText {
+        margin-top: 2px;
+    }
+
+   .navLevoMarginTop {
+        margin-top: 11px !important;
+        
+    }
+
+    .navMeniDugme {
+        margin-left: 5px;
+        width: 160px;
+        font-size: 12px;
+    }
+</style>
+
+<div class="qDispNone" id="url_OdlogujKorisnika">@Url.Action("OdlogujKorisnika", "Account")</div>
+<div class="qDispNone" id="url_PodesiJezik">@Url.Action("PodesiJezik", "Home")</div>
+<div class="qDispNone" id="url_PromeniLozinku">@Url.Action("PromeniLozinku", "Account")</div>
+
+<section id="hederMeni" style="margin-left: 10px; height: 40px;">
+    <div style="height: 25px;">
+        <div class="dropdown">
+            <div id="hederMeniDugmePodesavanja" class="dropdown-toggle" data-toggle="dropdown" title="@Konverzija.VratiString(korisnik.Jezik, "Korisnički meni")"></div>
+            <ul class="dropdown-menu" style="right: 10px">
+                <li>
+                    <div class="dd-menu-item" id="divPocetnaStranica">@Konverzija.VratiString(korisnik.Jezik, "Početna stranica")</div>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <div class="dd-menu-item" id="divPromenaLozinke">@Konverzija.VratiString(korisnik.Jezik, "Promeni lozinku")</div>
+                </li>
+                <li class="divider"></li>
+                
+                @if (korisnik.Jezik == "0")
+                {
+                    <li>
+                        <div class="dd-menu-item" data-jezik="1" id="divJezikPodesavanja">@Konverzija.VratiString(korisnik.Jezik, "Prebaci na ćirilicu")</div>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <div class="dd-menu-item" data-jezik="0" id="divJezikPodesavanja">@Konverzija.VratiString(korisnik.Jezik, "Prebaci na latinicu")</div>
+                    </li>
+                }
+                
+                <li class="divider"></li>
+                <li>
+                    <div class="dd-menu-item" id="divLogOutPodesavanja">@Konverzija.VratiString(korisnik.Jezik, "Odloguj me")</div>
+                </li>
+            </ul>
+        </div>
+        
+        <a id="hederMeniDugmeNoviProzor" href="/" title="@Konverzija.VratiString(korisnik.Jezik, "Otvorite aplikaciju u novom tabu")" target="_blank"></a>
+        
+        <div id="korisnickoIme" style="float: right; margin-right: 10px; margin-top: 3px; max-width: 350px;"><h2>@Konverzija.VratiString(korisnik.Jezik, "Korisnik"): @korisnik.KorisnickoIme</h2></div>
+        
+        <div>
+            <img id="homeStranica" title="@Konverzija.VratiString(korisnik.Jezik, "Početna stranica")" style="width: 24px; height: 24px;" src="@Url.Content("~/Content/img/home.png")"/>
+        </div>
+        
+        @if(korisnik != null && korisnik.IdOkruga != null)
+        {
+            <div id="meniPredmeti" class="meniWrap qDispNone">
+                @if(korisnik.UnosNovogPredmeta)
+                {
+                
+                    <div class="hederMeniDugme" data-url="./Predmeti?tipDokumenta=1" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Unos novog predmeta")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Unos novog predmeta")</div>
+                    </div>
+                }
+                
+                @if (korisnik.DozvolaRezervisanja)
+                {
+
+                    <div class="hederMeniDugme" data-url="./Predmeti?tipDokumenta=2" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Rezervisanje brojeva")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Rezervisanje brojeva")</div>
+                    </div>
+                }
+            </div>
+        }
+
+        <div id="meniPretrage" class="meniWrap qDispNone">
+            <div class="hederMeniDugme" data-url="./Pretrage?tipPretrage=1" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Pretraga predmeta")">
+                <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Pretraga predmeta")</div>
+            </div>
+            
+            <div class="hederMeniDugme" data-url="./Pretrage?tipPretrage=2" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Pretraga rezervacija")">
+                <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Pretraga rezervacija")</div>
+            </div>
+
+            @if (korisnik.IdOkruga != null && korisnik.BrisanjePredmeta)
+            {
+                <div class="hederMeniDugme" data-url="./Pretrage?tipPretrage=3" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Brisanje predmeta")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Pretraga sa brisanjem")</div>
+                </div>
+            }
+            
+            @if (korisnik.IdOkruga != null && !korisnik.Inspektor)
+            {
+                <div class="hederMeniDugme" data-url="./Pretrage?tipPretrage=4" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Arhiviranje predmeta")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Pretraga sa arhiviranjem")</div>
+                </div>
+            }
+            
+            @if (korisnik.IdOkruga != null && korisnik.Administracija)
+            {
+                <div class="hederMeniDugme" data-url="./Pretrage/PretragaObrisanih" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Pretraga obrisanih")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Pretraga obrisanih")</div>
+                </div>
+
+                <div class="hederMeniDugme" data-url="./Pretrage/Rokovnik" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Rokovnik")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Rokovnik")</div>
+                </div>
+            }
+        </div>
+        
+        @if(korisnik != null && korisnik.PregledIzvestaja)
+        {
+            <div id="meniIzvestaji" class="meniWrap qDispNone">
+                <div class="hederMeniDugme" data-url="./Izvestaji?tipIzvestaja=1" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Kreatori")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Kreatori")</div>
+                </div>
+            
+                <div class="hederMeniDugme" data-url="./Izvestaji?tipIzvestaja=2" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Inspektori")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Inspektori")</div>
+                </div>
+                
+                <div class="hederMeniDugme" data-url="./Izvestaji?tipIzvestaja=3" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Organi")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Organi")</div>
+                </div>
+                
+                <div class="hederMeniDugme" data-url="./Izvestaji?tipIzvestaja=4" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Klase")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Klase")</div>
+                </div>
+                
+                <div class="hederMeniDugme" data-url="./Izvestaji?tipIzvestaja=5" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Sadržaji")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Sadržaji")</div>
+                </div>
+                
+                <div class="hederMeniDugme" data-url="./Izvestaji?tipIzvestaja=6" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Statusi")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Statusi")</div>
+                </div>
+                
+                @if (korisnik.IdOkruga != null)
+                {
+                    <div class="hederMeniDugme" data-url="./Zapisnici/PPZ" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "PPZ")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "PPZ")</div>
+                    </div>
+                }
+                
+                @if (korisnik.Administracija || !korisnik.Inspektor)
+                {
+                    <div class="hederMeniDugme" data-url="./Izvestaji/PredmetiSaRokom" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Sa rokom")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Sa rokom")</div>
+                    </div>
+                }
+                
+                <div class="hederMeniDugme" data-url="./Izvestaji/IzvestajPoRazvodnjavanju" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Razvođenje")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Razvođenje")</div>
+                </div>
+
+                <div class="hederMeniDugme" data-url="./Izvestaji/IzvestajPoOpstinama" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Opštine")">
+                    <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Opštine")</div>
+                </div>
+
+                @if (korisnik.IdOkruga != null)
+                {
+                    <div class="hederMeniDugme" data-url="./Zapisnici/AktivniPredmeti" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Aktivni")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Aktivni")</div>
+                    </div>
+                }
+            </div>
+        }
+        
+        @if (korisnik != null && (korisnik.Administracija || korisnik.UnosNovogPredmeta))
+        {
+            <div id="meniSifarnici" class="meniWrap qDispNone">
+            
+                @if(korisnik.Administracija)
+                {
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=1" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Okruzi")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Okruzi")</div>
+                    </div>
+                    
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=2" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Organi")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Organi")</div>
+                    </div>
+                    
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=10" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Opštine")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Opštine")</div>
+                    </div>
+                    
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=11" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Mesta")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Mesta")</div>
+                    </div>
+                    
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=3" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Klase")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Klase")</div>
+                    </div>
+
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=4" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Jedinice")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Jedinice")</div>
+                    </div>
+
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=12" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Inspekcije")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Inspekcije")</div>
+                    </div>
+                }
+
+                @if (korisnik.IdOkruga == null)
+                {
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=5" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Vrste predmeta")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Vrste predmeta")</div>
+                    </div>
+            
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=6" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Takse")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Takse")</div>
+                    </div>
+            
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=7" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Vrste kretanja predmeta")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Vrste kretanja predmeta")</div>
+                    </div>
+                }
+                
+                @if (korisnik.IdOkruga != null && korisnik.UnosNovogPredmeta)
+                {
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=9" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Prečice")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Prečice")</div>
+                    </div>
+                }
+            
+                @if (korisnik.Administracija)
+                {
+                    <div class="hederMeniDugme" data-url="./Sifarnik?tip=8" data-naziv="@Konverzija.VratiString(korisnik.Jezik, "Korisnici")">
+                        <div class="hederMeniDugmeText">@Konverzija.VratiString(korisnik.Jezik, "Korisnici")</div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
+
+<div id="wrapProzorZaPromenuSifre" style="display: none;">
+    <div style="padding-top: 10px;">
+        <div style="margin-bottom: 5px;">
+            <div class="unosRedLbl_taL" style="width: 140px;">@Konverzija.VratiString(korisnik.Jezik, "Stara šifra"):</div>
+            <div class="unosRedVr"><input type="password" id="txtStaraSifraP" class="myInput"></div>
+        </div>
+        <div style="margin-bottom: 5px;">
+            <div class="unosRedLbl_taL" style="width: 140px;">@Konverzija.VratiString(korisnik.Jezik, "Nova šifra"):</div>
+            <div class="unosRedVr"><input type="password" id="txtNovaSifraP" class="myInput"></div>
+        </div>
+        <div style="margin-bottom: 5px;">
+            <div class="unosRedLbl_taL" style="width: 140px;">@Konverzija.VratiString(korisnik.Jezik, "Ponovite novu šifru"):</div>
+            <div class="unosRedVr"><input type="password" id="txtNovaSifraPonovoP" class="myInput"></div>
+        </div>
+        <div id="divPorukaZaPromenuSifre">
+            <span></span>
+        </div>
+    </div>
+</div>

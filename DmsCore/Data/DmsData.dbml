@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dmstest" Class="DmsDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.24;Initial Catalog=dmstest;Persist Security Info=True;User ID=asd;Password=asd1302" SettingsObjectName="DmsCore.Properties.Settings" SettingsPropertyName="dmstestConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.dokument_DodajDokument" Method="dokument_DodajDokument">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdDokumenta" Parameter="idDokumenta" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="IdKreatora" Parameter="idKreatora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Putanja" Parameter="putanja" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Hashcode" Parameter="hashcode" Type="System.String" DbType="Char(32)" />
+    <Parameter Name="Ekstenzija" Parameter="ekstenzija" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.dokument_ObrisiDokument" Method="dokument_ObrisiDokument">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdDokumenta" Parameter="idDokumenta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.dokument_VratiDetaljeDokumenta" Method="dokument_VratiDetaljeDokumenta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdDokumenta" Parameter="idDokumenta" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="dokument_VratiDetaljeDokumentaResult">
+      <Column Name="NazivKreatora" Type="System.String" DbType="NVarChar(253) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivKreatoraBrisanja" Type="System.String" DbType="NVarChar(253)" CanBeNull="true" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="VremeUnosa" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="VremeBrisanja" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Putanja" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Hashcode" Type="System.String" DbType="Char(32) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Ekstenzija" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dokument_VratiDokumentePredmeta" Method="dokument_VratiDokumentePredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="dokument_VratiDokumentePredmetaResult">
+      <Column Name="IdDokumenta" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Obrisan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Ekstenzija" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.dokument_VratiObrisaniDokument" Method="dokument_VratiObrisaniDokument">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdDokumenta" Parameter="idDokumenta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.izvestaj_VratiStavkeIstorijePredmeta" Method="izvestaj_VratiStavkeIstorijePredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="izvestaj_VratiStavkeIstorijePredmetaResult">
+      <Column Name="NazivKretanjaPredmeta" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ImeIPrezimeKorisnika" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="KorisnickoImeKorisnika" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Vreme" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.jedinica_ObrisiJedinicu" Method="jedinica_ObrisiJedinicu">
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.jedinica_SnimiJedinicu" Method="jedinica_SnimiJedinicu">
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="Oznaka" Parameter="oznaka" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nadleznost" Parameter="nadleznost" Type="System.String" DbType="NVarChar(4000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.klasa_ObrisiKlasu" Method="klasa_ObrisiKlasu">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.korisnik_VratiInspektore" Method="korisnik_VratiInspektore">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="korisnik_VratiInspektoreResult">
+      <Column Name="IdKorisnika" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KorisnickoIme" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ImeIPrezime" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.kret_pred_ObrisiKretanjePredmeta" Method="kret_pred_ObrisiKretanjePredmeta">
+    <Parameter Name="IdKretanjaPredmeta" Parameter="idKretanjaPredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.logovanje_PromeniLozinkuKorisnika" Method="logovanje_PromeniLozinkuKorisnika">
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StaraLozinka" Parameter="staraLozinka" Type="System.Data.Linq.Binary" DbType="VarBinary(8000)" />
+    <Parameter Name="NovaLozinka" Parameter="novaLozinka" Type="System.Data.Linq.Binary" DbType="VarBinary(8000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.okrug_ObrisiOkrug" Method="okrug_ObrisiOkrug">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.okrug_SnimiOkrug" Method="okrug_SnimiOkrug">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="Oznaka" Parameter="oznaka" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Mesto" Parameter="mesto" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.okrug_VratiOkruge" Method="okrug_VratiOkruge">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="okrug_VratiOkrugeResult">
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Mesto" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.organ_ObrisiOrgan" Method="organ_ObrisiOrgan">
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.organ_SnimiOrgan" Method="organ_SnimiOrgan">
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="Oznaka" Parameter="oznaka" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.organ_VratiOrgane" Method="organ_VratiOrgane">
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="organ_VratiOrganeResult">
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.precica_SnimiPrecicu" Method="precica_SnimiPrecicu">
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdPrecice" Parameter="idPrecice" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="Tekst" Parameter="tekst" Type="System.String" DbType="NVarChar(2000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.precica_VratiPreciceKorisnika" Method="precica_VratiPreciceKorisnika">
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="precica_VratiPreciceKorisnikaResult">
+      <Column Name="IdPrecice" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Tekst" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.precica_VratiPrecicu" Method="precica_VratiPrecicu">
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdPrecice" Parameter="idPrecice" Type="System.Byte" DbType="TinyInt" />
+    <ElementType Name="precica_VratiPrecicuResult">
+      <Column Name="Tekst" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.taksa_ObrisiTaksu" Method="taksa_ObrisiTaksu">
+    <Parameter Name="IdTakse" Parameter="idTakse" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.vrsta_pred_ObrisiVrstuPredmeta" Method="vrsta_pred_ObrisiVrstuPredmeta">
+    <Parameter Name="IdVrstePredmeta" Parameter="idVrstePredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.klase_insp_SnimiKlasuInspektora" Method="klase_insp_SnimiKlasuInspektora">
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.klase_insp_ObrisiKlaseInspektora" Method="klase_insp_ObrisiKlaseInspektora">
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.vrsta_pred_VratiVrstePredmeta" Method="vrsta_pred_VratiVrstePredmeta">
+    <Parameter Name="IdVrstePredmeta" Parameter="idVrstePredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="vrsta_pred_VratiVrstePredmetaResult">
+      <Column Name="IdVrstePredmeta" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Rok" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaZaStampu" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.vrsta_pred_SnimiVrstuPredmeta" Method="vrsta_pred_SnimiVrstuPredmeta">
+    <Parameter Name="IdVrstePredmeta" Parameter="idVrstePredmeta" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Oznaka" Parameter="oznaka" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Rok" Parameter="rok" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaZaStampu" Parameter="oznakaZaStampu" Type="System.String" DbType="NVarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.taksa_SnimiTaksu" Method="taksa_SnimiTaksu">
+    <Parameter Name="IdTakse" Parameter="idTakse" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OznakaZaStampu" Parameter="oznakaZaStampu" Type="System.String" DbType="NVarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.taksa_VratiTakse" Method="taksa_VratiTakse">
+    <Parameter Name="IdTakse" Parameter="idTakse" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="taksa_VratiTakseResult">
+      <Column Name="IdTakse" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaZaStampu" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_VratiGodine" Method="predmet_VratiGodine">
+    <ElementType Name="predmet_VratiGodineResult">
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_ObrisiPredmet" Method="predmet_ObrisiPredmet">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RazlogBrisanja" Parameter="razlogBrisanja" Type="System.String" DbType="NVarChar(2000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.opstina_VratiOpstine" Method="opstina_VratiOpstine">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="opstina_VratiOpstineResult">
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdOpstine" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="PostanskiBroj" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.opstina_SnimiOpstinu" Method="opstina_SnimiOpstinu">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="PostanskiBroj" Parameter="postanskiBroj" Type="System.String" DbType="Char(5)" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.opstina_ObrisiOpstinu" Method="opstina_ObrisiOpstinu">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.istorija_ObrisiKretanjePredmeta" Method="istorija_ObrisiKretanjePredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdKretanja" Parameter="idKretanja" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.organ_VratiOrganeInspektora" Method="organ_VratiOrganeInspektora">
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="organ_VratiOrganeInspektoraResult">
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_VratiSledeciSlobodanBrojPredmeta" Method="predmet_VratiSledeciSlobodanBrojPredmeta">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="predmet_VratiSledeciSlobodanBrojPredmetaResult">
+      <Column Name="SledeciBroj" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.klase_insp_VratiKlaseInspektora" Method="klase_insp_VratiKlaseInspektora">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="klase_insp_VratiKlaseInspektoraResult">
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Izabran" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NazivOrgana" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_PredmetPripadaKlasiInspektora" Method="predmet_PredmetPripadaKlasiInspektora">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="predmet_PredmetPripadaKlasiInspektoraResult">
+      <Column Name="Pripada" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_SnimiAktivnostPredmeta" Method="predmet_SnimiAktivnostPredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Opis" Parameter="opis" Type="System.String" DbType="NVarChar(2000)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.predmet_AktivirajPredmet" Method="predmet_AktivirajPredmet">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.predmet_VratiBrojPredmeta" Method="predmet_VratiBrojPredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="predmet_VratiBrojPredmetaResult">
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_VratiIdPredmetaPrekoBroja" Method="predmet_VratiIdPredmetaPrekoBroja">
+    <Parameter Name="BrojPredmeta" Parameter="brojPredmeta" Type="System.String" DbType="NVarChar(200)" />
+    <ElementType Name="predmet_VratiIdPredmetaPrekoBrojaResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_VratiPovezanePredmete" Method="predmet_VratiPovezanePredmete">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="predmet_VratiPovezanePredmeteResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.kret_pred_SnimiKretanjePredmeta" Method="kret_pred_SnimiKretanjePredmeta">
+    <Parameter Name="IdKretanjaPredmeta" Parameter="idKretanjaPredmeta" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Status" Parameter="status" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="Zapisnik" Parameter="zapisnik" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Primedba" Parameter="primedba" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="UnosRoka" Parameter="unosRoka" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Oznaka" Parameter="oznaka" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="NazivZaIstoriju" Parameter="nazivZaIstoriju" Type="System.String" DbType="NVarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.kret_pred_VratiKretanjaPredmeta" Method="kret_pred_VratiKretanjaPredmeta">
+    <Parameter Name="IdKretanjaPredmeta" Parameter="idKretanjaPredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="kret_pred_VratiKretanjaPredmetaResult">
+      <Column Name="IdKretanjaPredmeta" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Zapisnik" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Primedba" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UnosRoka" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NazivZaIstoriju" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.istorija_VratiIstorijuPredmeta" Method="istorija_VratiIstorijuPredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Istorija" Parameter="istorija" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="istorija_VratiIstorijuPredmetaResult">
+      <Column Name="Vreme" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="NazivKorisnika" Type="System.String" DbType="NVarChar(253) NOT NULL" CanBeNull="false" />
+      <Column Name="IdKretanja" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="DatumBrisanja" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Obrisao" Type="System.String" DbType="NVarChar(253)" CanBeNull="true" />
+      <Column Name="DatumRoka" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.istorija_SnimiKretanjePredmeta" Method="istorija_SnimiKretanjePredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdKretanjaPredmeta" Parameter="idKretanjaPredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="DatumRoka" Parameter="datumRoka" Type="System.DateTime" DbType="SmallDateTime" />
+    <ElementType Name="istorija_SnimiKretanjePredmetaResult">
+      <Column Name="IdKretanja" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.mesta_ObrisiMesto" Method="mesta_ObrisiMesto">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdMesta" Parameter="idMesta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.mesta_SnimiMesto" Method="mesta_SnimiMesto">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdMesta" Parameter="idMesta" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.mesta_VratiMesta" Method="mesta_VratiMesta">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdMesta" Parameter="idMesta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="mesta_VratiMestaResult">
+      <Column Name="IdMesta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.korisnik_VratiArhivatore" Method="korisnik_VratiArhivatore">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="korisnik_VratiArhivatoreResult">
+      <Column Name="IdKorisnika" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KorisnickoIme" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ImeIPrezime" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.izvestaji_VratiAnalitikuPredmeta" Method="izvestaji_VratiAnalitikuPredmeta">
+    <Parameter Name="Grupisanje" Parameter="grupisanje" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="BrojPredmeta" Parameter="brojPredmeta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Godina" Parameter="godina" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OdDatuma" Parameter="odDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="DoDatuma" Parameter="doDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Status" Parameter="status" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="IdVrstePredmeta" Parameter="idVrstePredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdInspektora" Parameter="idInspektora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Podnosilac" Parameter="podnosilac" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="LiceKontrole" Parameter="liceKontrole" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="Sadrzaj" Parameter="sadrzaj" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdTakse" Parameter="idTakse" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="StraniBroj" Parameter="straniBroj" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="Rok" Parameter="rok" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="PreRoka" Parameter="preRoka" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="DatumKretanja" Parameter="datumKretanja" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdKretanjaPredmeta" Parameter="idKretanjaPredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OpisKretanja" Parameter="opisKretanja" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdKreatora" Parameter="idKreatora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdUlogovanogKorisnika" Parameter="idUlogovanogKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaOrgana" Parameter="oznakaOrgana" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="OznakaKlase" Parameter="oznakaKlase" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="OznakaJedinice" Parameter="oznakaJedinice" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GledanjeDatumaKreiranja" Parameter="gledanjeDatumaKreiranja" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdMestaOpstine" Parameter="idMestaOpstine" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="izvestaji_VratiAnalitikuPredmetaResult">
+      <Column Name="Grupisanje" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdJedinice" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Podnosilac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="IdInspektora" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NazivInspektora" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="Sadrzaj" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="LiceKontrole" Type="System.String" DbType="NVarChar(331)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.logovanje_OdlogujKorisnika" Method="logovanje_OdlogujKorisnika">
+    <Parameter Name="KorisnickoIme" Parameter="korisnickoIme" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.predmet_ArhivirajPredmet" Method="predmet_ArhivirajPredmet">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <ElementType Name="predmet_ArhivirajPredmetResult">
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.korisnik_PrijaviGresku" Method="korisnik_PrijaviGresku">
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrijavljenaGreska" Parameter="prijavljenaGreska" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Url" Parameter="url" Type="System.String" DbType="NVarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.jedinica_VratiSveJedinice" Method="jedinica_VratiSveJedinice">
+    <ElementType Name="jedinica_VratiSveJediniceResult">
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.klasa_VratiSveKlaseInspektora" Method="klasa_VratiSveKlaseInspektora">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="klasa_VratiSveKlaseInspektoraResult">
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.jedinica_VratiJedinice" Method="jedinica_VratiJedinice">
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="jedinica_VratiJediniceResult">
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdJedinice" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Nadleznost" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.klasa_VratiKlaseInspektora" Method="klasa_VratiKlaseInspektora">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="klasa_VratiKlaseInspektoraResult">
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Nadleznost" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.pretraga_VratiObrisanePredmete" Method="pretraga_VratiObrisanePredmete">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaKlase" Parameter="oznakaKlase" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="BrojPredmeta" Parameter="brojPredmeta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Godina" Parameter="godina" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaJedinice" Parameter="oznakaJedinice" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="pretraga_VratiObrisanePredmeteResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdJedinice" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Podnosilac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="IdInspektora" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NazivInspektora" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="Sadrzaj" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.izvestaji_VratiPredmeteSaRokom" Method="izvestaji_VratiPredmeteSaRokom">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaKlase" Parameter="oznakaKlase" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="BrojPredmeta" Parameter="brojPredmeta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Godina" Parameter="godina" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaJedinice" Parameter="oznakaJedinice" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="izvestaji_VratiPredmeteSaRokomResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Podnosilac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="NazivInspektora" Type="System.String" DbType="NVarChar(253)" CanBeNull="true" />
+      <Column Name="Sadrzaj" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="DatumRoka" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.izvestaji_VratiPredmetePoRazvodjenju" Method="izvestaji_VratiPredmetePoRazvodjenju">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaKlase" Parameter="oznakaKlase" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="BrojPredmeta" Parameter="brojPredmeta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Godina" Parameter="godina" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaJedinice" Parameter="oznakaJedinice" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OdDatuma" Parameter="odDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="DoDatuma" Parameter="doDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdArhivatora" Parameter="idArhivatora" Type="System.Int32" DbType="Int" />
+    <ElementType Name="izvestaji_VratiPredmetePoRazvodjenjuResult">
+      <Column Name="RazvodjenjeAkata" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.zapisnik_VratiPredmetePretrage" Method="zapisnik_VratiPredmetePretrage">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaKlase" Parameter="oznakaKlase" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaJedinice" Parameter="oznakaJedinice" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="IdKreatora" Parameter="idKreatora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Datum" Parameter="datum" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="TipPretrage" Parameter="tipPretrage" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SamoArhivirani" Parameter="samoArhivirani" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="zapisnik_VratiPredmetePretrageResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Broj" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivOrgana" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivKlase" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivJedinice" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivInspektora" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="Sadrzaj" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Podnosilac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="VremeKreiranja" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Opis" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Primedba" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BrojUGodini" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KreatorIstorije" Type="System.String" DbType="NVarChar(254) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.server_Start" Method="server_Start">
+    <Parameter Name="PromenaDatumaPredmeta" Parameter="promenaDatumaPredmeta" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.inspekcije_VratiInspekcije" Method="inspekcije_VratiInspekcije">
+    <Parameter Name="IdInspekcije" Parameter="idInspekcije" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="inspekcije_VratiInspekcijeResult">
+      <Column Name="IdInspekcije" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.inspekcije_SnimiInspekciju" Method="inspekcije_SnimiInspekciju">
+    <Parameter Name="IdInspekcije" Parameter="idInspekcije" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.inspekcije_ObrisiInspekciju" Method="inspekcije_ObrisiInspekciju">
+    <Parameter Name="IdInspekcije" Parameter="idInspekcije" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.pretraga_VratiPredmeteRokovnika" Method="pretraga_VratiPredmeteRokovnika">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaKlase" Parameter="oznakaKlase" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="BrojPredmeta" Parameter="brojPredmeta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Godina" Parameter="godina" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaJedinice" Parameter="oznakaJedinice" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="pretraga_VratiPredmeteRokovnikaResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdJedinice" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Podnosilac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="IdInspektora" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NazivInspektora" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="Sadrzaj" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.inspekcije_VratiKlaseIJedinice" Method="inspekcije_VratiKlaseIJedinice">
+    <Parameter Name="IdInspekcije" Parameter="idInspekcije" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="inspekcije_VratiKlaseIJediniceResult">
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="NazivOrgana" Type="System.String" DbType="NVarChar(204) NOT NULL" CanBeNull="false" />
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="NazivKlase" Type="System.String" DbType="NVarChar(204) NOT NULL" CanBeNull="false" />
+      <Column Name="IdJedinice" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="NazivJedinice" Type="System.String" DbType="NVarChar(204) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.inspekcija_SacuvajKlasuIJedinicu" Method="inspekcija_SacuvajKlasuIJedinicu">
+    <Parameter Name="IdInspekcije" Parameter="idInspekcije" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.inspekcija_ObrisiKlaseIJedinice" Method="inspekcija_ObrisiKlaseIJedinice">
+    <Parameter Name="IdInspekcije" Parameter="idInspekcije" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.izvestaj_VratiDetaljePredmeta" Method="izvestaj_VratiDetaljePredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="izvestaj_VratiDetaljePredmetaResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdNadredjenogPredmeta" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivOkruga" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Mesto" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivOrgana" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivKlase" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivJedinice" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ImeIPrezimeKreatora" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="KorisnickoImeKreatora" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PodnosilacJeInspektor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Podnosilac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="PodnosilacJedinstveniBroj" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="LiceKontrole" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="LiceKontroleJedinstveniBroj" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="VremeRezervacije" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="VremeKreiranja" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaVrstePredmeta" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="NazivVrstePredmeta" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Rok" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="OznakaVrstePredmetaZaStampu" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ImeIPrezimeInspektora" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="KorisnickoImeInspektora" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Prilog" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Sadrzaj" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="NazivTakse" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="OznakaTakseZaStampu" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="StraniBroj" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="VremeIstekaRoka" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.klasa_SnimiKlasu" Method="klasa_SnimiKlasu">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" Direction="InOut" />
+    <Parameter Name="Oznaka" Parameter="oznaka" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="Naziv" Parameter="naziv" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nadleznost" Parameter="nadleznost" Type="System.String" DbType="NVarChar(4000)" />
+    <Parameter Name="IdInspekcije" Parameter="idInspekcije" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IzuzmiIzProvere" Parameter="izuzmiIzProvere" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.klasa_VratiKlase" Method="klasa_VratiKlase">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="klasa_VratiKlaseResult">
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Oznaka" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Naziv" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Nadleznost" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="IdInspekcije" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="IzuzmiIzProvere" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.pretraga_VratiPredmete" Method="pretraga_VratiPredmete">
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="BrojPredmeta" Parameter="brojPredmeta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Godina" Parameter="godina" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OdDatuma" Parameter="odDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="DoDatuma" Parameter="doDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Status" Parameter="status" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="IdVrstePredmeta" Parameter="idVrstePredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdInspektora" Parameter="idInspektora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Podnosilac" Parameter="podnosilac" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="LiceKontrole" Parameter="liceKontrole" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="Sadrzaj" Parameter="sadrzaj" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdTakse" Parameter="idTakse" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="StraniBroj" Parameter="straniBroj" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="Rok" Parameter="rok" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="PreRoka" Parameter="preRoka" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="DatumKretanja" Parameter="datumKretanja" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdKretanjaPredmeta" Parameter="idKretanjaPredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OpisKretanja" Parameter="opisKretanja" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdUlogovanogKorisnika" Parameter="idUlogovanogKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaOrgana" Parameter="oznakaOrgana" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="OznakaKlase" Parameter="oznakaKlase" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="OznakaJedinice" Parameter="oznakaJedinice" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="GledanjeDatumaKreiranja" Parameter="gledanjeDatumaKreiranja" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdMestaOpstine" Parameter="idMestaOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="RokCuvanja" Parameter="rokCuvanja" Type="System.String" DbType="NVarChar(2000)" />
+    <ElementType Name="pretraga_VratiPredmeteResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdJedinice" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Podnosilac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="IdInspektora" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NazivInspektora" Type="System.String" DbType="NVarChar(254)" CanBeNull="true" />
+      <Column Name="Sadrzaj" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="IdVrstePredmeta" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="LiceKontrole" Type="System.String" DbType="NVarChar(331)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.korisnik_SnimiKorisnika" Method="korisnik_SnimiKorisnika">
+    <Parameter Name="IdKorisnikaZaUnos" Parameter="idKorisnikaZaUnos" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="KorisnickoIme" Parameter="korisnickoIme" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Inspektor" Parameter="inspektor" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="UnosNovogPredmeta" Parameter="unosNovogPredmeta" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="DozvolaRezervisanja" Parameter="dozvolaRezervisanja" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IzmenaPredmeta" Parameter="izmenaPredmeta" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="BrisanjePredmeta" Parameter="brisanjePredmeta" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Administracija" Parameter="administracija" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="PregledIzvestaja" Parameter="pregledIzvestaja" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Telefon" Parameter="telefon" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Jmbg" Parameter="jmbg" Type="System.String" DbType="NChar(13)" />
+    <Parameter Name="ImeIPrezime" Parameter="imeIPrezime" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Lozinka" Parameter="lozinka" Type="System.Data.Linq.Binary" DbType="VarBinary(8000)" />
+    <Parameter Name="NovaLozinka" Parameter="novaLozinka" Type="System.Data.Linq.Binary" DbType="VarBinary(8000)" />
+    <Parameter Name="SamoSvojePredmete" Parameter="samoSvojePredmete" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="MaksimalniBrojPredmeta" Parameter="maksimalniBrojPredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="MaxBrojRezervisanihPredmeta" Parameter="maxBrojRezervisanihPredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="MaksimalniBrojPredmetaGodine" Parameter="maksimalniBrojPredmetaGodine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="StrogoPoverljivi" Parameter="strogoPoverljivi" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.korisnik_VratiKorisnike" Method="korisnik_VratiKorisnike">
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Aktivan" Parameter="aktivan" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="korisnik_VratiKorisnikeResult">
+      <Column Name="IdKorisnika" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KorisnickoIme" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Inspektor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="UnosNovogPredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DozvolaRezervisanja" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IzmenaPredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BrisanjePredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Administracija" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PregledIzvestaja" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Jmbg" Type="System.String" DbType="NChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="ImeIPrezime" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Aktivan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SamoSvojePredmete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MaksimalniBrojPredmeta" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MaxBrojRezervisanihPredmeta" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="MaksimalniBrojPredmetaGodine" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="StrogoPoverljivi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.logovanje_UlogujKorisnika" Method="logovanje_UlogujKorisnika">
+    <Parameter Name="KorisnickoIme" Parameter="korisnickoIme" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Lozinka" Parameter="lozinka" Type="System.Data.Linq.Binary" DbType="VarBinary(8000)" />
+    <Parameter Name="Jezik" Parameter="jezik" Type="System.String" DbType="NVarChar(10)" />
+    <ElementType Name="logovanje_UlogujKorisnikaResult">
+      <Column Name="IdKorisnika" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Inspektor" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="UnosNovogPredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DozvolaRezervisanja" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IzmenaPredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BrisanjePredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Administracija" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PregledIzvestaja" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SamoSvojePredmete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Jmbg" Type="System.String" DbType="NChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="ImeIPrezime" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Guid" Type="System.String" DbType="Char(36)" CanBeNull="true" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NapomenaOkruga" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="StrogoPoverljivi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.logovanje_VratiUlogovaneKorisnike" Method="logovanje_VratiUlogovaneKorisnike">
+    <ElementType Name="logovanje_VratiUlogovaneKorisnikeResult">
+      <Column Name="IdKorisnika" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="KorisnickoIme" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Inspektor" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="UnosNovogPredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DozvolaRezervisanja" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IzmenaPredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BrisanjePredmeta" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Administracija" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PregledIzvestaja" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SamoSvojePredmete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefon" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Jmbg" Type="System.String" DbType="NChar(13) NOT NULL" CanBeNull="false" />
+      <Column Name="ImeIPrezime" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Guid" Type="System.String" DbType="Char(36)" CanBeNull="true" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Jezik" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="NapomenaOkruga" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="StrogoPoverljivi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_VratiPredmet" Method="predmet_VratiPredmet">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="predmet_VratiPredmetResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdNadredjenogPredmeta" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdOkruga" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="NazivOkruga" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOkruga" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdOrgana" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaOrgana" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdKlase" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaKlase" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdJedinice" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="OznakaJedinice" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="IdOpstine" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NazivOpstine" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IdKreatora" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NazivKreatora" Type="System.String" DbType="NVarChar(253) NOT NULL" CanBeNull="false" />
+      <Column Name="PodnosilacJeInspektor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PodnosilacJedinstveniBroj" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Podnosilac" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="LiceKontroleJedinstveniBroj" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="LiceKontrole" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
+      <Column Name="VremeKreiranja" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StvarnoVremeKreiranja" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="VremeRezervacije" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdVrstePredmeta" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NazivVrstePredmeta" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="OznakaVrstePredmeta" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="IdInspektora" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NazivInspektora" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Prilog" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Sadrzaj" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="IdTakse" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="StraniBroj" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Napomena" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="PutanjaArhiviranjaDokumenata" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IdMesta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NazivMesta" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="StrogoPoverljiv" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_RezervacijaPredmeta" Method="predmet_RezervacijaPredmeta">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="PodnosilacJeInspektor" Parameter="podnosilacJeInspektor" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdVrstePredmeta" Parameter="idVrstePredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdInspektora" Parameter="idInspektora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Prilog" Parameter="prilog" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Sadrzaj" Parameter="sadrzaj" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdTakse" Parameter="idTakse" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="StraniBroj" Parameter="straniBroj" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Podnosilac" Parameter="podnosilac" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="PodnosilacJedinstveniBroj" Parameter="podnosilacJedinstveniBroj" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="LiceKontroleJedinstveniBroj" Parameter="liceKontroleJedinstveniBroj" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="LiceKontrole" Parameter="liceKontrole" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdMesta" Parameter="idMesta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Datum" Parameter="datum" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="Kolicina" Parameter="kolicina" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="predmet_RezervacijaPredmetaResult">
+      <Column Name="IdPredmeta" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.String" DbType="NVarChar(77)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.predmet_SnimiPredmet" Method="predmet_SnimiPredmet">
+    <Parameter Name="IdPredmeta" Parameter="idPredmeta" Type="System.Int64" DbType="BigInt" Direction="InOut" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="PodnosilacJeInspektor" Parameter="podnosilacJeInspektor" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdVrstePredmeta" Parameter="idVrstePredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdInspektora" Parameter="idInspektora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Prilog" Parameter="prilog" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Sadrzaj" Parameter="sadrzaj" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdTakse" Parameter="idTakse" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="StraniBroj" Parameter="straniBroj" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Napomena" Parameter="napomena" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="Rezervacija" Parameter="rezervacija" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Podnosilac" Parameter="podnosilac" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="PodnosilacJedinstveniBroj" Parameter="podnosilacJedinstveniBroj" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="LiceKontroleJedinstveniBroj" Parameter="liceKontroleJedinstveniBroj" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="LiceKontrole" Parameter="liceKontrole" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdNadredjenogPredmeta" Parameter="idNadredjenogPredmeta" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="IdMesta" Parameter="idMesta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Datum" Parameter="datum" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="StrogoPoverljiv" Parameter="strogoPoverljiv" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="predmet_SnimiPredmetResult">
+      <Column Name="BrojPredmeta" Type="System.String" DbType="NVarChar(77)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.izvestaj_AktivniPredmeti" Method="izvestaj_AktivniPredmeti">
+    <Parameter Name="Datum" Parameter="datum" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdUlogovanogKorisnika" Parameter="idUlogovanogKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="izvestaj_AktivniPredmetiResult">
+      <Column Name="Inspekcija" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Godina" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.izvestaji_VratiPredmetePoOpstinama" Method="izvestaji_VratiPredmetePoOpstinama">
+    <Parameter Name="OdDatuma" Parameter="odDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="DoDatuma" Parameter="doDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdUlogovanogKorisnika" Parameter="idUlogovanogKorisnika" Type="System.Int32" DbType="Int" />
+    <ElementType Name="izvestaji_VratiPredmetePoOpstinamaResult">
+      <Column Name="PostanskiBrojOpstine" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="NazivOpstine" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Organ" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivOrgana" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Klasa" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivKlase" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Jedinica" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivJedinice" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="VrstaPredmeta" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="NazivVrstePredmeta" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="BrojPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.izvestaji_VratiSintetikaPredmeta" Method="izvestaji_VratiSintetikaPredmeta">
+    <Parameter Name="Grupisanje" Parameter="grupisanje" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="IdOkruga" Parameter="idOkruga" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdOrgana" Parameter="idOrgana" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdKlase" Parameter="idKlase" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="BrojPredmeta" Parameter="brojPredmeta" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Godina" Parameter="godina" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OdDatuma" Parameter="odDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="DoDatuma" Parameter="doDatuma" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdJedinice" Parameter="idJedinice" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="Status" Parameter="status" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="IdVrstePredmeta" Parameter="idVrstePredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="IdInspektora" Parameter="idInspektora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Podnosilac" Parameter="podnosilac" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="LiceKontrole" Parameter="liceKontrole" Type="System.String" DbType="NVarChar(300)" />
+    <Parameter Name="Sadrzaj" Parameter="sadrzaj" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdTakse" Parameter="idTakse" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="StraniBroj" Parameter="straniBroj" Type="System.String" DbType="NChar(10)" />
+    <Parameter Name="Rok" Parameter="rok" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="PreRoka" Parameter="preRoka" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="DatumKretanja" Parameter="datumKretanja" Type="System.DateTime" DbType="SmallDateTime" />
+    <Parameter Name="IdKretanjaPredmeta" Parameter="idKretanjaPredmeta" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OpisKretanja" Parameter="opisKretanja" Type="System.String" DbType="NVarChar(2000)" />
+    <Parameter Name="IdKreatora" Parameter="idKreatora" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdUlogovanogKorisnika" Parameter="idUlogovanogKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdOpstine" Parameter="idOpstine" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="OznakaOrgana" Parameter="oznakaOrgana" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="OznakaKlase" Parameter="oznakaKlase" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="OznakaJedinice" Parameter="oznakaJedinice" Type="System.String" DbType="Char(3)" />
+    <Parameter Name="IdKorisnika" Parameter="idKorisnika" Type="System.Int32" DbType="Int" />
+    <Parameter Name="GledanjeDatumaKreiranja" Parameter="gledanjeDatumaKreiranja" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="IdMestaOpstine" Parameter="idMestaOpstine" Type="System.Int16" DbType="SmallInt" />
+    <ElementType Name="izvestaji_VratiSintetikaPredmetaResult">
+      <Column Name="Grupisanje" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="IdGrupisanja" Type="System.String" DbType="NVarChar(61)" CanBeNull="true" />
+      <Column Name="UkupanBrojPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojRezervisanihPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojAktivnihPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojURokovnikuPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojPrezavedenihPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojZatvorenihPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojPrezavedenihArhiviranihPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojObrisanihhPredmeta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojRezervisanihPredmetaPrekoRoka" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BrojOtvorenihPredmetaPrekoRoka" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
